@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutortek">
         <activity
-            android:name="com.tutortekorg.tutortek.HomeActivity"
+            android:name=".SplashscreenActivity"
             android:exported="false" />
         <activity
-            android:name="com.tutortekorg.tutortek.MainActivity"
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
