@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tutortek">
+    package="com.tutortekorg.tutortek">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutortek">
         <activity
-            android:name=".MainActivity"
+            android:name="com.tutortekorg.tutortek.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.tutortekorg.tutortek.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.tutortek
+package com.tutortekorg.tutortek
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

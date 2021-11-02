@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Tutortek</string>
+    <string name="title_learn">Learn</string>
+    <string name="description_learn">Learn new and exciting thins!</string>
+    <string name="title_meet">Meet</string>
+    <string name="description_meet">Meet your local Tutortek community!</string>
+    <string name="title_earn">Earn</string>
+    <string name="description_earn">Earn money while sharing knowledge!</string>
+    <string name="button_get_started">Get started</string>
+    <string name="button_next">Next</string>
 </resources>

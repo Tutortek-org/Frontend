@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tutortek</string>
+    <string name="title_learn">Mokykitės</string>
+    <string name="description_learn">Išmokite naujų ir įdomių dalykų!</string>
+    <string name="title_meet">Susipažinkite</string>
+    <string name="description_meet">Susipažinkite su savo aplinkiniais Tutortek naudotojais!</string>
+    <string name="title_earn">Uždirbkite</string>
+    <string name="description_earn">Uždirbkite bemokydami kitus!</string>
+    <string name="button_get_started">Pradėkite</string>
+    <string name="button_next">Kitas</string>
+</resources>
