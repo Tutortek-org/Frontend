@@ -8,4 +8,6 @@
     <string name="description_earn">Earn money while sharing knowledge!</string>
     <string name="button_get_started">Get started</string>
     <string name="button_next">Next</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
 </resources>

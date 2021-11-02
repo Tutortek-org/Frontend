@@ -9,4 +9,6 @@
     <string name="description_earn">Uždirbkite bemokydami kitus!</string>
     <string name="button_get_started">Pradėkite</string>
     <string name="button_next">Kitas</string>
+    <string name="login_email_hint">El. Paštas</string>
+    <string name="login_password_hint">Slaptažodis</string>
 </resources>
