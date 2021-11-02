@@ -7,4 +7,33 @@
     android:background="@color/color_background"
     tools:context="com.tutortekorg.tutortek.MainActivity">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_onboarding_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="15sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_onboarding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/layout_onboarding_indicators"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_onboarding_action"
+        app:layout_constraintEnd_toStartOf="@id/btn_onboarding_action"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_onboarding_action"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
