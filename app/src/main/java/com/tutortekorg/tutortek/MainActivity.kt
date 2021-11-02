@@ -7,8 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.example.tutortek.R
-import com.example.tutortek.databinding.ActivityMainBinding
+import com.tutortekorg.tutortek.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: OnboardingAdapter
