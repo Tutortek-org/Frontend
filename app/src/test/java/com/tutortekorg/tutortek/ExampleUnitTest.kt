@@ -1,4 +1,4 @@
-package com.example.tutortek
+package com.tutortekorg.tutortek
 
 import org.junit.Test
 
