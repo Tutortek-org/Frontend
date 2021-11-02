@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.tutortekorg.tutortek.HomeActivity
+import com.tutortekorg.tutortek.LoginActivity
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.ActivityMainBinding
 
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun navigateOnboardScreen() {
         if (isNotLastItem()) binding.viewPagerOnboarding.currentItem = binding.viewPagerOnboarding.currentItem + 1
         else {
-            startActivity(Intent(applicationContext, HomeActivity::class.java))
+            startActivity(Intent(applicationContext, LoginActivity::class.java))
             finish()
         }
     }
