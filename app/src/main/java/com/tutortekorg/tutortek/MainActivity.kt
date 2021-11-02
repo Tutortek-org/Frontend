@@ -2,6 +2,11 @@ package com.tutortekorg.tutortek
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.example.tutortek.R
 import com.example.tutortek.databinding.ActivityMainBinding
 
@@ -16,6 +21,16 @@ class MainActivity : AppCompatActivity() {
 
         setupOnboardingAdapter()
         binding.viewPagerOnboarding.adapter = adapter
+
+        setupOnboardingIndicators()
+        setCurrentOnboardingIndicator(0)
+
+        binding.viewPagerOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                setCurrentOnboardingIndicator(position)
+            }
+        })
     }
 
     private fun setupOnboardingAdapter() {
@@ -38,5 +53,25 @@ class MainActivity : AppCompatActivity() {
         )
 
         adapter = OnboardingAdapter(list)
+    }
+
+    private fun setupOnboardingIndicators() {
+        val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        layoutParams.setMargins(0, 0, 0, 0)
+        for(i in 0 until adapter.itemCount) {
+            val indicator = ImageView(applicationContext)
+            indicator.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
+            indicator.layoutParams = layoutParams
+            binding.layoutOnboardingIndicators.addView(indicator)
+        }
+    }
+
+    private fun setCurrentOnboardingIndicator(index: Int) {
+        val childCount = binding.layoutOnboardingIndicators.childCount
+        for(i in 0 until childCount) {
+            val imageView = binding.layoutOnboardingIndicators.getChildAt(i) as ImageView
+            if(i == index) imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_active))
+            else imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
+        }
     }
 }
