@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.tutortekorg.tutortek.HomeActivity
+import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -53,17 +55,20 @@ class MainActivity : AppCompatActivity() {
     private fun setupOnboardingAdapter() {
         val list = mutableListOf<OnboardingItem>()
 
-        list.add(OnboardingItem(
+        list.add(
+            OnboardingItem(
             R.mipmap.ic_books,
             resources.getString(R.string.title_learn),
             resources.getString(R.string.description_learn))
         )
-        list.add(OnboardingItem(
+        list.add(
+            OnboardingItem(
             R.mipmap.ic_handshake,
             resources.getString(R.string.title_meet),
             resources.getString(R.string.description_meet))
         )
-        list.add(OnboardingItem(
+        list.add(
+            OnboardingItem(
             R.mipmap.ic_money,
             resources.getString(R.string.title_earn),
             resources.getString(R.string.description_earn))

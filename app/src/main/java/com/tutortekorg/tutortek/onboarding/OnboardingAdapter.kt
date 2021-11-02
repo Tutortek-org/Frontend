@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.onboarding
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.tutortekorg.tutortek.R
 
 class OnboardingAdapter(private val onboardingItems: List<OnboardingItem>)
     : RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {
