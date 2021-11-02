@@ -9,6 +9,10 @@
     android:orientation="vertical"
     android:padding="20dp">
 
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="50dp"/>
+
     <ImageView
         android:id="@+id/img_onboarding"
         android:layout_width="260dp"

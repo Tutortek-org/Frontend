@@ -47,18 +47,18 @@ class MainActivity : AppCompatActivity() {
 
         list.add(OnboardingItem(
             R.mipmap.ic_books,
-            "Learn",
-            "Learn new and exciting thins!")
+            resources.getString(R.string.title_learn),
+            resources.getString(R.string.description_learn))
         )
         list.add(OnboardingItem(
             R.mipmap.ic_handshake,
-            "Meet",
-            "Meet your local Tutortek community!")
+            resources.getString(R.string.title_meet),
+            resources.getString(R.string.description_meet))
         )
         list.add(OnboardingItem(
             R.mipmap.ic_money,
-            "Earn",
-            "Earn money while sharing knowledge!")
+            resources.getString(R.string.title_earn),
+            resources.getString(R.string.description_earn))
         )
 
         adapter = OnboardingAdapter(list)
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupOnboardingIndicators() {
         val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        layoutParams.setMargins(0, 0, 10, 0)
+        layoutParams.setMargins(8, 0, 8, 0)
         for(i in 0 until adapter.itemCount) {
             val indicator = ImageView(applicationContext)
             indicator.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             else imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
         }
 
-        if(index == adapter.itemCount - 1) binding.btnOnboardingAction.text = "Get started"
-        else binding.btnOnboardingAction.text = "Next"
+        if(index == adapter.itemCount - 1) binding.btnOnboardingAction.text =  resources.getString(R.string.button_get_started)
+        else binding.btnOnboardingAction.text =  resources.getString(R.string.button_next)
     }
 }
