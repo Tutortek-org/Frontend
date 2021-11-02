@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupOnboardingIndicators() {
         val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        layoutParams.setMargins(0, 0, 0, 0)
+        layoutParams.setMargins(0, 0, 10, 0)
         for(i in 0 until adapter.itemCount) {
             val indicator = ImageView(applicationContext)
             indicator.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
