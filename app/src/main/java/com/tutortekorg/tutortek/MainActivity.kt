@@ -1,5 +1,6 @@
 package com.tutortekorg.tutortek
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -30,6 +31,15 @@ class MainActivity : AppCompatActivity() {
                 setCurrentOnboardingIndicator(position)
             }
         })
+
+        binding.btnOnboardingAction.setOnClickListener {
+            if(binding.viewPagerOnboarding.currentItem + 1 < adapter.itemCount)
+                binding.viewPagerOnboarding.currentItem = binding.viewPagerOnboarding.currentItem + 1
+            else {
+                startActivity(Intent(applicationContext, HomeActivity::class.java))
+                finish()
+            }
+        }
     }
 
     private fun setupOnboardingAdapter() {
@@ -72,5 +82,8 @@ class MainActivity : AppCompatActivity() {
             if(i == index) imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_active))
             else imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
         }
+
+        if(index == adapter.itemCount - 1) binding.btnOnboardingAction.text = "Get started"
+        else binding.btnOnboardingAction.text = "Next"
     }
 }
