@@ -18,29 +18,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        bindDataToUI()
+        bindEventsToUI()
+    }
 
-        setupOnboardingAdapter()
-        binding.viewPagerOnboarding.adapter = adapter
-
-        setupOnboardingIndicators()
-        setCurrentOnboardingIndicator(0)
-
-        binding.viewPagerOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+    private fun bindEventsToUI() {
+        binding.viewPagerOnboarding.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 setCurrentOnboardingIndicator(position)
             }
         })
+        binding.btnOnboardingAction.setOnClickListener { navigateOnboardScreen() }
+    }
 
-        binding.btnOnboardingAction.setOnClickListener {
-            if(binding.viewPagerOnboarding.currentItem + 1 < adapter.itemCount)
-                binding.viewPagerOnboarding.currentItem = binding.viewPagerOnboarding.currentItem + 1
-            else {
-                startActivity(Intent(applicationContext, HomeActivity::class.java))
-                finish()
-            }
+    private fun bindDataToUI() {
+        setupOnboardingAdapter()
+        binding.viewPagerOnboarding.adapter = adapter
+        setupOnboardingIndicators()
+        setCurrentOnboardingIndicator(0)
+    }
+
+    private fun navigateOnboardScreen() {
+        if (isNotLastItem()) binding.viewPagerOnboarding.currentItem = binding.viewPagerOnboarding.currentItem + 1
+        else {
+            startActivity(Intent(applicationContext, HomeActivity::class.java))
+            finish()
         }
     }
+
+    private fun isNotLastItem() = binding.viewPagerOnboarding.currentItem + 1 < adapter.itemCount
 
     private fun setupOnboardingAdapter() {
         val list = mutableListOf<OnboardingItem>()
@@ -68,22 +76,49 @@ class MainActivity : AppCompatActivity() {
         val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         layoutParams.setMargins(8, 0, 8, 0)
         for(i in 0 until adapter.itemCount) {
-            val indicator = ImageView(applicationContext)
-            indicator.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
-            indicator.layoutParams = layoutParams
-            binding.layoutOnboardingIndicators.addView(indicator)
+            setupIndicator(layoutParams)
         }
     }
 
-    private fun setCurrentOnboardingIndicator(index: Int) {
-        val childCount = binding.layoutOnboardingIndicators.childCount
-        for(i in 0 until childCount) {
-            val imageView = binding.layoutOnboardingIndicators.getChildAt(i) as ImageView
-            if(i == index) imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_active))
-            else imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.onboarding_indicator_inactive))
-        }
+    private fun setupIndicator(layoutParams: LinearLayout.LayoutParams) {
+        val indicator = ImageView(applicationContext)
+        indicator.setImageDrawable(
+            ContextCompat.getDrawable(
+                applicationContext,
+                R.drawable.onboarding_indicator_inactive
+            )
+        )
+        indicator.layoutParams = layoutParams
+        binding.layoutOnboardingIndicators.addView(indicator)
+    }
 
-        if(index == adapter.itemCount - 1) binding.btnOnboardingAction.text =  resources.getString(R.string.button_get_started)
-        else binding.btnOnboardingAction.text =  resources.getString(R.string.button_next)
+    private fun setCurrentOnboardingIndicator(index: Int) {
+        updateIndicators(index)
+        updateButton(index)
+    }
+
+    private fun updateButton(index: Int) {
+        if (index == adapter.itemCount - 1) binding.btnOnboardingAction.text =
+            resources.getString(R.string.button_get_started)
+        else binding.btnOnboardingAction.text = resources.getString(R.string.button_next)
+    }
+
+    private fun updateIndicators(index: Int) {
+        val childCount = binding.layoutOnboardingIndicators.childCount
+        for (i in 0 until childCount) {
+            val imageView = binding.layoutOnboardingIndicators.getChildAt(i) as ImageView
+            if (i == index) imageView.setImageDrawable(
+                ContextCompat.getDrawable(
+                    applicationContext,
+                    R.drawable.onboarding_indicator_active
+                )
+            )
+            else imageView.setImageDrawable(
+                ContextCompat.getDrawable(
+                    applicationContext,
+                    R.drawable.onboarding_indicator_inactive
+                )
+            )
+        }
     }
 }
