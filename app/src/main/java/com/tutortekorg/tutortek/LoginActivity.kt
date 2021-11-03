@@ -21,10 +21,12 @@ class LoginActivity : AppCompatActivity() {
     private fun onLoginClick() {
         startActivity(Intent(this, HomeActivity::class.java))
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay)
+        finish()
     }
 
     private fun onRegisterClick() {
         startActivity(Intent(this, RegisterActivity::class.java))
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay)
+        finish()
     }
 }
