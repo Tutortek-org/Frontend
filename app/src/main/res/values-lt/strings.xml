@@ -15,4 +15,8 @@
     <string name="forgot_password">Pamiršote slaptažodį?</string>
     <string name="login">Prisijungti</string>
     <string name="new_user">Registruokitės Dabar</string>
+    <string name="registration_header">Nekantraujame susipažinti su Jumis!</string>
+    <string name="edit_name">Vardas</string>
+    <string name="edit_surname">Pavardė</string>
+    <string name="register">Registruotis</string>
 </resources>
