@@ -91,6 +91,7 @@
                 app:spinning_bar_width="4dp"/>
 
             <TextView
+                android:id="@+id/txt_register"
                 style="@style/parent"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:text="@string/new_user"
@@ -111,6 +112,7 @@
         android:background="@drawable/ic_side_bg"/>
 
     <ImageView
+        android:id="@+id/img_new_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
