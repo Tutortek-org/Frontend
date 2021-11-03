@@ -8,4 +8,14 @@
     <string name="description_earn">Earn money while sharing knowledge!</string>
     <string name="button_get_started">Get started</string>
     <string name="button_next">Next</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="new_user">Register Now</string>
+    <string name="registration_header">We are thrilled to have you!</string>
+    <string name="edit_name">First Name</string>
+    <string name="edit_surname">Last Name</string>
+    <string name="register">Register</string>
 </resources>
