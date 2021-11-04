@@ -3,6 +3,7 @@ package com.tutortekorg.tutortek.authentication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
@@ -25,18 +26,60 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun onRegisterClick() {
         binding.btnRegister.startAnimation()
+        clearPreviousErrors()
+        if(validateForm()) sendRegisterRequest()
+        else binding.btnRegister.revertAnimation()
+    }
+
+    private fun sendRegisterRequest() {
         val url = "${TutortekConstants.BASE_URL}/register"
         val body = formRequestBody()
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
-                login(body)
+                sendLoginRequest(body)
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, "Unexpected error while registering", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Unexpected error while registering", Toast.LENGTH_SHORT)
+                    .show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
+    }
+
+    private fun clearPreviousErrors() {
+        binding.txtInputName.error = null
+        binding.txtInputSurname.error = null
+        binding.txtInputPasswordRegister.error = null
+        binding.txtInputEmailRegister.error = null
+    }
+
+    private fun validateForm(): Boolean {
+        var result = true
+
+        if(binding.editTextName.text.isNullOrBlank()) {
+            binding.txtInputName.error = "This field cannot be empty"
+            result = false
+        }
+        if(binding.editTextSurname.text.isNullOrBlank()) {
+            binding.txtInputSurname.error = "This field cannot be empty"
+            result = false
+        }
+        if(binding.editTextPasswordRegister.text?.length!! < 8) {
+            binding.txtInputPasswordRegister.error = "Password must be at least 8 characters long"
+            result = false
+        }
+        if(!isEmailValid(binding.editTextEmailRegister.text.toString())) {
+            binding.txtInputEmailRegister.error = "Please enter a valid e-mail"
+            result = false
+        }
+
+        return result
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        val pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
     }
 
     private fun formRequestBody(): JSONObject {
@@ -49,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
         return body
     }
 
-    private fun login(body: JSONObject) {
+    private fun sendLoginRequest(body: JSONObject) {
         val url = "${TutortekConstants.BASE_URL}/login"
         body.remove("role")
         val request = JsonObjectRequest(Request.Method.POST, url, body,
