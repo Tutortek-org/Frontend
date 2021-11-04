@@ -7,6 +7,8 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
+import com.tutortekorg.tutortek.constants.ErrorSlug
+import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityLoginBinding
 import org.json.JSONObject
 
@@ -30,10 +32,10 @@ class LoginActivity : AppCompatActivity() {
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
                 TutortekUtils.saveJwtToken(this, it)
-                navigateTomHomeScreen()
+                navigateToHomeScreen()
             },
             {
-                Toast.makeText(this, "Incorrect email or password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, ErrorSlug.INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
                 binding.btnLogin.revertAnimation()
             }
         )
@@ -49,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         return body
     }
 
-    private fun navigateTomHomeScreen() {
+    private fun navigateToHomeScreen() {
         startActivity(Intent(this, HomeActivity::class.java))
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay)
         finish()

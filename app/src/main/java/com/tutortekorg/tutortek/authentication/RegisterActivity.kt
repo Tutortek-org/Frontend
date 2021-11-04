@@ -8,6 +8,8 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
+import com.tutortekorg.tutortek.constants.ErrorSlug
+import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityRegisterBinding
 import org.json.JSONObject
 
@@ -40,8 +42,7 @@ class RegisterActivity : AppCompatActivity() {
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, "Unexpected error while registering", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, ErrorSlug.REGISTER_ERROR, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -58,19 +59,19 @@ class RegisterActivity : AppCompatActivity() {
         var result = true
 
         if(binding.editTextName.text.isNullOrBlank()) {
-            binding.txtInputName.error = "This field cannot be empty"
+            binding.txtInputName.error = ErrorSlug.FIELD_EMPTY
             result = false
         }
         if(binding.editTextSurname.text.isNullOrBlank()) {
-            binding.txtInputSurname.error = "This field cannot be empty"
+            binding.txtInputSurname.error = ErrorSlug.FIELD_EMPTY
             result = false
         }
         if(binding.editTextPasswordRegister.text?.length!! < 8) {
-            binding.txtInputPasswordRegister.error = "Password must be at least 8 characters long"
+            binding.txtInputPasswordRegister.error = ErrorSlug.PASSWORD_TOO_SHORT
             result = false
         }
         if(!isEmailValid(binding.editTextEmailRegister.text.toString())) {
-            binding.txtInputEmailRegister.error = "Please enter a valid e-mail"
+            binding.txtInputEmailRegister.error = ErrorSlug.INVALID_EMAIL
             result = false
         }
 
@@ -98,17 +99,17 @@ class RegisterActivity : AppCompatActivity() {
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
                 TutortekUtils.saveJwtToken(this, it)
-                navigateTomHomeScreen()
+                navigateToHomeScreen()
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, "Unexpected error while logging in", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, ErrorSlug.LOGIN_ERROR, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
     }
 
-    private fun navigateTomHomeScreen() {
+    private fun navigateToHomeScreen() {
         startActivity(Intent(this, HomeActivity::class.java))
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay)
         finish()

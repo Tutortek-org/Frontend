@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.constants
 
 class TutortekConstants {
     companion object {
