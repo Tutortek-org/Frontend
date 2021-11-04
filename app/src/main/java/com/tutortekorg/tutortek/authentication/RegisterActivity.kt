@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-import com.tutortekorg.tutortek.HomeActivity
-import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.RequestSingleton
-import com.tutortekorg.tutortek.TutortekConstants
+import com.tutortekorg.tutortek.*
 import com.tutortekorg.tutortek.databinding.ActivityRegisterBinding
 import org.json.JSONObject
 
@@ -55,6 +52,7 @@ class RegisterActivity : AppCompatActivity() {
         body.remove("role")
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
+                TutortekUtils.saveJwtToken(this, it)
                 navigateTomHomeScreen()
             },
             {
