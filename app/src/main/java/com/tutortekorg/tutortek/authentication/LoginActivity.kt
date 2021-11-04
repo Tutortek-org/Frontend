@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onLoginClick() {
+        binding.btnLogin.startAnimation()
         val url = "${TutortekConstants.BASE_URL}/login"
         val body = formRequestBody()
         val request = JsonObjectRequest(Request.Method.POST, url, body,
@@ -33,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
             },
             {
                 Toast.makeText(this, "Incorrect email or password", Toast.LENGTH_SHORT).show()
+                binding.btnLogin.revertAnimation()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)

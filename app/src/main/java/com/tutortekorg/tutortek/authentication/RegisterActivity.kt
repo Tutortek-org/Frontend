@@ -24,6 +24,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun onRegisterClick() {
+        binding.btnRegister.startAnimation()
         val url = "${TutortekConstants.BASE_URL}/register"
         val body = formRequestBody()
         val request = JsonObjectRequest(Request.Method.POST, url, body,
@@ -31,6 +32,7 @@ class RegisterActivity : AppCompatActivity() {
                 login(body)
             },
             {
+                binding.btnRegister.revertAnimation()
                 Toast.makeText(this, "Unexpected error while registering", Toast.LENGTH_SHORT).show()
             }
         )
@@ -56,6 +58,7 @@ class RegisterActivity : AppCompatActivity() {
                 navigateTomHomeScreen()
             },
             {
+                binding.btnRegister.revertAnimation()
                 Toast.makeText(this, "Unexpected error while logging in", Toast.LENGTH_SHORT).show()
             }
         )
