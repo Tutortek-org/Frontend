@@ -1,8 +1,10 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tutortekorg.tutortek.HomeActivity
+import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
