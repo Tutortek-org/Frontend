@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.tutortekorg.tutortek.LoginActivity
+import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.ActivityMainBinding
 

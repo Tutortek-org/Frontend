@@ -13,6 +13,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="15dp"
         android:textSize="15sp"
+        android:backgroundTint="@color/color_primary"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
