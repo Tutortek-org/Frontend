@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.tutortekorg.tutortek.HomeFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.tutortekorg.tutortek.ProfileFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.tutortekorg.tutortek.SettingsFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
