@@ -13,5 +13,12 @@ class TutortekUtils {
             editor.putString(TutortekConstants.TOKEN_KEY, token)
             editor.apply()
         }
+
+        fun invalidateJwtToken(context: Context) {
+            val preferences = context.getSharedPreferences(TutortekConstants.AUTH_PREFERENCES, Context.MODE_PRIVATE)
+            val editor = preferences.edit()
+            editor.remove(TutortekConstants.TOKEN_KEY)
+            editor.apply()
+        }
     }
 }
