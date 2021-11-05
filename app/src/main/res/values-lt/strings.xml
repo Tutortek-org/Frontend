@@ -19,4 +19,7 @@
     <string name="edit_name">Vardas</string>
     <string name="edit_surname">Pavardė</string>
     <string name="register">Registruotis</string>
+    <string name="nav_bar_home">Namai</string>
+    <string name="nav_bar_profile">Profilis</string>
+    <string name="nav_bar_settings">Nustatymai</string>
 </resources>
