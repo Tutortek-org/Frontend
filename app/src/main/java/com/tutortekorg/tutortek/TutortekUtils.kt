@@ -39,7 +39,7 @@ class TutortekUtils {
             val request = object : JsonObjectRequest(
                 Method.GET, url, null,
                 {
-                    navigateToHomeScreen(activity)
+                    if(shouldNavigateToHome) navigateToHomeScreen(activity)
                 },
                 {
                     navigateToLoginScreen(activity)
