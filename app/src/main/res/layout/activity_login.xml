@@ -67,7 +67,9 @@
                 android:id="@+id/text_input_password"
                 style="@style/parent"
                 app:boxStrokeColor="@color/color_primary"
-                app:hintTextColor="@color/color_primary">
+                app:hintTextColor="@color/color_primary"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/color_primary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_password"

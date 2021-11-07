@@ -8,5 +8,6 @@ class ErrorSlug {
         const val FIELD_EMPTY = "This field cannot be empty"
         const val PASSWORD_TOO_SHORT = "Password must be at least 8 characters long"
         const val INVALID_EMAIL = "Please enter a valid e-mail"
+        const val PROFILE_CREATE_ERROR = "Unexpected error while creating your profile"
     }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
@@ -15,6 +16,7 @@ import org.json.JSONObject
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private var role = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,8 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener { onRegisterClick() }
         binding.txtAlreadyHaveAnAccount.setOnClickListener { onBackClick() }
         binding.imgRegisterBack.setOnClickListener { onBackClick() }
+        binding.radioTutor.setOnClickListener { role = 1 }
+        binding.radioStudent.setOnClickListener { role = 2 }
     }
 
     private fun onRegisterClick() {
@@ -35,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun sendRegisterRequest() {
         val url = "${TutortekConstants.BASE_URL}/register"
-        val body = formRequestBody()
+        val body = formUserCreateRequestBody()
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
                 sendLoginRequest(body)
@@ -83,13 +87,13 @@ class RegisterActivity : AppCompatActivity() {
         return pattern.matcher(email).matches()
     }
 
-    private fun formRequestBody(): JSONObject {
+    private fun formUserCreateRequestBody(): JSONObject {
         val email = binding.editTextEmailRegister.text.toString()
         val password = binding.editTextPasswordRegister.text.toString()
         val body = JSONObject()
         body.put("email", email)
         body.put("password", password)
-        body.put("role", 1) // TODO: Change this to a non-hardcoded role
+        body.put("role", role)
         return body
     }
 
@@ -99,7 +103,7 @@ class RegisterActivity : AppCompatActivity() {
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
                 TutortekUtils.saveJwtToken(this, it)
-                navigateToHomeScreen()
+                sendCreateProfileRequest()
             },
             {
                 binding.btnRegister.revertAnimation()
@@ -107,6 +111,41 @@ class RegisterActivity : AppCompatActivity() {
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
+    }
+
+    private fun sendCreateProfileRequest() {
+        val url = "${TutortekConstants.BASE_URL}/profiles"
+        val token = TutortekUtils.getJwtToken(this)
+        val body = formProfileCreateRequestBody()
+        val request = object : JsonObjectRequest(Request.Method.POST, url, body,
+            {
+                navigateToHomeScreen()
+            },
+            {
+                binding.btnRegister.revertAnimation()
+                Toast.makeText(this, ErrorSlug.PROFILE_CREATE_ERROR, Toast.LENGTH_SHORT).show()
+            }
+        ) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                headers["Authorization"] = "Bearer $token"
+                return headers
+            }
+        }
+        RequestSingleton.getInstance(this).addToRequestQueue(request)
+    }
+
+    private fun formProfileCreateRequestBody(): JSONObject {
+        val body = JSONObject()
+        val firstName = binding.editTextName.text.toString()
+        val lastName = binding.editTextSurname.text.toString()
+        body.put("firstName", firstName)
+        body.put("lastName", lastName)
+        body.put("rating", 0.0)
+        body.put("birthDate", "2000-02-06") // TODO: Change this to a non-hardcoded value
+        return body
     }
 
     private fun navigateToHomeScreen() {
