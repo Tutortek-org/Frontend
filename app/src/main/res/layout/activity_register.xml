@@ -127,6 +127,47 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/txt_i_am"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:textSize="16sp"/>
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/radio_tutor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/radio_text_tutor"
+                                android:checked="true"
+                                android:buttonTint="@color/color_primary"
+                                android:layout_marginEnd="20dp"
+                                android:textSize="16sp"/>
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/radio_student"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/radio_text_student"
+                                android:buttonTint="@color/color_primary"
+                                android:textSize="16sp"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/btn_register"
                         style="@style/loginButton"

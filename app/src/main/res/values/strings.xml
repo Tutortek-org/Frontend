@@ -31,4 +31,7 @@
     <string name="profile_courses">12</string>
     <string name="profile_courses_text">Courses</string>
     <string name="edit">Edit</string>
+    <string name="radio_text_tutor">Tutor</string>
+    <string name="radio_text_student">Student</string>
+    <string name="txt_i_am">I am a:</string>
 </resources>

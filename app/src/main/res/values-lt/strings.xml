@@ -32,4 +32,7 @@
     <string name="profile_courses">12</string>
     <string name="profile_courses_text">Kursų</string>
     <string name="edit">Redaguoti</string>
+    <string name="radio_text_tutor">Tutorius</string>
+    <string name="radio_text_student">Studentas</string>
+    <string name="txt_i_am">Aš esu:</string>
 </resources>
