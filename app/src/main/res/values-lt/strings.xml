@@ -23,4 +23,13 @@
     <string name="nav_bar_profile">Profilis</string>
     <string name="nav_bar_settings">Nustatymai</string>
     <string name="logout">Atsijungti</string>
+    <string name="name_surname">Vardas Pavardė</string>
+    <string name="profile_title">Čia yra titulas</string>
+    <string name="profile_description">Čia yra aprašas</string>
+    <string name="profile_extra_info">Čia yra papildoma info</string>
+    <string name="profile_rating">5.0</string>
+    <string name="profile_rating_text">Įvertinimas</string>
+    <string name="profile_courses">12</string>
+    <string name="profile_courses_text">Kursų</string>
+    <string name="edit">Redaguoti</string>
 </resources>
