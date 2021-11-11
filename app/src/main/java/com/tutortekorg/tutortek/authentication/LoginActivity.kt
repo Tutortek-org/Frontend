@@ -10,6 +10,7 @@ import com.tutortekorg.tutortek.*
 import com.tutortekorg.tutortek.constants.ErrorSlug
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityLoginBinding
+import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {

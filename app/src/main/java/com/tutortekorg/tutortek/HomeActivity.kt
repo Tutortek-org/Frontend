@@ -12,6 +12,8 @@ import com.tutortekorg.tutortek.constants.ErrorSlug
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.ActivityHomeBinding
+import com.tutortekorg.tutortek.singletons.ProfileSingleton
+import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
 class HomeActivity : AppCompatActivity() {

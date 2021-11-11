@@ -5,19 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.android.volley.AuthFailureError
-import com.android.volley.toolbox.JsonObjectRequest
-import com.auth0.android.jwt.JWT
-import com.tutortekorg.tutortek.ProfileSingleton
+import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.RequestSingleton
-import com.tutortekorg.tutortek.TutortekUtils
-import com.tutortekorg.tutortek.constants.ErrorSlug
-import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.FragmentProfileBinding
-import org.json.JSONObject
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding

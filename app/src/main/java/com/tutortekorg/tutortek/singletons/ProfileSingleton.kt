@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.singletons
 
 import com.tutortekorg.tutortek.data.UserProfile
 
