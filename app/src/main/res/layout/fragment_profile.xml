@@ -76,6 +76,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txt_profile_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -86,6 +87,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/txt_profile_role"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -95,6 +97,7 @@
                                 android:textSize="17sp" />
 
                             <TextView
+                                android:id="@+id/txt_profile_description"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -106,6 +109,7 @@
                                 android:textStyle="italic" />
 
                             <TextView
+                                android:id="@+id/txt_profile_extra"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -134,6 +138,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txt_profile_rating"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -160,6 +165,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txt_profile_course_count"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
