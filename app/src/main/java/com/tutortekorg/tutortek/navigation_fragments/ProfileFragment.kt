@@ -27,5 +27,16 @@ class ProfileFragment : Fragment() {
         binding.txtProfileName.text = getString(R.string.profile_full_name, userProfile?.firstName, userProfile?.lastName)
         binding.txtProfileExtra.text = getString(R.string.profile_birth_date, userProfile?.birthDate)
         binding.txtProfileRating.text = userProfile?.rating.toString()
+        binding.txtProfileCourseCount.text = userProfile?.topicCount.toString()
+        binding.txtProfileDescription.text = userProfile?.description
+        binding.txtProfileRole.text = userProfile?.roles?.let { getRoleNamesForUI(it) }
+    }
+
+    private fun getRoleNamesForUI(roles: List<String>): String {
+        var result = ""
+        for(role in roles) {
+            result += "$role, "
+        }
+        return result.dropLast(2)
     }
 }

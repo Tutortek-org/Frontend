@@ -37,7 +37,8 @@ class HomeActivity : AppCompatActivity() {
         val request = object : JsonObjectRequest(
             Method.GET, url, null,
             {
-                addUserProfileBundle(it)
+                if (token != null)
+                    addUserProfileBundle(it, token)
             },
             {
                 Toast.makeText(this, ErrorSlug.PROFILE_RETRIEVAL_ERROR, Toast.LENGTH_SHORT).show()
@@ -60,8 +61,16 @@ class HomeActivity : AppCompatActivity() {
         return profileId.asLong()
     }
 
-    private fun addUserProfileBundle(body: JSONObject) {
-        val profile = UserProfile(body)
+    private fun getRoles(token: String): List<String> {
+        val jwt = JWT(token)
+        val roles = jwt.getClaim("roles")
+        return roles.asList(String::class.java)
+            .map { r -> r.lowercase().replaceFirstChar { it.uppercase() } }
+    }
+
+    private fun addUserProfileBundle(body: JSONObject, token: String) {
+        val roles = getRoles(token)
+        val profile = UserProfile(body, roles)
         ProfileSingleton.getInstance().userProfile = profile
     }
 }
