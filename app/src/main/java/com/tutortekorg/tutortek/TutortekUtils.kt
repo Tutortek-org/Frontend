@@ -3,14 +3,11 @@ package com.tutortekorg.tutortek
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
 import com.android.volley.AuthFailureError
-import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
-import com.tutortekorg.tutortek.onboarding.MainActivity
+import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
 class TutortekUtils {

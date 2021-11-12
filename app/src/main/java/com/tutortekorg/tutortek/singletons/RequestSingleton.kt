@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.singletons
 
 import android.annotation.SuppressLint
 import android.content.Context

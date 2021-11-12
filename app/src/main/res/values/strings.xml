@@ -1,5 +1,8 @@
 <resources>
+    <!-- Miscellaneous -->
     <string name="app_name">Tutortek</string>
+
+    <!-- Onboarding -->
     <string name="title_learn">Learn</string>
     <string name="description_learn">Learn new and exciting thins!</string>
     <string name="title_meet">Meet</string>
@@ -8,18 +11,55 @@
     <string name="description_earn">Earn money while sharing knowledge!</string>
     <string name="button_get_started">Get started</string>
     <string name="button_next">Next</string>
+
+    <!-- Login screen -->
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>
     <string name="already_have_account">Already have an account?</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="new_user">Register Now</string>
+
+    <!-- Register screen -->
     <string name="registration_header">We are thrilled to have you!</string>
     <string name="edit_name">First Name</string>
     <string name="edit_surname">Last Name</string>
     <string name="register">Register</string>
+    <string name="radio_text_tutor">Tutor</string>
+    <string name="radio_text_student">Student</string>
+    <string name="txt_i_am">I am a:</string>
+
+    <!-- Navigation bar -->
     <string name="nav_bar_home">Home</string>
     <string name="nav_bar_profile">Profile</string>
     <string name="nav_bar_settings">Settings</string>
+
+    <!-- Settings fragment -->
     <string name="logout">Logout</string>
+
+    <!-- Profile fragment -->
+    <string name="name_surname">Name Surname</string>
+    <string name="profile_title">This is a title</string>
+    <string name="profile_description">This is a description</string>
+    <string name="profile_extra_info">This is extra info</string>
+    <string name="profile_rating">5.0</string>
+    <string name="profile_rating_text">Rating</string>
+    <string name="profile_courses">12</string>
+    <string name="profile_courses_text">Courses</string>
+    <string name="edit">Edit</string>
+    <string name="profile_full_name">%1$s %2$s</string>
+    <string name="profile_birth_date">Birth date: %1$s</string>
+
+    <!-- Error slug -->
+    <string name="incorrect_credentials">Incorrect email or password</string>
+    <string name="error_login">Unexpected error while logging in</string>
+    <string name="error_register">Unexpected error while registering</string>
+    <string name="field_empty">This field cannot be empty</string>
+    <string name="password_too_short">Password must be at least 8 characters long</string>
+    <string name="invalid_email">Please enter a valid e-mail</string>
+    <string name="error_profile_create">Unexpected error while creating your profile</string>
+    <string name="error_profile_retrieval">Error while retrieving profile data</string>
+
+    <!-- Information messages -->
+    <string name="register_success">Account created successfully</string>
 </resources>

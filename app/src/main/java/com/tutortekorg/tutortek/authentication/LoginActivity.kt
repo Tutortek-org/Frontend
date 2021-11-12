@@ -7,9 +7,9 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
-import com.tutortekorg.tutortek.constants.ErrorSlug
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityLoginBinding
+import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
                 navigateToHomeScreen()
             },
             {
-                Toast.makeText(this, ErrorSlug.INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.incorrect_credentials), Toast.LENGTH_SHORT).show()
                 binding.btnLogin.revertAnimation()
             }
         )

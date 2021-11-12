@@ -10,6 +10,7 @@ import com.android.volley.AuthFailureError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.onboarding.MainActivity
+import com.tutortekorg.tutortek.singletons.RequestSingleton
 
 @SuppressLint("CustomSplashScreen")
 class SplashscreenActivity : AppCompatActivity() {

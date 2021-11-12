@@ -6,5 +6,6 @@ class TutortekConstants {
         const val BASE_URL_LOCAL = "http://localhost:8080"
         const val AUTH_PREFERENCES = "authPrefs"
         const val TOKEN_KEY = "token"
+        const val BUNDLE_PROFILE = "profile"
     }
 }
