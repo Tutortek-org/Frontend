@@ -118,9 +118,11 @@ class RegisterActivity : AppCompatActivity() {
         val url = "${TutortekConstants.BASE_URL}/profiles"
         val token = TutortekUtils.getJwtToken(this)
         val body = formProfileCreateRequestBody()
-        val request = object : JsonObjectRequest(Request.Method.POST, url, body,
+        val request = object : JsonObjectRequest(
+            Method.POST, url, body,
             {
-                navigateToHomeScreen()
+                Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
+                onBackClick()
             },
             {
                 binding.btnRegister.revertAnimation()
@@ -144,15 +146,8 @@ class RegisterActivity : AppCompatActivity() {
         val lastName = binding.editTextSurname.text.toString()
         body.put("firstName", firstName)
         body.put("lastName", lastName)
-        body.put("rating", 0.0)
         body.put("birthDate", "2000-02-06") // TODO: Change this to a non-hardcoded value
         return body
-    }
-
-    private fun navigateToHomeScreen() {
-        startActivity(Intent(this, HomeActivity::class.java))
-        overridePendingTransition(R.anim.slide_in_right, R.anim.stay)
-        finish()
     }
 
     private fun onBackClick() {

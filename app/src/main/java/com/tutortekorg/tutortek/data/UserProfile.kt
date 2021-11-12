@@ -9,7 +9,7 @@ data class UserProfile(
     val rating: Float,
     val birthDate: String,
     val description: String,
-    val topicCount: Long,
+    val topicCount: Int,
     val roles: List<String>
 ) : Serializable {
     constructor(body: JSONObject, roles: List<String>) : this(
@@ -18,7 +18,7 @@ data class UserProfile(
         body.getDouble("rating").toFloat(),
         body.getString("birthDate"),
         body.getString("description"),
-        body.getLong("topicCount"),
+        body.getInt("topicCount"),
         roles
     )
 }
