@@ -8,7 +8,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.android.volley.AuthFailureError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.auth0.android.jwt.JWT
-import com.tutortekorg.tutortek.constants.ErrorSlug
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.ActivityHomeBinding
@@ -41,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
                     addUserProfileBundle(it, token)
             },
             {
-                Toast.makeText(this, ErrorSlug.PROFILE_RETRIEVAL_ERROR, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_profile_retrieval), Toast.LENGTH_SHORT).show()
             }
         ){
             @Throws(AuthFailureError::class)

@@ -9,7 +9,6 @@ import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
-import com.tutortekorg.tutortek.constants.ErrorSlug
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityRegisterBinding
 import com.tutortekorg.tutortek.singletons.RequestSingleton
@@ -47,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, ErrorSlug.REGISTER_ERROR, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_register), Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -64,19 +63,19 @@ class RegisterActivity : AppCompatActivity() {
         var result = true
 
         if(binding.editTextName.text.isNullOrBlank()) {
-            binding.txtInputName.error = ErrorSlug.FIELD_EMPTY
+            binding.txtInputName.error = getString(R.string.field_empty)
             result = false
         }
         if(binding.editTextSurname.text.isNullOrBlank()) {
-            binding.txtInputSurname.error = ErrorSlug.FIELD_EMPTY
+            binding.txtInputSurname.error = getString(R.string.field_empty)
             result = false
         }
         if(binding.editTextPasswordRegister.text?.length!! < 8) {
-            binding.txtInputPasswordRegister.error = ErrorSlug.PASSWORD_TOO_SHORT
+            binding.txtInputPasswordRegister.error = getString(R.string.password_too_short)
             result = false
         }
         if(!isEmailValid(binding.editTextEmailRegister.text.toString())) {
-            binding.txtInputEmailRegister.error = ErrorSlug.INVALID_EMAIL
+            binding.txtInputEmailRegister.error = getString(R.string.invalid_email)
             result = false
         }
 
@@ -108,7 +107,7 @@ class RegisterActivity : AppCompatActivity() {
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, ErrorSlug.LOGIN_ERROR, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_login), Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -121,12 +120,12 @@ class RegisterActivity : AppCompatActivity() {
         val request = object : JsonObjectRequest(
             Method.POST, url, body,
             {
-                Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
                 onBackClick()
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, ErrorSlug.PROFILE_CREATE_ERROR, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_profile_create), Toast.LENGTH_SHORT).show()
             }
         ) {
             @Throws(AuthFailureError::class)

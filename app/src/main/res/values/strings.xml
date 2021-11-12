@@ -59,4 +59,7 @@
     <string name="invalid_email">Please enter a valid e-mail</string>
     <string name="error_profile_create">Unexpected error while creating your profile</string>
     <string name="error_profile_retrieval">Error while retrieving profile data</string>
+
+    <!-- Information messages -->
+    <string name="register_success">Account created successfully</string>
 </resources>

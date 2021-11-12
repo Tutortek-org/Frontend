@@ -60,4 +60,7 @@
     <string name="invalid_email">Įveskite tinkantį el. paštą</string>
     <string name="error_profile_create">Netikėta klaida kuriant profilį</string>
     <string name="error_profile_retrieval">Klaida bandant gauti profilio duomenis</string>
+
+    <!-- Information messages -->
+    <string name="register_success">Paskyra sukurta sėkmingai</string>
 </resources>
