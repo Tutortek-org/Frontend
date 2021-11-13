@@ -26,8 +26,17 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener { onRegisterClick() }
         binding.txtAlreadyHaveAnAccount.setOnClickListener { onBackClick() }
         binding.imgRegisterBack.setOnClickListener { onBackClick() }
+
         binding.radioTutor.setOnClickListener { role = 1 }
         binding.radioStudent.setOnClickListener { role = 2 }
+        
+        binding.editTextBirthdate.keyListener = null
+        binding.editTextBirthdate.setOnClickListener { onBirthDateClick() }
+    }
+
+    private fun onBirthDateClick() {
+        val newFragment = DatePickerFragment(binding.editTextBirthdate)
+        newFragment.show(supportFragmentManager, "datePicker")
     }
 
     private fun onRegisterClick() {
