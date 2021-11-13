@@ -29,14 +29,14 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.radioTutor.setOnClickListener { role = 1 }
         binding.radioStudent.setOnClickListener { role = 2 }
-        
+
         binding.editTextBirthdate.keyListener = null
         binding.editTextBirthdate.setOnClickListener { onBirthDateClick() }
     }
 
     private fun onBirthDateClick() {
-        val newFragment = DatePickerFragment(binding.editTextBirthdate)
-        newFragment.show(supportFragmentManager, "datePicker")
+        val datePickerFragment = DatePickerFragment(binding.editTextBirthdate)
+        datePickerFragment.show(supportFragmentManager, "datePicker")
     }
 
     private fun onRegisterClick() {
@@ -152,9 +152,10 @@ class RegisterActivity : AppCompatActivity() {
         val body = JSONObject()
         val firstName = binding.editTextName.text.toString()
         val lastName = binding.editTextSurname.text.toString()
+        val birthDate = binding.editTextBirthdate.text.toString()
         body.put("firstName", firstName)
         body.put("lastName", lastName)
-        body.put("birthDate", "2000-02-06") // TODO: Change this to a non-hardcoded value
+        body.put("birthDate", birthDate)
         return body
     }
 

@@ -17,7 +17,7 @@ class DatePickerFragment(private val viewToSet: EditText) : DialogFragment(),
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        return DatePickerDialog(requireContext(), this, year, month, day)
+        return DatePickerDialog(requireContext(), R.style.customDatePickerStyle, this, year, month, day)
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
