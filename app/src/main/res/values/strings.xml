@@ -1,6 +1,7 @@
 <resources>
     <!-- Miscellaneous -->
     <string name="app_name">Tutortek</string>
+    <string name="role_admin">Admin</string>
 
     <!-- Onboarding -->
     <string name="title_learn">Learn</string>

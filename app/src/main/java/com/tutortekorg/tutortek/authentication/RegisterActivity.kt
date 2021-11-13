@@ -64,6 +64,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun clearPreviousErrors() {
         binding.txtInputName.error = null
         binding.txtInputSurname.error = null
+        binding.txtInputBirthdate.error = null
         binding.txtInputPasswordRegister.error = null
         binding.txtInputEmailRegister.error = null
     }
@@ -77,6 +78,10 @@ class RegisterActivity : AppCompatActivity() {
         }
         if(binding.editTextSurname.text.isNullOrBlank()) {
             binding.txtInputSurname.error = getString(R.string.field_empty)
+            result = false
+        }
+        if(binding.editTextBirthdate.text.isNullOrBlank()) {
+            binding.txtInputBirthdate.error = getString(R.string.field_empty)
             result = false
         }
         if(binding.editTextPasswordRegister.text?.length!! < 8) {

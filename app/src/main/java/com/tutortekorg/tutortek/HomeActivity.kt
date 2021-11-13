@@ -64,7 +64,6 @@ class HomeActivity : AppCompatActivity() {
         val jwt = JWT(token)
         val roles = jwt.getClaim("roles")
         return roles.asList(String::class.java)
-            .map { r -> r.lowercase().replaceFirstChar { it.uppercase() } }
     }
 
     private fun addUserProfileBundle(body: JSONObject, token: String) {

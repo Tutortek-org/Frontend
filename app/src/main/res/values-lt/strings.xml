@@ -2,6 +2,7 @@
 <resources>
     <!-- Miscellaneous -->
     <string name="app_name">Tutortek</string>
+    <string name="role_admin">Administratorius</string>
 
     <!-- Onboarding -->
     <string name="title_learn">Mokykitės</string>
