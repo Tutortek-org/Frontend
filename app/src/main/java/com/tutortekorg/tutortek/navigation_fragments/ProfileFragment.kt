@@ -35,7 +35,11 @@ class ProfileFragment : Fragment() {
     private fun getRoleNamesForUI(roles: List<String>): String {
         var result = ""
         for(role in roles) {
-            result += "$role, "
+            result += when(role) {
+                "TUTOR" -> "${getString(R.string.radio_text_tutor)}, "
+                "STUDENT" -> "${getString(R.string.radio_text_student)}, "
+                else -> "${getString(R.string.role_admin)}, "
+            }
         }
         return result.dropLast(2)
     }

@@ -26,8 +26,17 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener { onRegisterClick() }
         binding.txtAlreadyHaveAnAccount.setOnClickListener { onBackClick() }
         binding.imgRegisterBack.setOnClickListener { onBackClick() }
+
         binding.radioTutor.setOnClickListener { role = 1 }
         binding.radioStudent.setOnClickListener { role = 2 }
+
+        binding.editTextBirthdate.keyListener = null
+        binding.editTextBirthdate.setOnClickListener { onBirthDateClick() }
+    }
+
+    private fun onBirthDateClick() {
+        val datePickerFragment = DatePickerFragment(binding.editTextBirthdate)
+        datePickerFragment.show(supportFragmentManager, "datePicker")
     }
 
     private fun onRegisterClick() {
@@ -55,6 +64,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun clearPreviousErrors() {
         binding.txtInputName.error = null
         binding.txtInputSurname.error = null
+        binding.txtInputBirthdate.error = null
         binding.txtInputPasswordRegister.error = null
         binding.txtInputEmailRegister.error = null
     }
@@ -68,6 +78,10 @@ class RegisterActivity : AppCompatActivity() {
         }
         if(binding.editTextSurname.text.isNullOrBlank()) {
             binding.txtInputSurname.error = getString(R.string.field_empty)
+            result = false
+        }
+        if(binding.editTextBirthdate.text.isNullOrBlank()) {
+            binding.txtInputBirthdate.error = getString(R.string.field_empty)
             result = false
         }
         if(binding.editTextPasswordRegister.text?.length!! < 8) {
@@ -143,9 +157,10 @@ class RegisterActivity : AppCompatActivity() {
         val body = JSONObject()
         val firstName = binding.editTextName.text.toString()
         val lastName = binding.editTextSurname.text.toString()
+        val birthDate = binding.editTextBirthdate.text.toString()
         body.put("firstName", firstName)
         body.put("lastName", lastName)
-        body.put("birthDate", "2000-02-06") // TODO: Change this to a non-hardcoded value
+        body.put("birthDate", birthDate)
         return body
     }
 

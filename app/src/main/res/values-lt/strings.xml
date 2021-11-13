@@ -2,6 +2,7 @@
 <resources>
     <!-- Miscellaneous -->
     <string name="app_name">Tutortek</string>
+    <string name="role_admin">Administratorius</string>
 
     <!-- Onboarding -->
     <string name="title_learn">Mokykitės</string>
@@ -25,6 +26,8 @@
     <string name="registration_header">Nekantraujame susipažinti su Jumis!</string>
     <string name="edit_name">Vardas</string>
     <string name="edit_surname">Pavardė</string>
+    <string name="edit_birthdate">Gimimo Diena</string>
+    <string name="birthdate_value">%1$d-%2$s-%3$s</string>
     <string name="register">Registruotis</string>
     <string name="radio_text_tutor">Tutorius</string>
     <string name="radio_text_student">Studentas</string>
