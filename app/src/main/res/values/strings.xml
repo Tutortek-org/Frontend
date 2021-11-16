@@ -65,4 +65,9 @@
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
+
+    <!-- Edit profile form -->
+    <string name="save">Save</string>
+    <string name="description">Description</string>
+    <string name="edit_title">What would you like to change?</string>
 </resources>

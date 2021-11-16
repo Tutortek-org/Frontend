@@ -66,4 +66,9 @@
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
+
+    <!-- Edit profile form -->
+    <string name="save">Išsaugoti</string>
+    <string name="description">Aprašymas</string>
+    <string name="edit_title">Ka norite pakeisti?</string>
 </resources>
