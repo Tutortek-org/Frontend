@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
                 navigateToHomeScreen()
             },
             {
-                Toast.makeText(this, getString(R.string.incorrect_credentials), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.incorrect_credentials, Toast.LENGTH_SHORT).show()
                 binding.btnLogin.revertAnimation()
             }
         )
