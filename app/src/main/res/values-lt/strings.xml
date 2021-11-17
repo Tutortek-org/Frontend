@@ -51,6 +51,7 @@
     <string name="profile_courses">12</string>
     <string name="profile_courses_text">Kursų</string>
     <string name="edit">Redaguoti</string>
+    <string name="delete">Ištrinti</string>
     <string name="profile_full_name">%1$s %2$s</string>
     <string name="profile_birth_date">Gimimo diena: %1$s</string>
 
@@ -65,12 +66,19 @@
     <string name="error_profile_retrieval">Klaida bandant gauti profilio duomenis</string>
     <string name="error_profile_edit">Netikėta klaida keičiant profilį</string>
     <string name="success_profile_edit">Profilis atnaujintas</string>
+    <string name="wrong_password">Įvedėte klaidingą slaptažodį</string>
+    <string name="error_account_delete">Netikėta klaida trinant paskyrą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
+    <string name="account_deleted">Iki kito karto!</string>
 
     <!-- Edit profile form -->
     <string name="save">Išsaugoti</string>
     <string name="description">Aprašymas</string>
     <string name="edit_title">Ka norite pakeisti?</string>
+
+    <!-- Delete account activity -->
+    <string name="delete_question">Jau išvykstate?</string>
+    <string name="delete_warning">Jūsų paskyra bus ištrinta visam laikui. Šio veiksmo atkeisti nebebus galima!</string>
 </resources>

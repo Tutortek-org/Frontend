@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
+
     <color name="color_primary">#FF2196F3</color>
     <color name="color_primary_dark">#FF197602</color>
     <color name="color_accent">#FFFF5252</color>
@@ -17,5 +17,6 @@
     <color name="color_text_secondary_night">#FFAAAAAA</color>
     <color name="color_background">#FFFFFFFF</color>
     <color name="color_onboarding_indicator_inactive">#FF72BCF7</color>
+    <color name="color_danger">#FFDE1F12</color>
 
 </resources>

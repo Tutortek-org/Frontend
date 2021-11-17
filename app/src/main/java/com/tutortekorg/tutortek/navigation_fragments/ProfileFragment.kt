@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.tutortekorg.tutortek.AccountDeleteActivity
 import com.tutortekorg.tutortek.ProfileEditActivity
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.R
@@ -21,19 +22,23 @@ class ProfileFragment : Fragment() {
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         binding.btnEditProfile.setOnClickListener { openEditForm() }
-        val userProfile = ProfileSingleton.getInstance().userProfile
-        fillOutUI(userProfile)
+        binding.btnDeleteAccount.setOnClickListener { openDeleteForm() }
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         val userProfile = ProfileSingleton.getInstance().userProfile
         fillOutUI(userProfile)
     }
 
     private fun openEditForm() {
         val intent = Intent(activity, ProfileEditActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openDeleteForm() {
+        val intent = Intent(activity, AccountDeleteActivity::class.java)
         startActivity(intent)
     }
 
