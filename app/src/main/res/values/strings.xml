@@ -62,7 +62,14 @@
     <string name="invalid_email">Please enter a valid e-mail</string>
     <string name="error_profile_create">Unexpected error while creating your profile</string>
     <string name="error_profile_retrieval">Error while retrieving profile data</string>
+    <string name="error_profile_edit">Unexpected error while editing your profile</string>
+    <string name="success_profile_edit">Profile updated</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
+
+    <!-- Edit profile form -->
+    <string name="save">Save</string>
+    <string name="description">Description</string>
+    <string name="edit_title">What would you like to change?</string>
 </resources>

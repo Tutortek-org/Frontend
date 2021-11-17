@@ -55,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, getString(R.string.error_register), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_register, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -121,7 +121,7 @@ class RegisterActivity : AppCompatActivity() {
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, getString(R.string.error_login), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_login, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -134,12 +134,12 @@ class RegisterActivity : AppCompatActivity() {
         val request = object : JsonObjectRequest(
             Method.POST, url, body,
             {
-                Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
                 onBackClick()
             },
             {
                 binding.btnRegister.revertAnimation()
-                Toast.makeText(this, getString(R.string.error_profile_create), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_profile_create, Toast.LENGTH_SHORT).show()
             }
         ) {
             @Throws(AuthFailureError::class)

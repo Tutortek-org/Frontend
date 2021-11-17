@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
                     addUserProfileBundle(it, token)
             },
             {
-                Toast.makeText(this, getString(R.string.error_profile_retrieval), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
             }
         ){
             @Throws(AuthFailureError::class)
