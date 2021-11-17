@@ -25,10 +25,7 @@ class DatePickerFragment(private val viewToSet: EditText) : DialogFragment(),
 
     private fun setDateToCurrentDay(): DatePickerDialog {
         val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        return DatePickerDialog(requireContext(), R.style.customDatePickerStyle, this, year, month, day)
+        return getDatePickerDialog(calendar)
     }
 
     private fun setDateToCurrentInput(): DatePickerDialog {
@@ -36,6 +33,10 @@ class DatePickerFragment(private val viewToSet: EditText) : DialogFragment(),
         val parsedDate = parser.parse(viewToSet.text.toString())
         val calendar = Calendar.getInstance()
         calendar.time = parsedDate!!
+        return getDatePickerDialog(calendar)
+    }
+
+    private fun getDatePickerDialog(calendar: Calendar): DatePickerDialog {
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
