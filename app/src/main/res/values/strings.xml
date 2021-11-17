@@ -73,4 +73,8 @@
     <string name="save">Save</string>
     <string name="description">Description</string>
     <string name="edit_title">What would you like to change?</string>
+
+    <!-- Delete account activity -->
+    <string name="delete_question">Leaving so soon?</string>
+    <string name="delete_warning">Your account will be permanently deleted. This action cannot be undone!</string>
 </resources>

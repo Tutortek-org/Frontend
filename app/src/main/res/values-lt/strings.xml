@@ -74,4 +74,8 @@
     <string name="save">Išsaugoti</string>
     <string name="description">Aprašymas</string>
     <string name="edit_title">Ka norite pakeisti?</string>
+
+    <!-- Delete account activity -->
+    <string name="delete_question">Jau išvykstate?</string>
+    <string name="delete_warning">Jūsų paskyra bus ištrinta visam laikui. Šio veiksmo atkeisti nebebus galima!</string>
 </resources>

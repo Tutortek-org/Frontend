@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutortek">
         <activity
+            android:name=".AccountDeleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileEditActivity"
             android:exported="false" />
         <activity
