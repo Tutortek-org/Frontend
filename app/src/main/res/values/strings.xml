@@ -65,9 +65,12 @@
     <string name="error_profile_retrieval">Error while retrieving profile data</string>
     <string name="error_profile_edit">Unexpected error while editing your profile</string>
     <string name="success_profile_edit">Profile updated</string>
+    <string name="wrong_password">You have entered a wrong password</string>
+    <string name="error_account_delete">Unexpected error while deleting account</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
+    <string name="account_deleted">Until next time!</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>
