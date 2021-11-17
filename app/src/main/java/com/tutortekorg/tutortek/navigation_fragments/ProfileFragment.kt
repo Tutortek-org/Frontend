@@ -26,6 +26,12 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        val userProfile = ProfileSingleton.getInstance().userProfile
+        fillOutUI(userProfile)
+    }
+
     private fun openEditForm() {
         val intent = Intent(activity, ProfileEditActivity::class.java)
         startActivity(intent)
