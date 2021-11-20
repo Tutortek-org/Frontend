@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.android.volley.AuthFailureError
-import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.Request
 import com.auth0.android.jwt.JWT
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
@@ -17,6 +16,7 @@ import org.json.JSONObject
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var request: TutortekRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,24 +33,19 @@ class HomeActivity : AppCompatActivity() {
         val token = TutortekUtils.getJwtToken(this)
         val profileId = token?.let { getProfileId(it) }
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
-        val request = object : JsonObjectRequest(
-            Method.GET, url, null,
+        request = TutortekRequest(this, Request.Method.GET, url, null,
             {
                 if (token != null)
                     addUserProfileBundle(it, token)
             },
             {
-                Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
+                if(TutortekUtils.wasResponseUnauthorized(it)) {
+                    TutortekUtils.sendRefreshRequest(this, false)
+                    RequestSingleton.getInstance(this).addToRequestQueue(request)
+                }
+                else Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
             }
-        ){
-            @Throws(AuthFailureError::class)
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers["Content-Type"] = "application/json"
-                headers["Authorization"] = "Bearer $token"
-                return headers
-            }
-        }
+        )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
     }
 
