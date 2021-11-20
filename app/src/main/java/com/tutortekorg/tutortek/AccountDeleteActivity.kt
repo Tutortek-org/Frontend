@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.auth0.android.jwt.JWT
@@ -16,6 +15,7 @@ import org.json.JSONObject
 
 class AccountDeleteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountDeleteBinding
+    private lateinit var request: TutortekRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,37 +37,36 @@ class AccountDeleteActivity : AppCompatActivity() {
                 deleteAccount()
             },
             {
-                Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
-                binding.btnDeleteAccount.revertAnimation()
+                if(TutortekUtils.wasResponseUnauthorized(it)) {
+                    TutortekUtils.sendRefreshRequest(this, false)
+                    RequestSingleton.getInstance(this).addToRequestQueue(request)
+                }
+                else {
+                    Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+                    binding.btnDeleteAccount.revertAnimation()
+                }
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
     }
 
     private fun deleteAccount() {
-        val token = TutortekUtils.getJwtToken(this)
         val url = "${TutortekConstants.BASE_URL}/delete"
-        val request = object : JsonObjectRequest(Method.DELETE, url, null,
+        request = TutortekRequest(this, Request.Method.DELETE, url, null,
             {
                 finishDeleting()
             },
             {
-                if(it.networkResponse == null || it.networkResponse.statusCode == 401)
-                    finishDeleting()
+                if(it.networkResponse == null
+                    || it.networkResponse.statusCode == 401
+                    || it.networkResponse.statusCode == 204)
+                        finishDeleting()
                 else {
                     Toast.makeText(this, R.string.error_account_delete, Toast.LENGTH_SHORT).show()
                     binding.btnDeleteAccount.revertAnimation()
                 }
             }
-        ){
-            @Throws(AuthFailureError::class)
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers["Content-Type"] = "application/json"
-                headers["Authorization"] = "Bearer $token"
-                return headers
-            }
-        }
+        )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
     }
 

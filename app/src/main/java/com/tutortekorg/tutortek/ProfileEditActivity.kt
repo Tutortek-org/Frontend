@@ -3,8 +3,7 @@ package com.tutortekorg.tutortek
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.android.volley.AuthFailureError
-import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.Request
 import com.auth0.android.jwt.JWT
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
@@ -15,6 +14,7 @@ import org.json.JSONObject
 
 class ProfileEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileEditBinding
+    private lateinit var request: TutortekRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,26 +78,23 @@ class ProfileEditActivity : AppCompatActivity() {
         val profileId = token?.let { getProfileId(it) }
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         val body = formProfileUpdateRequestBody()
-        val request = object : JsonObjectRequest(
-            Method.PUT, url, body,
+        request = TutortekRequest(this, Request.Method.PUT, url, body,
             {
                 updateSingletonData(body)
                 Toast.makeText(this, R.string.success_profile_edit, Toast.LENGTH_SHORT).show()
                 onBackPressed()
             },
             {
-                Toast.makeText(this, R.string.error_profile_edit, Toast.LENGTH_SHORT).show()
-                binding.btnEditSave.revertAnimation()
+                if(TutortekUtils.wasResponseUnauthorized(it)) {
+                    TutortekUtils.sendRefreshRequest(this, false)
+                    RequestSingleton.getInstance(this).addToRequestQueue(request)
+                }
+                else {
+                    Toast.makeText(this, R.string.error_profile_edit, Toast.LENGTH_SHORT).show()
+                    binding.btnEditSave.revertAnimation()
+                }
             }
-        ){
-            @Throws(AuthFailureError::class)
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers["Content-Type"] = "application/json"
-                headers["Authorization"] = "Bearer $token"
-                return headers
-            }
-        }
+        )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
     }
 
