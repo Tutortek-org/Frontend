@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
-import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
@@ -129,10 +128,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun sendCreateProfileRequest() {
         val url = "${TutortekConstants.BASE_URL}/profiles"
-        val token = TutortekUtils.getJwtToken(this)
         val body = formProfileCreateRequestBody()
-        val request = object : JsonObjectRequest(
-            Method.POST, url, body,
+        val request = TutortekRequest(this, Request.Method.POST, url, body,
             {
                 Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
                 onBackClick()
@@ -141,15 +138,7 @@ class RegisterActivity : AppCompatActivity() {
                 binding.btnRegister.revertAnimation()
                 Toast.makeText(this, R.string.error_profile_create, Toast.LENGTH_SHORT).show()
             }
-        ) {
-            @Throws(AuthFailureError::class)
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers["Content-Type"] = "application/json"
-                headers["Authorization"] = "Bearer $token"
-                return headers
-            }
-        }
+        )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
     }
 
