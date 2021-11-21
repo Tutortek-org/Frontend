@@ -45,9 +45,11 @@ class ChangePasswordActivity : AppCompatActivity() {
                 else onBackPressed()
             },
             {
-                Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
                 if(!shouldSendChangeRequest) navigateToLoginScreen()
-                else binding.btnSavePassword.revertAnimation()
+                else{
+                    Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+                    binding.btnSavePassword.revertAnimation()
+                }
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
