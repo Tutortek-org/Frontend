@@ -21,7 +21,7 @@ class SplashscreenActivity : AppCompatActivity() {
     }
 
     private fun performAutoLogin() {
-        val token = TutortekUtils.getJwtToken(this)
+        val token = JwtUtils.getJwtToken(this)
         if(token.isNullOrBlank()) navigateToOnboardingScreen()
         else sendAutoLoginRequest()
     }
@@ -33,8 +33,8 @@ class SplashscreenActivity : AppCompatActivity() {
                 navigateToHomeScreen()
             },
             {
-                if(TutortekUtils.wasResponseUnauthorized(it))
-                    TutortekUtils.sendRefreshRequest(this, true)
+                if(JwtUtils.wasResponseUnauthorized(it))
+                    JwtUtils.sendRefreshRequest(this, true)
                 else navigateToOnboardingScreen()
             }
         )

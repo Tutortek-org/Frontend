@@ -115,7 +115,7 @@ class RegisterActivity : AppCompatActivity() {
         body.remove("role")
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
-                TutortekUtils.saveJwtToken(this, it)
+                JwtUtils.saveJwtToken(this, it)
                 sendCreateProfileRequest()
             },
             {

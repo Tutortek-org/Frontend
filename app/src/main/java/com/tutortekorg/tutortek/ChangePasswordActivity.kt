@@ -40,7 +40,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         val body = formLoginBody(shouldSendChangeRequest)
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
-                TutortekUtils.saveJwtToken(this, it)
+                JwtUtils.saveJwtToken(this, it)
                 if(shouldSendChangeRequest) sendChangeRequest()
                 else onBackPressed()
             },
@@ -79,7 +79,7 @@ class ChangePasswordActivity : AppCompatActivity() {
     }
 
     private fun formLoginBody(shouldSendChangeRequest: Boolean): JSONObject {
-        val email = TutortekUtils.getEmailFromSavedToken(this)
+        val email = JwtUtils.getEmailFromSavedToken(this)
         var password = binding.editTextCurrentPassword.text.toString()
         if(!shouldSendChangeRequest) password = binding.editTextNewPassword.text.toString()
         val body = JSONObject()

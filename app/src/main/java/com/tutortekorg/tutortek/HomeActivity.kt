@@ -30,8 +30,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun sendProfileGetRequest() {
-        val token = TutortekUtils.getJwtToken(this)
-        val profileId = TutortekUtils.getProfileIdFromSavedToken(this)
+        val token = JwtUtils.getJwtToken(this)
+        val profileId = JwtUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         request = TutortekRequest(this, Request.Method.GET, url, null,
             {
@@ -39,8 +39,8 @@ class HomeActivity : AppCompatActivity() {
                     addUserProfileBundle(it, token)
             },
             {
-                if(TutortekUtils.wasResponseUnauthorized(it)) {
-                    TutortekUtils.sendRefreshRequest(this, false)
+                if(JwtUtils.wasResponseUnauthorized(it)) {
+                    JwtUtils.sendRefreshRequest(this, false)
                     RequestSingleton.getInstance(this).addToRequestQueue(request)
                 }
                 else Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()

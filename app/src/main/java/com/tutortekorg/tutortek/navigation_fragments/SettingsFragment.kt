@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.TutortekUtils
+import com.tutortekorg.tutortek.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.databinding.FragmentSettingsBinding
 
@@ -24,7 +24,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun logout() {
-        activity?.let { TutortekUtils.invalidateJwtToken(it) }
+        activity?.let { JwtUtils.invalidateJwtToken(it) }
         startActivity(Intent(activity, LoginActivity::class.java))
         activity?.overridePendingTransition(R.anim.slide_in_left, android.R.anim.slide_out_right)
         activity?.finish()

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.Request
-import com.auth0.android.jwt.JWT
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.ActivityProfileEditBinding
@@ -74,7 +73,7 @@ class ProfileEditActivity : AppCompatActivity() {
     }
 
     private fun sendEditProfileRequest() {
-        val profileId = TutortekUtils.getProfileIdFromSavedToken(this)
+        val profileId = JwtUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         val body = formProfileUpdateRequestBody()
         request = TutortekRequest(this, Request.Method.PUT, url, body,
@@ -84,8 +83,8 @@ class ProfileEditActivity : AppCompatActivity() {
                 onBackPressed()
             },
             {
-                if(TutortekUtils.wasResponseUnauthorized(it)) {
-                    TutortekUtils.sendRefreshRequest(this, false)
+                if(JwtUtils.wasResponseUnauthorized(it)) {
+                    JwtUtils.sendRefreshRequest(this, false)
                     RequestSingleton.getInstance(this).addToRequestQueue(request)
                 }
                 else {

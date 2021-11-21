@@ -11,7 +11,7 @@ import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
-class TutortekUtils {
+class JwtUtils {
     companion object {
         fun saveJwtToken(context: Context, response: JSONObject) {
             val preferences = context.getSharedPreferences(TutortekConstants.AUTH_PREFERENCES, Context.MODE_PRIVATE)

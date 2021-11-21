@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         val body = formRequestBody()
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
-                TutortekUtils.saveJwtToken(this, it)
+                JwtUtils.saveJwtToken(this, it)
                 navigateToHomeScreen()
             },
             {
