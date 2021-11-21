@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.authentication
 
 import android.app.Activity
 import android.content.Context
@@ -7,7 +7,8 @@ import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.auth0.android.jwt.JWT
-import com.tutortekorg.tutortek.authentication.LoginActivity
+import com.tutortekorg.tutortek.HomeActivity
+import com.tutortekorg.tutortek.TutortekRequest
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
