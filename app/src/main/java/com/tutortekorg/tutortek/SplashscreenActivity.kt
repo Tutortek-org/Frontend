@@ -34,7 +34,7 @@ class SplashscreenActivity : AppCompatActivity() {
             },
             {
                 if(JwtUtils.wasResponseUnauthorized(it))
-                    JwtUtils.sendRefreshRequest(this, true)
+                    JwtUtils.sendRefreshRequest(this, true, null)
                 else navigateToOnboardingScreen()
             }
         )

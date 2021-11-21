@@ -39,10 +39,8 @@ class HomeActivity : AppCompatActivity() {
                     addUserProfileBundle(it, token)
             },
             {
-                if(JwtUtils.wasResponseUnauthorized(it)) {
-                    JwtUtils.sendRefreshRequest(this, false)
-                    RequestSingleton.getInstance(this).addToRequestQueue(request)
-                }
+                if(JwtUtils.wasResponseUnauthorized(it))
+                    JwtUtils.sendRefreshRequest(this, false, request)
                 else Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
             }
         )

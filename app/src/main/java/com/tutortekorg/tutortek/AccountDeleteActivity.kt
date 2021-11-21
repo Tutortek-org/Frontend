@@ -35,10 +35,8 @@ class AccountDeleteActivity : AppCompatActivity() {
                 deleteAccount()
             },
             {
-                if(JwtUtils.wasResponseUnauthorized(it)) {
-                    JwtUtils.sendRefreshRequest(this, false)
-                    RequestSingleton.getInstance(this).addToRequestQueue(request)
-                }
+                if(JwtUtils.wasResponseUnauthorized(it))
+                    JwtUtils.sendRefreshRequest(this, false, request)
                 else {
                     Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
                     binding.btnDeleteAccount.revertAnimation()
