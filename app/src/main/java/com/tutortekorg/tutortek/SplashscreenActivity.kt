@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.android.volley.Request
+import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.onboarding.MainActivity
 import com.tutortekorg.tutortek.singletons.RequestSingleton
@@ -21,7 +22,7 @@ class SplashscreenActivity : AppCompatActivity() {
     }
 
     private fun performAutoLogin() {
-        val token = TutortekUtils.getJwtToken(this)
+        val token = JwtUtils.getJwtToken(this)
         if(token.isNullOrBlank()) navigateToOnboardingScreen()
         else sendAutoLoginRequest()
     }
@@ -33,8 +34,8 @@ class SplashscreenActivity : AppCompatActivity() {
                 navigateToHomeScreen()
             },
             {
-                if(TutortekUtils.wasResponseUnauthorized(it))
-                    TutortekUtils.sendRefreshRequest(this, true)
+                if(JwtUtils.wasResponseUnauthorized(it))
+                    JwtUtils.sendRefreshRequest(this, true, null)
                 else navigateToOnboardingScreen()
             }
         )

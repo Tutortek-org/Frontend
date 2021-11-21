@@ -1,17 +1,19 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.authentication
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.android.volley.Request
 import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonObjectRequest
 import com.auth0.android.jwt.JWT
-import com.tutortekorg.tutortek.authentication.LoginActivity
+import com.tutortekorg.tutortek.HomeActivity
+import com.tutortekorg.tutortek.TutortekRequest
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
-class TutortekUtils {
+class JwtUtils {
     companion object {
         fun saveJwtToken(context: Context, response: JSONObject) {
             val preferences = context.getSharedPreferences(TutortekConstants.AUTH_PREFERENCES, Context.MODE_PRIVATE)
@@ -32,10 +34,14 @@ class TutortekUtils {
             context.getSharedPreferences(TutortekConstants.AUTH_PREFERENCES, Context.MODE_PRIVATE)
                 .getString(TutortekConstants.TOKEN_KEY, "")
 
-        fun sendRefreshRequest(activity: Activity, shouldNavigateToHome: Boolean) {
+        fun sendRefreshRequest(activity: Activity,
+                               shouldNavigateToHome: Boolean,
+                               requestToRepeat: JsonObjectRequest?) {
             val url = "${TutortekConstants.BASE_URL}/refresh"
             val request = TutortekRequest(activity, Request.Method.GET, url, null,
                 {
+                    if(requestToRepeat != null)
+                        RequestSingleton.getInstance(activity).addToRequestQueue(requestToRepeat)
                     if(shouldNavigateToHome) navigateToHomeScreen(activity)
                 },
                 {
@@ -50,6 +56,13 @@ class TutortekUtils {
             val jwt = token?.let { JWT(it) }
             val email = jwt?.getClaim("sub")
             return email?.asString()
+        }
+
+        fun getProfileIdFromSavedToken(context: Context): Long? {
+            val token = getJwtToken(context)
+            val jwt = token?.let { JWT(it) }
+            val profileId = jwt?.getClaim("pid")
+            return profileId?.asLong()
         }
 
         fun wasResponseUnauthorized(error: VolleyError): Boolean =

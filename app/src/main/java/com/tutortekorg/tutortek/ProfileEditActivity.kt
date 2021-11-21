@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.Request
-import com.auth0.android.jwt.JWT
+import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.ActivityProfileEditBinding
@@ -74,8 +74,7 @@ class ProfileEditActivity : AppCompatActivity() {
     }
 
     private fun sendEditProfileRequest() {
-        val token = TutortekUtils.getJwtToken(this)
-        val profileId = token?.let { getProfileId(it) }
+        val profileId = JwtUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         val body = formProfileUpdateRequestBody()
         request = TutortekRequest(this, Request.Method.PUT, url, body,
@@ -85,10 +84,8 @@ class ProfileEditActivity : AppCompatActivity() {
                 onBackPressed()
             },
             {
-                if(TutortekUtils.wasResponseUnauthorized(it)) {
-                    TutortekUtils.sendRefreshRequest(this, false)
-                    RequestSingleton.getInstance(this).addToRequestQueue(request)
-                }
+                if(JwtUtils.wasResponseUnauthorized(it))
+                    JwtUtils.sendRefreshRequest(this, false, request)
                 else {
                     Toast.makeText(this, R.string.error_profile_edit, Toast.LENGTH_SHORT).show()
                     binding.btnEditSave.revertAnimation()
@@ -96,12 +93,6 @@ class ProfileEditActivity : AppCompatActivity() {
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
-    }
-
-    private fun getProfileId(token: String): Long? {
-        val jwt = JWT(token)
-        val profileId = jwt.getClaim("pid")
-        return profileId.asLong()
     }
 
     private fun formProfileUpdateRequestBody(): JSONObject {

@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.android.volley.Request
 import com.auth0.android.jwt.JWT
+import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.ActivityHomeBinding
@@ -30,8 +31,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun sendProfileGetRequest() {
-        val token = TutortekUtils.getJwtToken(this)
-        val profileId = token?.let { getProfileId(it) }
+        val token = JwtUtils.getJwtToken(this)
+        val profileId = JwtUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         request = TutortekRequest(this, Request.Method.GET, url, null,
             {
@@ -39,20 +40,12 @@ class HomeActivity : AppCompatActivity() {
                     addUserProfileBundle(it, token)
             },
             {
-                if(TutortekUtils.wasResponseUnauthorized(it)) {
-                    TutortekUtils.sendRefreshRequest(this, false)
-                    RequestSingleton.getInstance(this).addToRequestQueue(request)
-                }
+                if(JwtUtils.wasResponseUnauthorized(it))
+                    JwtUtils.sendRefreshRequest(this, false, request)
                 else Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
-    }
-
-    private fun getProfileId(token: String): Long? {
-        val jwt = JWT(token)
-        val profileId = jwt.getClaim("pid")
-        return profileId.asLong()
     }
 
     private fun getRoles(token: String): List<String> {

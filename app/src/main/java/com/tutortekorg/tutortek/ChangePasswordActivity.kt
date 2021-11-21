@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityChangePasswordBinding
@@ -40,14 +41,16 @@ class ChangePasswordActivity : AppCompatActivity() {
         val body = formLoginBody(shouldSendChangeRequest)
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
-                TutortekUtils.saveJwtToken(this, it)
+                JwtUtils.saveJwtToken(this, it)
                 if(shouldSendChangeRequest) sendChangeRequest()
                 else onBackPressed()
             },
             {
-                Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
                 if(!shouldSendChangeRequest) navigateToLoginScreen()
-                else binding.btnSavePassword.revertAnimation()
+                else {
+                    Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+                    binding.btnSavePassword.revertAnimation()
+                }
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -77,7 +80,7 @@ class ChangePasswordActivity : AppCompatActivity() {
     }
 
     private fun formLoginBody(shouldSendChangeRequest: Boolean): JSONObject {
-        val email = TutortekUtils.getEmailFromSavedToken(this)
+        val email = JwtUtils.getEmailFromSavedToken(this)
         var password = binding.editTextCurrentPassword.text.toString()
         if(!shouldSendChangeRequest) password = binding.editTextNewPassword.text.toString()
         val body = JSONObject()

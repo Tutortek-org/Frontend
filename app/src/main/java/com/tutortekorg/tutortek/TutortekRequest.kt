@@ -3,6 +3,7 @@ package com.tutortekorg.tutortek
 import android.content.Context
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.tutortekorg.tutortek.authentication.JwtUtils
 import org.json.JSONObject
 
 class TutortekRequest(private val context: Context,
@@ -15,7 +16,7 @@ class TutortekRequest(private val context: Context,
 
     override fun getHeaders(): MutableMap<String, String> {
         val headers = HashMap<String, String>()
-        val token = TutortekUtils.getJwtToken(context)
+        val token = JwtUtils.getJwtToken(context)
         headers["Content-Type"] = "application/json"
         headers["Authorization"] = "Bearer $token"
         return headers

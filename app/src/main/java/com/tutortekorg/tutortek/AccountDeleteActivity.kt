@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-import com.auth0.android.jwt.JWT
+import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityAccountDeleteBinding
@@ -27,19 +27,17 @@ class AccountDeleteActivity : AppCompatActivity() {
 
     private fun confirmDelete() {
         binding.btnDeleteAccount.startAnimation()
-        val email = TutortekUtils.getEmailFromSavedToken(this)
+        val email = JwtUtils.getEmailFromSavedToken(this)
         val body = email?.let { formLoginRequestBody(it) }
         val url = "${TutortekConstants.BASE_URL}/login"
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
-                TutortekUtils.saveJwtToken(this, it)
+                JwtUtils.saveJwtToken(this, it)
                 deleteAccount()
             },
             {
-                if(TutortekUtils.wasResponseUnauthorized(it)) {
-                    TutortekUtils.sendRefreshRequest(this, false)
-                    RequestSingleton.getInstance(this).addToRequestQueue(request)
-                }
+                if(JwtUtils.wasResponseUnauthorized(it))
+                    JwtUtils.sendRefreshRequest(this, false, request)
                 else {
                     Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
                     binding.btnDeleteAccount.revertAnimation()
@@ -71,7 +69,7 @@ class AccountDeleteActivity : AppCompatActivity() {
 
     private fun finishDeleting() {
         Toast.makeText(this, R.string.account_deleted, Toast.LENGTH_SHORT).show()
-        TutortekUtils.invalidateJwtToken(this)
+        JwtUtils.invalidateJwtToken(this)
         navigateToLoginScreen()
     }
 
