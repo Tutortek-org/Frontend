@@ -14,10 +14,16 @@ class EditMenuActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnChangeProfileData.setOnClickListener { onEditProfileClick() }
+        binding.btnChangePassword.setOnClickListener { onChangePasswordClick() }
     }
 
     private fun onEditProfileClick() {
         val intent = Intent(this, ProfileEditActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun onChangePasswordClick() {
+        val intent = Intent(this, ChangePasswordActivity::class.java)
         startActivity(intent)
     }
 }

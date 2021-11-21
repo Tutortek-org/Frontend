@@ -84,4 +84,9 @@
     <!-- Edit menu activity -->
     <string name="btn_edit_profile_data">Edit profile</string>
     <string name="btn_change_password">Change password</string>
+
+    <!-- Change password activity -->
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="header_change_password">Keeping your account safe is amazing!</string>
 </resources>
