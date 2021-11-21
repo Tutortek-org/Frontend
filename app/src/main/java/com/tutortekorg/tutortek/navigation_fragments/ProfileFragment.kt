@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tutortekorg.tutortek.AccountDeleteActivity
+import com.tutortekorg.tutortek.EditMenuActivity
 import com.tutortekorg.tutortek.ProfileEditActivity
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.R
@@ -33,7 +34,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun openEditForm() {
-        val intent = Intent(activity, ProfileEditActivity::class.java)
+        val intent = Intent(activity, EditMenuActivity::class.java)
         startActivity(intent)
     }
 

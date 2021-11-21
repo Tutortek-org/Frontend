@@ -27,8 +27,7 @@ class AccountDeleteActivity : AppCompatActivity() {
 
     private fun confirmDelete() {
         binding.btnDeleteAccount.startAnimation()
-        val token = TutortekUtils.getJwtToken(this)
-        val email = token?.let { getEmail(it) }
+        val email = TutortekUtils.getEmailFromSavedToken(this)
         val body = email?.let { formLoginRequestBody(it) }
         val url = "${TutortekConstants.BASE_URL}/login"
         val request = JsonObjectRequest(Request.Method.POST, url, body,
@@ -81,12 +80,6 @@ class AccountDeleteActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
-    }
-
-    private fun getEmail(token: String): String? {
-        val jwt = JWT(token)
-        val profileId = jwt.getClaim("sub")
-        return profileId.asString()
     }
 
     private fun formLoginRequestBody(email: String): JSONObject {

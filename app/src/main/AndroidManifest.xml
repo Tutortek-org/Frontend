@@ -12,21 +12,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutortek">
         <activity
-            android:name=".AccountDeleteActivity"
+            android:name=".ChangePasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".EditMenuActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountDeleteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ProfileEditActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HomeActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".authentication.RegisterActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashscreenActivity"
             android:exported="true"
@@ -40,11 +48,11 @@
         <activity
             android:name=".authentication.LoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".onboarding.MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
