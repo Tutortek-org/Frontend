@@ -52,6 +52,13 @@ class TutortekUtils {
             return email?.asString()
         }
 
+        fun getProfileIdFromSavedToken(context: Context): Long? {
+            val token = getJwtToken(context)
+            val jwt = token?.let { JWT(it) }
+            val profileId = jwt?.getClaim("pid")
+            return profileId?.asLong()
+        }
+
         fun wasResponseUnauthorized(error: VolleyError): Boolean =
             error.networkResponse == null || error.networkResponse.statusCode == 401
 

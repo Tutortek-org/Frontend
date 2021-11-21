@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun sendProfileGetRequest() {
         val token = TutortekUtils.getJwtToken(this)
-        val profileId = token?.let { getProfileId(it) }
+        val profileId = TutortekUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         request = TutortekRequest(this, Request.Method.GET, url, null,
             {
@@ -47,12 +47,6 @@ class HomeActivity : AppCompatActivity() {
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
-    }
-
-    private fun getProfileId(token: String): Long? {
-        val jwt = JWT(token)
-        val profileId = jwt.getClaim("pid")
-        return profileId.asLong()
     }
 
     private fun getRoles(token: String): List<String> {
