@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import com.android.volley.Request
 import com.android.volley.VolleyError
+import com.auth0.android.jwt.JWT
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.singletons.RequestSingleton
@@ -42,6 +43,13 @@ class TutortekUtils {
                 }
             )
             RequestSingleton.getInstance(activity).addToRequestQueue(request)
+        }
+
+        fun getEmailFromSavedToken(context: Context): String? {
+            val token = getJwtToken(context)
+            val jwt = token?.let { JWT(it) }
+            val email = jwt?.getClaim("sub")
+            return email?.asString()
         }
 
         fun wasResponseUnauthorized(error: VolleyError): Boolean =
