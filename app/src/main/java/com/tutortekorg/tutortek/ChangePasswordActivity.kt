@@ -46,7 +46,7 @@ class ChangePasswordActivity : AppCompatActivity() {
             },
             {
                 if(!shouldSendChangeRequest) navigateToLoginScreen()
-                else{
+                else {
                     Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
                     binding.btnSavePassword.revertAnimation()
                 }
