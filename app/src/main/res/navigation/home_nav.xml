@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_topicListFragment"
+            app:destination="@id/topicListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.ProfileFragment"
@@ -20,4 +24,9 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/topicListFragment"
+        android:name="com.tutortekorg.tutortek.TopicListFragment"
+        android:label="fragment_topic_list"
+        tools:layout="@layout/fragment_topic_list" />
 </navigation>
