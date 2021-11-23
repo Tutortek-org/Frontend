@@ -29,12 +29,12 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/topicListFragment"
-        android:name="com.tutortekorg.tutortek.TopicListFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicListFragment"
         android:label="fragment_topic_list"
         tools:layout="@layout/fragment_topic_list" />
     <fragment
         android:id="@+id/personalTopicListFragment"
-        android:name="com.tutortekorg.tutortek.PersonalTopicListFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.PersonalTopicListFragment"
         android:label="fragment_personal_topic_list"
         tools:layout="@layout/fragment_personal_topic_list" />
 </navigation>
