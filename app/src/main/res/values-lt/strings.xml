@@ -92,4 +92,8 @@
     <string name="current_password">Dabartinis slaptažodis</string>
     <string name="new_password">Naujas slaptažodis</string>
     <string name="header_change_password">Paskyros apsaugojimas yra nuostabu!</string>
+
+    <!-- Home fragment -->
+    <string name="full_topic_list">Pilnas temų sąrašas</string>
+    <string name="my_topic_list">Mano temų sąrašas</string>
 </resources>
