@@ -17,9 +17,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         binding.btnAllTopics.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_topicListFragment)
         }
+        binding.btnMyTopics.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_personalTopicListFragment)
+        }
+
         return binding.root
     }
 }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_topicListFragment"
             app:destination="@id/topicListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_personalTopicListFragment"
+            app:destination="@id/personalTopicListFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -29,4 +32,9 @@
         android:name="com.tutortekorg.tutortek.TopicListFragment"
         android:label="fragment_topic_list"
         tools:layout="@layout/fragment_topic_list" />
+    <fragment
+        android:id="@+id/personalTopicListFragment"
+        android:name="com.tutortekorg.tutortek.PersonalTopicListFragment"
+        android:label="fragment_personal_topic_list"
+        tools:layout="@layout/fragment_personal_topic_list" />
 </navigation>
