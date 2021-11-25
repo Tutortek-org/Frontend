@@ -39,10 +39,23 @@
         android:id="@+id/topicListFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.TopicListFragment"
         android:label="fragment_topic_list"
-        tools:layout="@layout/fragment_topic_list" />
+        tools:layout="@layout/fragment_topic_list" >
+        <action
+            android:id="@+id/action_topicListFragment_to_addTopicFragment"
+            app:destination="@id/addTopicFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/personalTopicListFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.PersonalTopicListFragment"
         android:label="fragment_personal_topic_list"
         tools:layout="@layout/fragment_personal_topic_list" />
+    <fragment
+        android:id="@+id/addTopicFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.AddTopicFragment"
+        android:label="fragment_add_topic"
+        tools:layout="@layout/fragment_add_topic" />
 </navigation>

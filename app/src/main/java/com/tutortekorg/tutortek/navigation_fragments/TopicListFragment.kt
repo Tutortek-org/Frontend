@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
@@ -28,7 +29,12 @@ class TopicListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTopicListBinding.inflate(inflater, container, false)
+
         binding.refreshTopics.setOnRefreshListener { bindDataToUI() }
+        binding.btnAddTopic.setOnClickListener {
+            it.findNavController().navigate(R.id.action_topicListFragment_to_addTopicFragment)
+        }
+
         return binding.root
     }
 
