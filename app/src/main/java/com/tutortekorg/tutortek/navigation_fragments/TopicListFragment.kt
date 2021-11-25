@@ -28,6 +28,7 @@ class TopicListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTopicListBinding.inflate(inflater, container, false)
+        binding.refreshTopics.setOnRefreshListener { bindDataToUI() }
         return binding.root
     }
 
@@ -44,8 +45,10 @@ class TopicListFragment : Fragment() {
                 adapter = TopicAdapter(topics)
                 binding.recyclerTopics.layoutManager = LinearLayoutManager(requireContext())
                 binding.recyclerTopics.adapter = adapter
+                binding.refreshTopics.isRefreshing = false
             },
             { err ->
+                binding.refreshTopics.isRefreshing = false
                 if(JwtUtils.wasResponseUnauthorized(err))
                     activity?.let { JwtUtils.sendRefreshRequest(it, false, request) }
                 else Toast.makeText(requireContext(), R.string.error_topic_get, Toast.LENGTH_SHORT).show()
