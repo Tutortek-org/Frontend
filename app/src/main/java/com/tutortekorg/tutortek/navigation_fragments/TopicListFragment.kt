@@ -50,6 +50,7 @@ class TopicListFragment : Fragment() {
                 val topics = parseTopicList(it)
                 adapter = TopicAdapter(topics)
                 binding.recyclerTopics.layoutManager = LinearLayoutManager(requireContext())
+                binding.recyclerTopics.scheduleLayoutAnimation()
                 binding.recyclerTopics.adapter = adapter
                 binding.refreshTopics.isRefreshing = false
             },
