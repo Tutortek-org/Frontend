@@ -8,7 +8,7 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.auth0.android.jwt.JWT
 import com.tutortekorg.tutortek.HomeActivity
-import com.tutortekorg.tutortek.TutortekRequest
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
@@ -34,11 +34,11 @@ class JwtUtils {
             context.getSharedPreferences(TutortekConstants.AUTH_PREFERENCES, Context.MODE_PRIVATE)
                 .getString(TutortekConstants.TOKEN_KEY, "")
 
-        fun sendRefreshRequest(activity: Activity,
+        fun<T> sendRefreshRequest(activity: Activity,
                                shouldNavigateToHome: Boolean,
-                               requestToRepeat: JsonObjectRequest?) {
+                               requestToRepeat: Request<T>?) {
             val url = "${TutortekConstants.BASE_URL}/refresh"
-            val request = TutortekRequest(activity, Request.Method.GET, url, null,
+            val request = TutortekObjectRequest(activity, Request.Method.GET, url, null,
                 {
                     if(requestToRepeat != null)
                         RequestSingleton.getInstance(activity).addToRequestQueue(requestToRepeat)

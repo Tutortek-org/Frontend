@@ -11,13 +11,14 @@ import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.ActivityHomeBinding
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var request: TutortekRequest
+    private lateinit var request: TutortekObjectRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
         val token = JwtUtils.getJwtToken(this)
         val profileId = JwtUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
-        request = TutortekRequest(this, Request.Method.GET, url, null,
+        request = TutortekObjectRequest(this, Request.Method.GET, url, null,
             {
                 if (token != null)
                     addUserProfileBundle(it, token)

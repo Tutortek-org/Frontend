@@ -68,6 +68,7 @@
     <string name="wrong_password">You have entered a wrong password</string>
     <string name="error_account_delete">Unexpected error while deleting account</string>
     <string name="error_change_password">Unexpected error while changing password</string>
+    <string name="error_topic_get">Unexpected error while retrieving topics</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>

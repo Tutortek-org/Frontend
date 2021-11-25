@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.TutortekRequest
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
@@ -17,7 +17,7 @@ import org.json.JSONObject
 
 class AccountDeleteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountDeleteBinding
-    private lateinit var request: TutortekRequest
+    private lateinit var request: TutortekObjectRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,7 @@ class AccountDeleteActivity : AppCompatActivity() {
 
     private fun deleteAccount() {
         val url = "${TutortekConstants.BASE_URL}/delete"
-        request = TutortekRequest(this, Request.Method.DELETE, url, null,
+        request = TutortekObjectRequest(this, Request.Method.DELETE, url, null,
             {
                 finishDeleting()
             },

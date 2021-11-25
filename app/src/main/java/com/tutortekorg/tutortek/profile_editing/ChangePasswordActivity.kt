@@ -8,7 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.TutortekRequest
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
@@ -61,7 +61,7 @@ class ChangePasswordActivity : AppCompatActivity() {
     private fun sendChangeRequest() {
         val url = "${TutortekConstants.BASE_URL}/password"
         val body = formChangePasswordBody()
-        val request = TutortekRequest(this, Request.Method.PUT, url, body,
+        val request = TutortekObjectRequest(this, Request.Method.PUT, url, body,
             {
                 Toast.makeText(this, R.string.password_change_success, Toast.LENGTH_SHORT).show()
                 sendLoginRequest(false)

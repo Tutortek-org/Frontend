@@ -10,6 +10,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityRegisterBinding
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
@@ -129,7 +130,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun sendCreateProfileRequest() {
         val url = "${TutortekConstants.BASE_URL}/profiles"
         val body = formProfileCreateRequestBody()
-        val request = TutortekRequest(this, Request.Method.POST, url, body,
+        val request = TutortekObjectRequest(this, Request.Method.POST, url, body,
             {
                 Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
                 onBackClick()

@@ -69,6 +69,7 @@
     <string name="wrong_password">Įvedėte klaidingą slaptažodį</string>
     <string name="error_account_delete">Netikėta klaida trinant paskyrą</string>
     <string name="error_change_password">Netikėta klaida keičiant slaptažodį</string>
+    <string name="error_topic_get">Netikėta klaida bandant gauti temas</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
