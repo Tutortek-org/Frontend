@@ -69,11 +69,13 @@
     <string name="error_account_delete">Unexpected error while deleting account</string>
     <string name="error_change_password">Unexpected error while changing password</string>
     <string name="error_topic_get">Unexpected error while retrieving topics</string>
+    <string name="error_topic_post">Unexpected error while creating the topic</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
     <string name="account_deleted">Until next time!</string>
     <string name="password_change_success">Password changed successfully</string>
+    <string name="topic_add_success">New topic added successfully</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>

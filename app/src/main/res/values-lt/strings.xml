@@ -70,11 +70,13 @@
     <string name="error_account_delete">Netikėta klaida trinant paskyrą</string>
     <string name="error_change_password">Netikėta klaida keičiant slaptažodį</string>
     <string name="error_topic_get">Netikėta klaida bandant gauti temas</string>
+    <string name="error_topic_post">Netikėta klaida kuriant temą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
     <string name="account_deleted">Iki kito karto!</string>
     <string name="password_change_success">Slaptažodis pakeistas sėkmingai</string>
+    <string name="topic_add_success">Nauja tema pridėta sėkmingai</string>
 
     <!-- Edit profile form -->
     <string name="save">Išsaugoti</string>
