@@ -98,4 +98,5 @@
 
     <!-- Topic list fragment -->
     <string name="btn_add_topic_description">Add topic</string>
+    <string name="topic_name">Topic name</string>
 </resources>
