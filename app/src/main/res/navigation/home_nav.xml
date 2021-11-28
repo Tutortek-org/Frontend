@@ -47,6 +47,13 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_topicListFragment_to_topicDetailsFragment"
+            app:destination="@id/topicDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/personalTopicListFragment"
@@ -58,4 +65,9 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.AddTopicFragment"
         android:label="fragment_add_topic"
         tools:layout="@layout/fragment_add_topic" />
+    <fragment
+        android:id="@+id/topicDetailsFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicDetailsFragment"
+        android:label="fragment_topic_details"
+        tools:layout="@layout/fragment_topic_details" />
 </navigation>
