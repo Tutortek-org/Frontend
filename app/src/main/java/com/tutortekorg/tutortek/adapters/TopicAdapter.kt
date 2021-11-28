@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.Topic
@@ -11,7 +12,7 @@ import com.tutortekorg.tutortek.data.Topic
 class TopicAdapter(private val topics: List<Topic>)
     : RecyclerView.Adapter<TopicAdapter.TopicViewHolder>() {
 
-    class TopicViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class TopicViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private var textTitle: TextView = view.findViewById(R.id.txt_topic_name)
 
         fun setTopicData(topic: Topic) {
@@ -26,6 +27,9 @@ class TopicAdapter(private val topics: List<Topic>)
         )
 
     override fun onBindViewHolder(holder: TopicViewHolder, position: Int) {
+        holder.view.setOnClickListener {
+            it.findNavController().navigate(R.id.action_topicListFragment_to_topicDetailsFragment)
+        }
         holder.setTopicData(topics[position])
     }
 

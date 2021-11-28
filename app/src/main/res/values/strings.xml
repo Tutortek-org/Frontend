@@ -107,6 +107,4 @@
     <string name="topic_add_header">Got a new topic for us?</string>
     <string name="topic_add_name">Name</string>
     <string name="btn_add_topic">Add</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
