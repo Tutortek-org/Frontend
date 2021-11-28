@@ -6,10 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.android.volley.Request
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentTopicDetailsBinding
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
+import com.tutortekorg.tutortek.singletons.RequestSingleton
 
 class TopicDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTopicDetailsBinding
@@ -52,6 +58,23 @@ class TopicDetailsFragment : Fragment() {
     }
 
     private fun sendTopicDeleteRequest() {
-
+        binding.btnDeleteTopic.startAnimation()
+        binding.btnEditTopic.startAnimation()
+        val url = "${TutortekConstants.BASE_URL}/topics/${topic.id}"
+        val request = TutortekObjectRequest(requireContext(), Request.Method.DELETE, url, null,
+            {
+                activity?.onBackPressed()
+            },
+            {
+                if(it.networkResponse == null || it.networkResponse.statusCode == 204)
+                    activity?.onBackPressed()
+                else {
+                    binding.btnDeleteTopic.revertAnimation()
+                    binding.btnEditTopic.revertAnimation()
+                    Toast.makeText(requireContext(), R.string.error_topic_delete, Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 }

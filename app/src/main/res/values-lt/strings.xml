@@ -71,6 +71,7 @@
     <string name="error_change_password">Netikėta klaida keičiant slaptažodį</string>
     <string name="error_topic_get">Netikėta klaida bandant gauti temas</string>
     <string name="error_topic_post">Netikėta klaida kuriant temą</string>
+    <string name="error_topic_delete">Netikėta klaida trinant temą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>

@@ -108,8 +108,9 @@
                 android:layout_marginBottom="40dp"
                 android:weightSum="2">
 
-                <com.google.android.material.button.MaterialButton
+                <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                     android:id="@+id/btn_edit_topic"
+                    style="@style/loginButton"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -119,10 +120,14 @@
                     android:backgroundTint="@color/color_primary"
                     android:text="@string/edit"
                     android:textSize="15sp"
-                    app:cornerRadius="20dp" />
+                    app:initialCornerAngle="27dp"
+                    app:spinning_bar_color="#FFF"
+                    app:spinning_bar_padding="6dp"
+                    app:spinning_bar_width="4dp"/>
 
-                <com.google.android.material.button.MaterialButton
+                <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                     android:id="@+id/btn_delete_topic"
+                    style="@style/loginButton"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -132,7 +137,10 @@
                     android:backgroundTint="@color/color_danger"
                     android:text="@string/delete"
                     android:textSize="15sp"
-                    app:cornerRadius="20dp" />
+                    app:initialCornerAngle="27dp"
+                    app:spinning_bar_color="#FFF"
+                    app:spinning_bar_padding="6dp"
+                    app:spinning_bar_width="4dp"/>
 
             </LinearLayout>
 
