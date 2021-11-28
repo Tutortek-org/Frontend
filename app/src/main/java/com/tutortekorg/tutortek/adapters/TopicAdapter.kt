@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tutortekorg.tutortek.R
@@ -28,7 +29,8 @@ class TopicAdapter(private val topics: List<Topic>)
 
     override fun onBindViewHolder(holder: TopicViewHolder, position: Int) {
         holder.view.setOnClickListener {
-            it.findNavController().navigate(R.id.action_topicListFragment_to_topicDetailsFragment)
+            val bundle = bundleOf("topic" to topics[position])
+            it.findNavController().navigate(R.id.action_topicListFragment_to_topicDetailsFragment, bundle)
         }
         holder.setTopicData(topics[position])
     }
