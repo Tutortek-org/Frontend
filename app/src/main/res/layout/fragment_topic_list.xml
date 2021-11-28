@@ -33,7 +33,7 @@
         android:backgroundTint="@color/color_primary"
         android:src="@drawable/ic_baseline_add_24"
         android:contentDescription="@string/btn_add_topic_description"
-        android:tint="@color/white"
+        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
