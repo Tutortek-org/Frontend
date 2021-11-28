@@ -108,4 +108,10 @@
     <string name="topic_add_header">Turite naują temą mums?</string>
     <string name="topic_add_name">Pavadinimas</string>
     <string name="btn_add_topic">Pridėti</string>
+
+    <!-- Topic delete dialog -->
+    <string name="confirm_delete">Patvirtinti trynimą</string>
+    <string name="topic_delete_question">Ar tikrai norite ištrinti temą \"%1$s\"?</string>
+    <string name="btn_yes">Taip</string>
+    <string name="btn_no">Ne</string>
 </resources>

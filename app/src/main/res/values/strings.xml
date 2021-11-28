@@ -107,4 +107,10 @@
     <string name="topic_add_header">Got a new topic for us?</string>
     <string name="topic_add_name">Name</string>
     <string name="btn_add_topic">Add</string>
+
+    <!-- Topic delete dialog -->
+    <string name="confirm_delete">Confirm delete</string>
+    <string name="topic_delete_question">Are you sure you want to delete topic \"%1$s\"?</string>
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
 </resources>
