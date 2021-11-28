@@ -17,7 +17,6 @@ import org.json.JSONObject
 
 class AccountDeleteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountDeleteBinding
-    private lateinit var request: TutortekObjectRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,12 +37,8 @@ class AccountDeleteActivity : AppCompatActivity() {
                 deleteAccount()
             },
             {
-                if(JwtUtils.wasResponseUnauthorized(it))
-                    JwtUtils.sendRefreshRequest(this, false, request)
-                else {
-                    Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
-                    binding.btnDeleteAccount.revertAnimation()
-                }
+                Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+                binding.btnDeleteAccount.revertAnimation()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -51,7 +46,7 @@ class AccountDeleteActivity : AppCompatActivity() {
 
     private fun deleteAccount() {
         val url = "${TutortekConstants.BASE_URL}/delete"
-        request = TutortekObjectRequest(this, Request.Method.DELETE, url, null,
+        val request = TutortekObjectRequest(this, Request.Method.DELETE, url, null,
             {
                 finishDeleting()
             },

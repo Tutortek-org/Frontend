@@ -15,7 +15,6 @@ import org.json.JSONObject
 
 class ProfileEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileEditBinding
-    private lateinit var request: TutortekObjectRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,16 +77,14 @@ class ProfileEditActivity : AppCompatActivity() {
         val profileId = JwtUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         val body = formProfileUpdateRequestBody()
-        request = TutortekObjectRequest(this, Request.Method.PUT, url, body,
+        val request = TutortekObjectRequest(this, Request.Method.PUT, url, body,
             {
                 updateSingletonData(body)
                 Toast.makeText(this, R.string.success_profile_edit, Toast.LENGTH_SHORT).show()
                 onBackPressed()
             },
             {
-                if(JwtUtils.wasResponseUnauthorized(it))
-                    JwtUtils.sendRefreshRequest(this, false, request)
-                else {
+                if(!JwtUtils.wasResponseUnauthorized(it)) {
                     Toast.makeText(this, R.string.error_profile_edit, Toast.LENGTH_SHORT).show()
                     binding.btnEditSave.revertAnimation()
                 }

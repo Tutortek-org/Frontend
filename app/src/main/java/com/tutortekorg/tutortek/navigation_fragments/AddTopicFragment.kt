@@ -19,7 +19,6 @@ import org.json.JSONObject
 
 class AddTopicFragment : Fragment() {
     private lateinit var binding: FragmentAddTopicBinding
-    private lateinit var request: TutortekObjectRequest
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,16 +42,14 @@ class AddTopicFragment : Fragment() {
     private fun sendTopicPostRequest() {
         val url = "${TutortekConstants.BASE_URL}/topics"
         val body = getJsonBody()
-        request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
+        val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
             {
                 Toast.makeText(requireContext(), R.string.topic_add_success, Toast.LENGTH_SHORT).show()
                 closeKeyboard()
                 activity?.onBackPressed()
             },
-            { err ->
-                if(JwtUtils.wasResponseUnauthorized(err))
-                    activity?.let { JwtUtils.sendRefreshRequest(it, false, request) }
-                else {
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it)) {
                     Toast.makeText(requireContext(), R.string.error_topic_post, Toast.LENGTH_SHORT).show()
                     binding.btnConfirmAddTopic.startAnimation()
                 }

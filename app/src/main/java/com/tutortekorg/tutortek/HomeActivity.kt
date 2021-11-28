@@ -18,7 +18,6 @@ import org.json.JSONObject
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var request: TutortekObjectRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,15 +34,14 @@ class HomeActivity : AppCompatActivity() {
         val token = JwtUtils.getJwtToken(this)
         val profileId = JwtUtils.getProfileIdFromSavedToken(this)
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
-        request = TutortekObjectRequest(this, Request.Method.GET, url, null,
+        val request = TutortekObjectRequest(this, Request.Method.GET, url, null,
             {
                 if (token != null)
                     addUserProfileBundle(it, token)
             },
             {
-                if(JwtUtils.wasResponseUnauthorized(it))
-                    JwtUtils.sendRefreshRequest(this, false, request)
-                else Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
+                if(!JwtUtils.wasResponseUnauthorized(it))
+                    Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)

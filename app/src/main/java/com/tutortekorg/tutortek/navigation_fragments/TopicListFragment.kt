@@ -22,7 +22,6 @@ import org.json.JSONArray
 class TopicListFragment : Fragment() {
     private lateinit var binding: FragmentTopicListBinding
     private lateinit var adapter: TopicAdapter
-    private lateinit var request: TutortekArrayRequest
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +44,7 @@ class TopicListFragment : Fragment() {
 
     private fun bindDataToUI() {
         val url = "${TutortekConstants.BASE_URL}/topics"
-        request = TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
+        val request = TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
             {
                 val topics = parseTopicList(it)
                 adapter = TopicAdapter(topics)
@@ -54,11 +53,10 @@ class TopicListFragment : Fragment() {
                 binding.recyclerTopics.adapter = adapter
                 binding.refreshTopics.isRefreshing = false
             },
-            { err ->
+            {
                 binding.refreshTopics.isRefreshing = false
-                if(JwtUtils.wasResponseUnauthorized(err))
-                    activity?.let { JwtUtils.sendRefreshRequest(it, false, request) }
-                else Toast.makeText(requireContext(), R.string.error_topic_get, Toast.LENGTH_SHORT).show()
+                if(!JwtUtils.wasResponseUnauthorized(it))
+                    Toast.makeText(requireContext(), R.string.error_topic_get, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
