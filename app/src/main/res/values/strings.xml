@@ -114,4 +114,7 @@
     <string name="topic_delete_question">Are you sure you want to delete topic \"%1$s\"?</string>
     <string name="btn_yes">Yes</string>
     <string name="btn_no">No</string>
+
+    <!-- Topic edit fragment -->
+    <string name="edit_topic_header">Has something changed?</string>
 </resources>

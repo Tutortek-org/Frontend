@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/topic_add_header"
+                android:text="@string/edit_topic_header"
                 android:textColor="?colorOnPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -44,14 +44,14 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txt_input_topic_name"
+                        android:id="@+id/txt_input_topic_name_edit"
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         app:boxStrokeColor="@color/color_primary"
                         app:hintTextColor="@color/color_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edit_text_topic_name"
+                            android:id="@+id/edit_text_topic_name_edit"
                             style="@style/modifiedEditText"
                             android:textCursorDrawable="@drawable/text_input_cursor"
                             android:hint="@string/topic_add_name"
@@ -61,13 +61,13 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-                        android:id="@+id/btn_confirm_add_topic"
+                        android:id="@+id/btn_confirm_edit_topic"
                         style="@style/loginButton"
                         android:backgroundTint="@color/color_primary"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:layout_marginBottom="20dp"
-                        android:text="@string/btn_add_topic"
+                        android:text="@string/save"
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"
                         app:spinning_bar_padding="6dp"

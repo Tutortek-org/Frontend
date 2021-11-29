@@ -69,5 +69,18 @@
         android:id="@+id/topicDetailsFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.TopicDetailsFragment"
         android:label="fragment_topic_details"
-        tools:layout="@layout/fragment_topic_details" />
+        tools:layout="@layout/fragment_topic_details" >
+        <action
+            android:id="@+id/action_topicDetailsFragment_to_topicEditFragment"
+            app:destination="@id/topicEditFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicEditFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicEditFragment"
+        android:label="fragment_topic_edit"
+        tools:layout="@layout/fragment_topic_edit" />
 </navigation>

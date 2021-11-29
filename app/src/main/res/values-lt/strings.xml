@@ -115,4 +115,7 @@
     <string name="topic_delete_question">Ar tikrai norite ištrinti temą \"%1$s\"?</string>
     <string name="btn_yes">Taip</string>
     <string name="btn_no">Ne</string>
+
+    <!-- Topic edit fragment -->
+    <string name="edit_topic_header">Ar kažkas pasikeitė?</string>
 </resources>

@@ -19,5 +19,6 @@
     <color name="color_onboarding_indicator_inactive">#FF72BCF7</color>
     <color name="color_danger">#FFDE1F12</color>
     <color name="color_nav_bar_item_clicked">#FFEFEB34</color>
+    <color name="color_light_gray">#FFADADAD</color>
 
 </resources>
