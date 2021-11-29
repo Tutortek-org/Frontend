@@ -5,7 +5,7 @@ import java.io.Serializable
 
 data class Topic(
     val id: Long,
-    val name: String
+    var name: String
 ) : Serializable {
 
     constructor(body: JSONObject) : this(

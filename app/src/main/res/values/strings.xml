@@ -71,6 +71,7 @@
     <string name="error_topic_get">Unexpected error while retrieving topics</string>
     <string name="error_topic_post">Unexpected error while creating the topic</string>
     <string name="error_topic_delete">Unexpected error while deleting the topic</string>
+    <string name="error_topic_edit">Unexpected error while editing the topic</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>

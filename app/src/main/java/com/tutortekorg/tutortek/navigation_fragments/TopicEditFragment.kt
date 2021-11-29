@@ -5,9 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.android.volley.Request
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentTopicEditBinding
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
+import com.tutortekorg.tutortek.singletons.RequestSingleton
+import org.json.JSONObject
 
 class TopicEditFragment : Fragment() {
     private lateinit var binding: FragmentTopicEditBinding
@@ -29,6 +37,40 @@ class TopicEditFragment : Fragment() {
     }
 
     private fun saveEditedTopic() {
+        binding.btnConfirmEditTopic.startAnimation()
+        binding.txtInputTopicNameEdit.error = null
+        if(!binding.editTextTopicNameEdit.text.isNullOrBlank()) sendTopicPutUpdate()
+        else {
+            binding.txtInputTopicNameEdit.error = getString(R.string.field_empty)
+            binding.btnConfirmEditTopic.revertAnimation()
+        }
+    }
+
+    private fun sendTopicPutUpdate() {
+        val url = "${TutortekConstants.BASE_URL}/topics/${topic.id}"
+        val body = formRequestBody()
+        val request = TutortekObjectRequest(requireContext(), Request.Method.PUT, url, body,
+            {
+                goBackToDetailsFragment()
+            },
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it)) {
+                    Toast.makeText(requireContext(), R.string.error_topic_edit, Toast.LENGTH_SHORT).show()
+                    binding.btnConfirmEditTopic.revertAnimation()
+                }
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
+    }
+
+    private fun formRequestBody(): JSONObject {
+        val name = binding.editTextTopicNameEdit.text.toString()
+        val body = JSONObject()
+        body.put("name", name)
+        return body
+    }
+
+    private fun goBackToDetailsFragment() {
 
     }
 }
