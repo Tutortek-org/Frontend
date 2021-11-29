@@ -10,9 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentTopicDetailsBinding
@@ -35,13 +35,20 @@ class TopicDetailsFragment : Fragment() {
             it.findNavController().navigate(R.id.action_topicDetailsFragment_to_topicEditFragment, bundle)
         }
 
+        topic = arguments?.getSerializable("topic") as Topic
+        binding.txtTopicDetailsName.text = topic.name
+
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        topic = arguments?.getSerializable("topic") as Topic
-        binding.txtTopicDetailsName.text = topic.name
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        findNavController().currentBackStackEntry
+            ?.savedStateHandle?.getLiveData<Topic>("topic")
+            ?.observe(viewLifecycleOwner) {
+                topic = it
+                binding.txtTopicDetailsName.text = topic.name
+            }
     }
 
     private fun showConfirmDialog() {

@@ -71,6 +71,9 @@ class TopicEditFragment : Fragment() {
     }
 
     private fun goBackToDetailsFragment() {
-
+        topic.name = binding.editTextTopicNameEdit.text.toString()
+        val navController = findNavController()
+        navController.previousBackStackEntry?.savedStateHandle?.set("topic", topic)
+        navController.popBackStack()
     }
 }
