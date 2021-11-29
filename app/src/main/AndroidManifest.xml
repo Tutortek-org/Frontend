@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutortek">
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name=".profile_editing.ChangePasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".EditMenuActivity"
+            android:name=".profile_editing.EditMenuActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AccountDeleteActivity"
+            android:name=".profile_editing.AccountDeleteActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

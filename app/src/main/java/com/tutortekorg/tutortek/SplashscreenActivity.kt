@@ -10,6 +10,7 @@ import com.android.volley.Request
 import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.onboarding.MainActivity
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 
 @SuppressLint("CustomSplashScreen")
@@ -29,13 +30,13 @@ class SplashscreenActivity : AppCompatActivity() {
 
     private fun sendAutoLoginRequest() {
         val url = "${TutortekConstants.BASE_URL}/autologin"
-        val request = TutortekRequest(this, Request.Method.POST, url, null,
+        val request = TutortekObjectRequest(this, Request.Method.POST, url, null,
             {
                 navigateToHomeScreen()
             },
             {
                 if(JwtUtils.wasResponseUnauthorized(it))
-                    JwtUtils.sendRefreshRequest(this, true, null)
+                    JwtUtils.sendRefreshRequest<TutortekObjectRequest>(this, true, null)
                 else navigateToOnboardingScreen()
             }
         )

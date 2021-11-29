@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.profile_editing
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
@@ -15,7 +17,6 @@ import org.json.JSONObject
 
 class AccountDeleteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountDeleteBinding
-    private lateinit var request: TutortekRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +37,8 @@ class AccountDeleteActivity : AppCompatActivity() {
                 deleteAccount()
             },
             {
-                if(JwtUtils.wasResponseUnauthorized(it))
-                    JwtUtils.sendRefreshRequest(this, false, request)
-                else {
-                    Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
-                    binding.btnDeleteAccount.revertAnimation()
-                }
+                Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+                binding.btnDeleteAccount.revertAnimation()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
@@ -49,7 +46,7 @@ class AccountDeleteActivity : AppCompatActivity() {
 
     private fun deleteAccount() {
         val url = "${TutortekConstants.BASE_URL}/delete"
-        request = TutortekRequest(this, Request.Method.DELETE, url, null,
+        val request = TutortekObjectRequest(this, Request.Method.DELETE, url, null,
             {
                 finishDeleting()
             },

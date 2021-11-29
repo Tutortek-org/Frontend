@@ -1,8 +1,9 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.profile_editing
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tutortekorg.tutortek.ProfileEditActivity
 import com.tutortekorg.tutortek.databinding.ActivityEditMenuBinding
 
 class EditMenuActivity : AppCompatActivity() {

@@ -9,7 +9,22 @@
         android:id="@+id/homeFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_topicListFragment"
+            app:destination="@id/topicListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_personalTopicListFragment"
+            app:destination="@id/personalTopicListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.ProfileFragment"
@@ -20,4 +35,52 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/topicListFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicListFragment"
+        android:label="fragment_topic_list"
+        tools:layout="@layout/fragment_topic_list" >
+        <action
+            android:id="@+id/action_topicListFragment_to_addTopicFragment"
+            app:destination="@id/addTopicFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_topicListFragment_to_topicDetailsFragment"
+            app:destination="@id/topicDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalTopicListFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.PersonalTopicListFragment"
+        android:label="fragment_personal_topic_list"
+        tools:layout="@layout/fragment_personal_topic_list" />
+    <fragment
+        android:id="@+id/addTopicFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.AddTopicFragment"
+        android:label="fragment_add_topic"
+        tools:layout="@layout/fragment_add_topic" />
+    <fragment
+        android:id="@+id/topicDetailsFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicDetailsFragment"
+        android:label="fragment_topic_details"
+        tools:layout="@layout/fragment_topic_details" >
+        <action
+            android:id="@+id/action_topicDetailsFragment_to_topicEditFragment"
+            app:destination="@id/topicEditFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicEditFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicEditFragment"
+        android:label="fragment_topic_edit"
+        tools:layout="@layout/fragment_topic_edit" />
 </navigation>

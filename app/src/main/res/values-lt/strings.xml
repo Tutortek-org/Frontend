@@ -69,11 +69,16 @@
     <string name="wrong_password">Įvedėte klaidingą slaptažodį</string>
     <string name="error_account_delete">Netikėta klaida trinant paskyrą</string>
     <string name="error_change_password">Netikėta klaida keičiant slaptažodį</string>
+    <string name="error_topic_get">Netikėta klaida bandant gauti temas</string>
+    <string name="error_topic_post">Netikėta klaida kuriant temą</string>
+    <string name="error_topic_delete">Netikėta klaida trinant temą</string>
+    <string name="error_topic_edit">Netikėta klaida redaguojant temą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
     <string name="account_deleted">Iki kito karto!</string>
     <string name="password_change_success">Slaptažodis pakeistas sėkmingai</string>
+    <string name="topic_add_success">Nauja tema pridėta sėkmingai</string>
 
     <!-- Edit profile form -->
     <string name="save">Išsaugoti</string>
@@ -92,4 +97,26 @@
     <string name="current_password">Dabartinis slaptažodis</string>
     <string name="new_password">Naujas slaptažodis</string>
     <string name="header_change_password">Paskyros apsaugojimas yra nuostabu!</string>
+
+    <!-- Home fragment -->
+    <string name="full_topic_list">Pilnas temų sąrašas</string>
+    <string name="my_topic_list">Mano temų sąrašas</string>
+
+    <!-- Topic list fragment -->
+    <string name="btn_add_topic_description">Pridėti temą</string>
+    <string name="topic_name">Temos pavadinimas</string>
+
+    <!-- Add topic fragment -->
+    <string name="topic_add_header">Turite naują temą mums?</string>
+    <string name="topic_add_name">Pavadinimas</string>
+    <string name="btn_add_topic">Pridėti</string>
+
+    <!-- Topic delete dialog -->
+    <string name="confirm_delete">Patvirtinti trynimą</string>
+    <string name="topic_delete_question">Ar tikrai norite ištrinti temą \"%1$s\"?</string>
+    <string name="btn_yes">Taip</string>
+    <string name="btn_no">Ne</string>
+
+    <!-- Topic edit fragment -->
+    <string name="edit_topic_header">Ar kažkas pasikeitė?</string>
 </resources>

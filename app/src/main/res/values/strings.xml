@@ -68,11 +68,16 @@
     <string name="wrong_password">You have entered a wrong password</string>
     <string name="error_account_delete">Unexpected error while deleting account</string>
     <string name="error_change_password">Unexpected error while changing password</string>
+    <string name="error_topic_get">Unexpected error while retrieving topics</string>
+    <string name="error_topic_post">Unexpected error while creating the topic</string>
+    <string name="error_topic_delete">Unexpected error while deleting the topic</string>
+    <string name="error_topic_edit">Unexpected error while editing the topic</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
     <string name="account_deleted">Until next time!</string>
     <string name="password_change_success">Password changed successfully</string>
+    <string name="topic_add_success">New topic added successfully</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>
@@ -91,4 +96,26 @@
     <string name="current_password">Current password</string>
     <string name="new_password">New password</string>
     <string name="header_change_password">Keeping your account safe is amazing!</string>
+
+    <!-- Home fragment -->
+    <string name="full_topic_list">Full topic list</string>
+    <string name="my_topic_list">My topic list</string>
+
+    <!-- Topic list fragment -->
+    <string name="btn_add_topic_description">Add topic</string>
+    <string name="topic_name">Topic name</string>
+
+    <!-- Add topic fragment -->
+    <string name="topic_add_header">Got a new topic for us?</string>
+    <string name="topic_add_name">Name</string>
+    <string name="btn_add_topic">Add</string>
+
+    <!-- Topic delete dialog -->
+    <string name="confirm_delete">Confirm delete</string>
+    <string name="topic_delete_question">Are you sure you want to delete topic \"%1$s\"?</string>
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
+
+    <!-- Topic edit fragment -->
+    <string name="edit_topic_header">Has something changed?</string>
 </resources>
