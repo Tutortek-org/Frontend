@@ -29,16 +29,24 @@ class TopicDetailsFragment : Fragment() {
     ): View {
         binding = FragmentTopicDetailsBinding.inflate(inflater, container, false)
 
+        bindEventsToButtons()
+        bindDataToUI()
+
+        return binding.root
+    }
+
+    private fun bindEventsToButtons() {
         binding.btnDeleteTopic.setOnClickListener { showConfirmDialog() }
         binding.btnEditTopic.setOnClickListener {
             val bundle = bundleOf("topic" to topic)
-            it.findNavController().navigate(R.id.action_topicDetailsFragment_to_topicEditFragment, bundle)
+            it.findNavController()
+                .navigate(R.id.action_topicDetailsFragment_to_topicEditFragment, bundle)
         }
+    }
 
+    private fun bindDataToUI() {
         topic = arguments?.getSerializable("topic") as Topic
         binding.txtTopicDetailsName.text = topic.name
-
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
