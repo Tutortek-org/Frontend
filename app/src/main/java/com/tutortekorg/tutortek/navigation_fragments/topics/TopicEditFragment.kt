@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek.navigation_fragments
+package com.tutortekorg.tutortek.navigation_fragments.topics
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
