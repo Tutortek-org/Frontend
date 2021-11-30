@@ -9,6 +9,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityLoginBinding
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
@@ -32,11 +33,31 @@ class LoginActivity : AppCompatActivity() {
         val request = JsonObjectRequest(Request.Method.POST, url, body,
             {
                 JwtUtils.saveJwtToken(this, it)
-                navigateToHomeScreen()
+                sendProfileGetRequest()
             },
             {
                 Toast.makeText(this, R.string.incorrect_credentials, Toast.LENGTH_SHORT).show()
                 binding.btnLogin.revertAnimation()
+            }
+        )
+        RequestSingleton.getInstance(this).addToRequestQueue(request)
+    }
+
+    private fun sendProfileGetRequest() {
+        val profileId = JwtUtils.getProfileIdFromSavedToken(this)
+        val token = JwtUtils.getJwtToken(this)
+        val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
+        val request = TutortekObjectRequest(this, Request.Method.GET, url, null,
+            {
+                if (token != null)
+                    JwtUtils.addUserProfileBundle(it, token)
+                navigateToHomeScreen()
+            },
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it)){
+                    Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
+                    binding.btnLogin.revertAnimation()
+                }
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
