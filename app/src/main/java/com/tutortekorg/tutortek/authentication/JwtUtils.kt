@@ -10,6 +10,8 @@ import com.auth0.android.jwt.JWT
 import com.tutortekorg.tutortek.HomeActivity
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.constants.TutortekConstants
+import com.tutortekorg.tutortek.data.UserProfile
+import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
@@ -40,6 +42,7 @@ class JwtUtils {
             val url = "${TutortekConstants.BASE_URL}/refresh"
             val request = TutortekObjectRequest(activity, Request.Method.GET, url, null,
                 {
+                    saveJwtToken(activity, it)
                     if(requestToRepeat != null)
                         RequestSingleton.getInstance(activity).addToRequestQueue(requestToRepeat)
                     if(shouldNavigateToHome) navigateToHomeScreen(activity)
@@ -63,6 +66,18 @@ class JwtUtils {
             val jwt = token?.let { JWT(it) }
             val profileId = jwt?.getClaim("pid")
             return profileId?.asLong()
+        }
+
+        fun addUserProfileBundle(body: JSONObject, token: String) {
+            val roles = getRoles(token)
+            val profile = UserProfile(body, roles)
+            ProfileSingleton.getInstance().userProfile = profile
+        }
+
+        private fun getRoles(token: String): List<String> {
+            val jwt = JWT(token)
+            val roles = jwt.getClaim("roles")
+            return roles.asList(String::class.java)
         }
 
         fun wasResponseUnauthorized(error: VolleyError): Boolean =

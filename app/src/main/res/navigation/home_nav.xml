@@ -37,7 +37,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/topicListFragment"
-        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicListFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.topics.TopicListFragment"
         android:label="fragment_topic_list"
         tools:layout="@layout/fragment_topic_list" >
         <action
@@ -67,7 +67,7 @@
         tools:layout="@layout/fragment_add_topic" />
     <fragment
         android:id="@+id/topicDetailsFragment"
-        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicDetailsFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.topics.TopicDetailsFragment"
         android:label="fragment_topic_details"
         tools:layout="@layout/fragment_topic_details" >
         <action
@@ -80,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/topicEditFragment"
-        android:name="com.tutortekorg.tutortek.navigation_fragments.TopicEditFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.topics.TopicEditFragment"
         android:label="fragment_topic_edit"
         tools:layout="@layout/fragment_topic_edit" />
 </navigation>

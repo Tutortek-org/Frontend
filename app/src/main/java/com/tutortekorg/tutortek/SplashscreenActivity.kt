@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import com.android.volley.Request
 import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
@@ -25,19 +26,22 @@ class SplashscreenActivity : AppCompatActivity() {
     private fun performAutoLogin() {
         val token = JwtUtils.getJwtToken(this)
         if(token.isNullOrBlank()) navigateToOnboardingScreen()
-        else sendAutoLoginRequest()
+        else sendAutoLoginRequest(token)
     }
 
-    private fun sendAutoLoginRequest() {
-        val url = "${TutortekConstants.BASE_URL}/autologin"
-        val request = TutortekObjectRequest(this, Request.Method.POST, url, null,
+    private fun sendAutoLoginRequest(token: String) {
+        val profileId = JwtUtils.getProfileIdFromSavedToken(this)
+        val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
+        val request = TutortekObjectRequest(this, Request.Method.GET, url, null,
             {
+                JwtUtils.addUserProfileBundle(it, token)
                 navigateToHomeScreen()
             },
             {
-                if(JwtUtils.wasResponseUnauthorized(it))
-                    JwtUtils.sendRefreshRequest<TutortekObjectRequest>(this, true, null)
-                else navigateToOnboardingScreen()
+                if(!JwtUtils.wasResponseUnauthorized(it)){
+                    Toast.makeText(this, R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
+                    navigateToOnboardingScreen()
+                }
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)

@@ -51,14 +51,8 @@ class AccountDeleteActivity : AppCompatActivity() {
                 finishDeleting()
             },
             {
-                if(it.networkResponse == null
-                    || it.networkResponse.statusCode == 401
-                    || it.networkResponse.statusCode == 204)
-                        finishDeleting()
-                else {
-                    Toast.makeText(this, R.string.error_account_delete, Toast.LENGTH_SHORT).show()
-                    binding.btnDeleteAccount.revertAnimation()
-                }
+                Toast.makeText(this, R.string.error_account_delete, Toast.LENGTH_SHORT).show()
+                binding.btnDeleteAccount.revertAnimation()
             }
         )
         RequestSingleton.getInstance(this).addToRequestQueue(request)
