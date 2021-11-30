@@ -84,13 +84,9 @@ class TopicDetailsFragment : Fragment() {
                 activity?.onBackPressed()
             },
             {
-                if(it.networkResponse == null || it.networkResponse.statusCode == 204)
-                    activity?.onBackPressed()
-                else {
-                    binding.btnDeleteTopic.revertAnimation()
-                    binding.btnEditTopic.revertAnimation()
-                    Toast.makeText(requireContext(), R.string.error_topic_delete, Toast.LENGTH_SHORT).show()
-                }
+                binding.btnDeleteTopic.revertAnimation()
+                binding.btnEditTopic.revertAnimation()
+                Toast.makeText(requireContext(), R.string.error_topic_delete, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.*
@@ -32,6 +33,8 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.editTextBirthdate.keyListener = null
         binding.editTextBirthdate.setOnClickListener { onBirthDateClick() }
+
+        binding.editTextPasswordRegister.addTextChangedListener { binding.txtInputPasswordRegister.error = null }
     }
 
     private fun onBirthDateClick() {
