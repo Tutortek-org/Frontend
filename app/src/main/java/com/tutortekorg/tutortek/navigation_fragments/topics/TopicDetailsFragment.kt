@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Topic
@@ -37,6 +38,7 @@ class TopicDetailsFragment : Fragment() {
 
     private fun bindEventsToButtons() {
         binding.btnDeleteTopic.setOnClickListener { showConfirmDialog() }
+        binding.btnGetMeetings.setOnClickListener { showMeetingBottomSheetDialog() }
         binding.btnEditTopic.setOnClickListener {
             val bundle = bundleOf("topic" to topic)
             it.findNavController()
@@ -57,6 +59,13 @@ class TopicDetailsFragment : Fragment() {
                 topic = it
                 binding.txtTopicDetailsName.text = topic.name
             }
+    }
+
+    private fun showMeetingBottomSheetDialog() {
+        val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+        val view = View.inflate(requireContext(), R.layout.layout_bottom_sheet, null)
+        dialog.setContentView(view)
+        dialog.show()
     }
 
     private fun showConfirmDialog() {
