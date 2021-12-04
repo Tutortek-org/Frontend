@@ -121,4 +121,8 @@
 
     <!-- Topic details fragment -->
     <string name="get_meetings">Lookup meetings</string>
+
+    <!-- Meeting item -->
+    <string name="meeting_name">Meeting name</string>
+    <string name="meeting_date">Meeting date</string>
 </resources>

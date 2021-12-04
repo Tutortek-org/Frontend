@@ -122,4 +122,8 @@
 
     <!-- Topic details fragment -->
     <string name="get_meetings">Peržiūrėti susitikimus</string>
+
+    <!-- Meeting item -->
+    <string name="meeting_name">Susitikimo pavadinimas</string>
+    <string name="meeting_date">Susitikimo data</string>
 </resources>
