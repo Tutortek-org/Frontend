@@ -118,4 +118,7 @@
 
     <!-- Topic edit fragment -->
     <string name="edit_topic_header">Has something changed?</string>
+
+    <!-- Topic details fragment -->
+    <string name="get_meetings">Lookup meetings</string>
 </resources>

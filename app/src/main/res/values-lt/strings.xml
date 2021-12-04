@@ -119,4 +119,7 @@
 
     <!-- Topic edit fragment -->
     <string name="edit_topic_header">Ar kažkas pasikeitė?</string>
+
+    <!-- Topic details fragment -->
+    <string name="get_meetings">Peržiūrėti susitikimus</string>
 </resources>
