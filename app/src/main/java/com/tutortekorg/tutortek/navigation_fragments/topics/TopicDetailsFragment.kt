@@ -50,6 +50,11 @@ class TopicDetailsFragment : Fragment() {
             it.findNavController()
                 .navigate(R.id.action_topicDetailsFragment_to_topicEditFragment, bundle)
         }
+        binding.btnAddMeeting.setOnClickListener {
+            val bundle = bundleOf("topic" to topic)
+            it.findNavController()
+                .navigate(R.id.action_topicDetailsFragment_to_meetingAddFragment, bundle)
+        }
     }
 
     private fun bindDataToUI() {

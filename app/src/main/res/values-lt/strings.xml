@@ -74,6 +74,9 @@
     <string name="error_topic_delete">Netikėta klaida trinant temą</string>
     <string name="error_topic_edit">Netikėta klaida redaguojant temą</string>
     <string name="error_meeting_get">Netikėta klaida bandant gauti susitikimus</string>
+    <string name="error_invalid_integer">Įveskite tinkantį sveiką skaičių</string>
+    <string name="error_invalid_meeting_date">Įveskite datą, kuri yra po šiandienos</string>
+    <string name="error_meeting_post">Netikėta klaida kuriant susitikimą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -81,6 +84,7 @@
     <string name="password_change_success">Slaptažodis pakeistas sėkmingai</string>
     <string name="topic_add_success">Nauja tema pridėta sėkmingai</string>
     <string name="no_meetings">Nėra suplanuota jokių susitikimų šiai temai</string>
+    <string name="meeting_add_succes">Naujas susitikimas pridėtas sėkmingai</string>
 
     <!-- Edit profile form -->
     <string name="save">Išsaugoti</string>

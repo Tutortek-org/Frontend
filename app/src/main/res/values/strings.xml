@@ -73,6 +73,9 @@
     <string name="error_topic_delete">Unexpected error while deleting the topic</string>
     <string name="error_topic_edit">Unexpected error while editing the topic</string>
     <string name="error_meeting_get">Unexpected error while getting meetings</string>
+    <string name="error_invalid_integer">Please enter a valid integer</string>
+    <string name="error_invalid_meeting_date">Please enter a date that is after today</string>
+    <string name="error_meeting_post">Unexpected error while creating the meeting</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -80,6 +83,7 @@
     <string name="password_change_success">Password changed successfully</string>
     <string name="topic_add_success">New topic added successfully</string>
     <string name="no_meetings">No meetings are available for this topic</string>
+    <string name="meeting_add_succes">New meeting added successfully</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>

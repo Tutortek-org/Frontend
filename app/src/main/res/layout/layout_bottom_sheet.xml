@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="22dp"
+        android:layout_marginBottom="20dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layoutAnimation="@anim/meeting_recycler_view_animation"/>
 
