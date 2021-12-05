@@ -97,7 +97,7 @@ class TopicDetailsFragment : Fragment() {
         val view = View.inflate(requireContext(), R.layout.layout_bottom_sheet, null)
         val meetings = parseMeetingsList(array)
         val recyclerView = view.findViewById(R.id.recycler_meetings) as RecyclerView
-        recyclerView.adapter = MeetingAdapter(meetings)
+        recyclerView.adapter = MeetingAdapter(meetings, findNavController(), dialog)
         dialog.setContentView(view)
         dialog.show()
     }
