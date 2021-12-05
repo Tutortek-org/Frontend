@@ -62,7 +62,7 @@
         tools:layout="@layout/fragment_personal_topic_list" />
     <fragment
         android:id="@+id/addTopicFragment"
-        android:name="com.tutortekorg.tutortek.navigation_fragments.AddTopicFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.topics.AddTopicFragment"
         android:label="fragment_add_topic"
         tools:layout="@layout/fragment_add_topic" />
     <fragment
