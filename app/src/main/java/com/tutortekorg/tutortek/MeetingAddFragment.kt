@@ -78,7 +78,8 @@ class MeetingAddFragment : Fragment() {
             result = false
         }
 
-        if(!isDateValid(binding.editTextMeetingDate.text.toString())) {
+        if(binding.editTextMeetingDate.text.isNullOrBlank()
+            || !isDateValid(binding.editTextMeetingDate.text.toString())) {
             binding.txtInputMeetingDate.error = getString(R.string.error_invalid_meeting_date)
             result = false
         }

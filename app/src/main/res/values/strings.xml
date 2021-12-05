@@ -76,6 +76,7 @@
     <string name="error_invalid_integer">Please enter a valid integer</string>
     <string name="error_invalid_meeting_date">Please enter a date that is after today</string>
     <string name="error_meeting_post">Unexpected error while creating the meeting</string>
+    <string name="error_invalid_birthdate">Please enter a date that is before today</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>

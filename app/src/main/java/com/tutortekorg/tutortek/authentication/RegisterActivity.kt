@@ -14,6 +14,8 @@ import com.tutortekorg.tutortek.databinding.ActivityRegisterBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -83,8 +85,9 @@ class RegisterActivity : AppCompatActivity() {
             binding.txtInputSurname.error = getString(R.string.field_empty)
             result = false
         }
-        if(binding.editTextBirthdate.text.isNullOrBlank()) {
-            binding.txtInputBirthdate.error = getString(R.string.field_empty)
+        if(binding.editTextBirthdate.text.isNullOrBlank()
+            || !isDateValid(binding.editTextBirthdate.text.toString())) {
+            binding.txtInputBirthdate.error = getString(R.string.error_invalid_birthdate)
             result = false
         }
         if(binding.editTextPasswordRegister.text?.length!! < 8) {
@@ -102,6 +105,12 @@ class RegisterActivity : AppCompatActivity() {
     private fun isEmailValid(email: String): Boolean {
         val pattern = Patterns.EMAIL_ADDRESS
         return pattern.matcher(email).matches()
+    }
+
+    private fun isDateValid(date: String): Boolean {
+        val parser = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val parsedDate = parser.parse(date)
+        return parsedDate!!.before(Date())
     }
 
     private fun formUserCreateRequestBody(): JSONObject {
