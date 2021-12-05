@@ -140,4 +140,7 @@
     <string name="add_meeting_attendants">Number of attendants</string>
     <string name="add_meeting_address">Address</string>
     <string name="add_meeting_description">Description</string>
+
+    <!-- Meeting details fragment -->
+    <string name="default_date">1970–01–01</string>
 </resources>

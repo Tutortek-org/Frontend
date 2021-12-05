@@ -141,4 +141,7 @@
     <string name="add_meeting_attendants">Dalyvių kiekis</string>
     <string name="add_meeting_address">Adresas</string>
     <string name="add_meeting_description">Aprašymas</string>
+
+    <!-- Meeting details fragment -->
+    <string name="default_date">1970–01–01</string>
 </resources>

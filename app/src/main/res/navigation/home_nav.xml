@@ -84,6 +84,13 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_topicDetailsFragment_to_meetingDetailsFragment"
+            app:destination="@id/meetingDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/topicEditFragment"
@@ -95,4 +102,9 @@
         android:name="com.tutortekorg.tutortek.MeetingAddFragment"
         android:label="fragment_meeting_add"
         tools:layout="@layout/fragment_meeting_add" />
+    <fragment
+        android:id="@+id/meetingDetailsFragment"
+        android:name="com.tutortekorg.tutortek.MeetingDetailsFragment"
+        android:label="fragment_meeting_details"
+        tools:layout="@layout/fragment_meeting_details" />
 </navigation>
