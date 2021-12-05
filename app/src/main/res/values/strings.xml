@@ -128,4 +128,11 @@
     <!-- Meeting item -->
     <string name="meeting_name">Meeting name</string>
     <string name="meeting_date">Meeting date</string>
+
+    <!-- Add meeting fragment -->
+    <string name="add_meeting_header">One new meeting coming right up!</string>
+    <string name="add_meeting_date">Date</string>
+    <string name="add_meeting_attendants">Number of attendants</string>
+    <string name="add_meeting_address">Address</string>
+    <string name="add_meeting_description">Description</string>
 </resources>

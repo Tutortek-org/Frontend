@@ -129,4 +129,11 @@
     <!-- Meeting item -->
     <string name="meeting_name">Susitikimo pavadinimas</string>
     <string name="meeting_date">Susitikimo data</string>
+
+    <!-- Add meeting fragment -->
+    <string name="add_meeting_header">Naujas susitikimas jau čia pat!</string>
+    <string name="add_meeting_date">Data</string>
+    <string name="add_meeting_attendants">Dalyvių kiekis</string>
+    <string name="add_meeting_address">Adresas</string>
+    <string name="add_meeting_description">Aprašymas</string>
 </resources>
