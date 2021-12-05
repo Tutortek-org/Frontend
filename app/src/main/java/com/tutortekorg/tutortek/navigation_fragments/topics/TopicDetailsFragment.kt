@@ -140,11 +140,13 @@ class TopicDetailsFragment : Fragment() {
         binding.btnDeleteTopic.revertAnimation()
         binding.btnEditTopic.revertAnimation()
         binding.btnGetMeetings.revertAnimation()
+        binding.btnAddMeeting.revertAnimation()
     }
 
     private fun startButtonAnimations() {
         binding.btnDeleteTopic.startAnimation()
         binding.btnEditTopic.startAnimation()
         binding.btnGetMeetings.startAnimation()
+        binding.btnAddMeeting.startAnimation()
     }
 }

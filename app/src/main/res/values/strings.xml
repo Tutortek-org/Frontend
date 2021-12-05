@@ -123,6 +123,7 @@
 
     <!-- Topic details fragment -->
     <string name="get_meetings">Lookup meetings</string>
+    <string name="add_meeting">Add a meeting</string>
 
     <!-- Meeting item -->
     <string name="meeting_name">Meeting name</string>
