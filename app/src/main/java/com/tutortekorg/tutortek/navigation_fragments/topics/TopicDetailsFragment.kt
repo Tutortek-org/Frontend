@@ -11,16 +11,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.adapters.MeetingAdapter
 import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
+import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentTopicDetailsBinding
 import com.tutortekorg.tutortek.requests.TutortekArrayRequest
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import org.json.JSONArray
 
 class TopicDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTopicDetailsBinding
@@ -70,7 +74,7 @@ class TopicDetailsFragment : Fragment() {
             {
                 if(it.length() == 0)
                     Toast.makeText(requireContext(), R.string.no_meetings, Toast.LENGTH_SHORT).show()
-                else showMeetingBottomSheetDialog()
+                else showMeetingBottomSheetDialog(it)
                 reverseButtonAnimations()
             },
             {
@@ -83,9 +87,12 @@ class TopicDetailsFragment : Fragment() {
         RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
-    private fun showMeetingBottomSheetDialog() {
+    private fun showMeetingBottomSheetDialog(array: JSONArray) {
         val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
         val view = View.inflate(requireContext(), R.layout.layout_bottom_sheet, null)
+        val meetings = parseMeetingsList(array)
+        val recyclerView = view.findViewById(R.id.recycler_meetings) as RecyclerView
+        recyclerView.adapter = MeetingAdapter(meetings)
         dialog.setContentView(view)
         dialog.show()
     }
@@ -119,6 +126,14 @@ class TopicDetailsFragment : Fragment() {
             }
         )
         RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
+    }
+
+    private fun parseMeetingsList(array: JSONArray): List<Meeting> {
+        val topics = mutableListOf<Meeting>()
+        for(i in 0 until array.length()) {
+            topics.add(Meeting(array.getJSONObject(i)))
+        }
+        return topics
     }
 
     private fun reverseButtonAnimations() {
