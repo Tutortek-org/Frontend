@@ -13,6 +13,7 @@ import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.ActivityRegisterBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.JwtUtils
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*

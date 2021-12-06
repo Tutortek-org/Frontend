@@ -1,8 +1,9 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.utils
 
 import android.content.Context
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
+import com.tutortekorg.tutortek.R
 
 class SystemUtils {
     companion object {

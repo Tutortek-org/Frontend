@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.android.volley.Request
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentMeetingAddBinding

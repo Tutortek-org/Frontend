@@ -16,6 +16,7 @@ import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentMeetingDetailsBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.SystemUtils
 
 class MeetingDetailsFragment : Fragment() {
     private lateinit var binding: FragmentMeetingDetailsBinding

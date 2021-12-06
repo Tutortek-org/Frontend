@@ -8,7 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import com.android.volley.Request
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.onboarding.MainActivity
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest

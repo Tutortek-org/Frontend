@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.SystemUtils
+import com.tutortekorg.tutortek.utils.SystemUtils
 import com.tutortekorg.tutortek.adapters.MeetingAdapter
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.data.Topic

@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentTopicEditBinding

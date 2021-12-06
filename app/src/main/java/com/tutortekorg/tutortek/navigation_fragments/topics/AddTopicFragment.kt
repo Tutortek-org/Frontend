@@ -10,7 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.FragmentAddTopicBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest

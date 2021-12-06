@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.databinding.FragmentSettingsBinding
 
