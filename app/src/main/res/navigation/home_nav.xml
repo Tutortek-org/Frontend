@@ -99,12 +99,12 @@
         tools:layout="@layout/fragment_topic_edit" />
     <fragment
         android:id="@+id/meetingAddFragment"
-        android:name="com.tutortekorg.tutortek.MeetingAddFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.MeetingAddFragment"
         android:label="fragment_meeting_add"
         tools:layout="@layout/fragment_meeting_add" />
     <fragment
         android:id="@+id/meetingDetailsFragment"
-        android:name="com.tutortekorg.tutortek.MeetingDetailsFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.MeetingDetailsFragment"
         android:label="fragment_meeting_details"
         tools:layout="@layout/fragment_meeting_details" >
         <action
@@ -117,7 +117,7 @@
     </fragment>
     <fragment
         android:id="@+id/meetingEditFragment"
-        android:name="com.tutortekorg.tutortek.MeetingEditFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.MeetingEditFragment"
         android:label="fragment_meeting_edit"
         tools:layout="@layout/fragment_meeting_edit" />
 </navigation>
