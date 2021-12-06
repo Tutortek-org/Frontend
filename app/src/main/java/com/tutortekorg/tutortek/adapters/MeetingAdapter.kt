@@ -20,7 +20,7 @@ class MeetingAdapter(private val meetings: List<Meeting>,
         private val textTitle: TextView = view.findViewById(R.id.txt_meeting_name)
         private val textDate: TextView = view.findViewById(R.id.txt_meeting_date)
 
-        fun setTopicData(meeting: Meeting) {
+        fun setMeetingData(meeting: Meeting) {
             textTitle.text = meeting.name
             textDate.text = meeting.date
         }
@@ -38,7 +38,7 @@ class MeetingAdapter(private val meetings: List<Meeting>,
             val bundle = bundleOf("meeting" to meetings[position])
             navController.navigate(R.id.action_topicDetailsFragment_to_meetingDetailsFragment, bundle)
         }
-        holder.setTopicData(meetings[position])
+        holder.setMeetingData(meetings[position])
     }
 
     override fun getItemCount(): Int = meetings.size
