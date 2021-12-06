@@ -1,13 +1,11 @@
 package com.tutortekorg.tutortek.navigation_fragments.topics
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -15,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.SystemUtils
 import com.tutortekorg.tutortek.adapters.MeetingAdapter
 import com.tutortekorg.tutortek.authentication.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
@@ -43,7 +42,14 @@ class TopicDetailsFragment : Fragment() {
     }
 
     private fun bindEventsToButtons() {
-        binding.btnDeleteTopic.setOnClickListener { showConfirmDialog() }
+        binding.btnDeleteTopic.setOnClickListener {
+            SystemUtils.showConfirmDeleteDialog(
+                requireContext(),
+                R.string.meeting_delete_question,
+                topic.name,
+                ::sendTopicDeleteRequest
+            )
+        }
         binding.btnGetMeetings.setOnClickListener { sendMeetingsRequest() }
         binding.btnEditTopic.setOnClickListener {
             val bundle = bundleOf("topic" to topic)
@@ -80,11 +86,11 @@ class TopicDetailsFragment : Fragment() {
                 if(it.length() == 0)
                     Toast.makeText(requireContext(), R.string.no_meetings, Toast.LENGTH_SHORT).show()
                 else showMeetingBottomSheetDialog(it)
-                reverseButtonAnimations()
+                revertButtonAnimations()
             },
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
-                    reverseButtonAnimations()
+                    revertButtonAnimations()
                     Toast.makeText(requireContext(), R.string.error_meeting_get, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -97,25 +103,9 @@ class TopicDetailsFragment : Fragment() {
         val view = View.inflate(requireContext(), R.layout.layout_bottom_sheet, null)
         val meetings = parseMeetingsList(array)
         val recyclerView = view.findViewById(R.id.recycler_meetings) as RecyclerView
-        recyclerView.adapter = MeetingAdapter(meetings, findNavController(), dialog)
+        recyclerView.adapter = MeetingAdapter(meetings, findNavController(), dialog, topic)
         dialog.setContentView(view)
         dialog.show()
-    }
-
-    private fun showConfirmDialog() {
-        val message = getString(R.string.topic_delete_question, topic.name)
-        val alert = AlertDialog.Builder(requireContext())
-            .setTitle(R.string.confirm_delete)
-            .setMessage(message)
-            .setPositiveButton(R.string.btn_no) { _: DialogInterface, _: Int -> }
-            .setNegativeButton(R.string.btn_yes) { _: DialogInterface, _: Int ->
-                sendTopicDeleteRequest()
-            }
-            .create()
-        val color = requireContext().getColor(R.color.color_primary)
-        alert.show()
-        alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color)
-        alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color)
     }
 
     private fun sendTopicDeleteRequest() {
@@ -126,7 +116,7 @@ class TopicDetailsFragment : Fragment() {
                 activity?.onBackPressed()
             },
             {
-                reverseButtonAnimations()
+                revertButtonAnimations()
                 Toast.makeText(requireContext(), R.string.error_topic_delete, Toast.LENGTH_SHORT).show()
             }
         )
@@ -141,7 +131,7 @@ class TopicDetailsFragment : Fragment() {
         return topics
     }
 
-    private fun reverseButtonAnimations() {
+    private fun revertButtonAnimations() {
         binding.btnDeleteTopic.revertAnimation()
         binding.btnEditTopic.revertAnimation()
         binding.btnGetMeetings.revertAnimation()

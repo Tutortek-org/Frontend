@@ -78,6 +78,7 @@
     <string name="error_invalid_meeting_date">Įveskite datą, kuri yra po šiandienos</string>
     <string name="error_meeting_post">Netikėta klaida kuriant susitikimą</string>
     <string name="error_invalid_birthdate">Įveskite datą, kuri yra prieš šiandieną</string>
+    <string name="error_meeting_delete">UNetikėta klaida trinant susitikimą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -144,4 +145,5 @@
 
     <!-- Meeting details fragment -->
     <string name="default_date">1970–01–01</string>
+    <string name="meeting_delete_question">Ar tikrai norite ištrinti susitikimą \"%1$s\"?</string>
 </resources>

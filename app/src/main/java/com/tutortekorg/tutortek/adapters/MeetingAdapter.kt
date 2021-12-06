@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.Meeting
+import com.tutortekorg.tutortek.data.Topic
 
 class MeetingAdapter(private val meetings: List<Meeting>,
                      private val navController: NavController,
-                     private val dialog: BottomSheetDialog)
+                     private val dialog: BottomSheetDialog,
+                     private val topic: Topic)
     : RecyclerView.Adapter<MeetingAdapter.MeetingViewHolder>() {
 
     class MeetingViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -35,7 +37,7 @@ class MeetingAdapter(private val meetings: List<Meeting>,
     override fun onBindViewHolder(holder: MeetingViewHolder, position: Int) {
         holder.view.setOnClickListener {
             dialog.dismiss()
-            val bundle = bundleOf("meeting" to meetings[position])
+            val bundle = bundleOf("meeting" to meetings[position], "topic" to topic)
             navController.navigate(R.id.action_topicDetailsFragment_to_meetingDetailsFragment, bundle)
         }
         holder.setMeetingData(meetings[position])
