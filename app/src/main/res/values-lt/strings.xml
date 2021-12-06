@@ -73,12 +73,20 @@
     <string name="error_topic_post">Netikėta klaida kuriant temą</string>
     <string name="error_topic_delete">Netikėta klaida trinant temą</string>
     <string name="error_topic_edit">Netikėta klaida redaguojant temą</string>
+    <string name="error_meeting_get">Netikėta klaida bandant gauti susitikimus</string>
+    <string name="error_invalid_integer">Įveskite tinkantį sveiką skaičių</string>
+    <string name="error_invalid_meeting_date">Įveskite datą, kuri yra po šiandienos</string>
+    <string name="error_meeting_post">Netikėta klaida kuriant susitikimą</string>
+    <string name="error_invalid_birthdate">Įveskite datą, kuri yra prieš šiandieną</string>
+    <string name="error_meeting_delete">UNetikėta klaida trinant susitikimą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
     <string name="account_deleted">Iki kito karto!</string>
     <string name="password_change_success">Slaptažodis pakeistas sėkmingai</string>
     <string name="topic_add_success">Nauja tema pridėta sėkmingai</string>
+    <string name="no_meetings">Nėra suplanuota jokių susitikimų šiai temai</string>
+    <string name="meeting_add_succes">Naujas susitikimas pridėtas sėkmingai</string>
 
     <!-- Edit profile form -->
     <string name="save">Išsaugoti</string>
@@ -119,4 +127,23 @@
 
     <!-- Topic edit fragment -->
     <string name="edit_topic_header">Ar kažkas pasikeitė?</string>
+
+    <!-- Topic details fragment -->
+    <string name="get_meetings">Peržiūrėti susitikimus</string>
+    <string name="add_meeting">Pridėti susitikimą</string>
+
+    <!-- Meeting item -->
+    <string name="meeting_name">Susitikimo pavadinimas</string>
+    <string name="meeting_date">Susitikimo data</string>
+
+    <!-- Add meeting fragment -->
+    <string name="add_meeting_header">Naujas susitikimas jau čia pat!</string>
+    <string name="add_meeting_date">Data</string>
+    <string name="add_meeting_attendants">Dalyvių kiekis</string>
+    <string name="add_meeting_address">Adresas</string>
+    <string name="add_meeting_description">Aprašymas</string>
+
+    <!-- Meeting details fragment -->
+    <string name="default_date">1970–01–01</string>
+    <string name="meeting_delete_question">Ar tikrai norite ištrinti susitikimą \"%1$s\"?</string>
 </resources>

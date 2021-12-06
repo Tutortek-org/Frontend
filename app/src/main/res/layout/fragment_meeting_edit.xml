@@ -6,9 +6,9 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.RegisterActivity"
+    tools:context=".navigation_fragments.meetings.MeetingEditFragment"
     android:layout_gravity="center"
-    android:background="@color/color_primary"
+    android:background="@color/color_onboarding_indicator_inactive"
     android:gravity="center">
 
     <ScrollView
@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/edit_title"
+                android:text="@string/edit_topic_header"
                 android:textColor="?colorOnPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -35,8 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                card_view:cardUseCompatPadding="true"
                 app:cardBackgroundColor="?colorOnPrimary"
+                card_view:cardUseCompatPadding="true"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
@@ -46,78 +46,97 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/profile_txt_input_name"
+                        android:id="@+id/txt_input_meeting_name_edit"
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         app:boxStrokeColor="@color/color_primary"
                         app:hintTextColor="@color/color_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/profile_edit_text_name"
+                            android:id="@+id/edit_text_meeting_name_edit"
                             style="@style/modifiedEditText"
                             android:textCursorDrawable="@drawable/text_input_cursor"
-                            android:hint="@string/edit_name"
-                            android:inputType="textPersonName"
+                            android:hint="@string/topic_add_name"
+                            android:inputType="text"
                             android:maxLines="1" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/profile_txt_input_surname"
+                        android:id="@+id/txt_input_meeting_date_edit"
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         app:boxStrokeColor="@color/color_primary"
                         app:hintTextColor="@color/color_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/profile_edit_text_surname"
+                            android:id="@+id/edit_text_meeting_date_edit"
                             style="@style/modifiedEditText"
                             android:textCursorDrawable="@drawable/text_input_cursor"
-                            android:hint="@string/edit_surname"
-                            android:inputType="textPersonName"
-                            android:maxLines="1" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/profile_txt_input_birthdate"
-                        style="@style/parent"
-                        android:layout_marginTop="@dimen/loginViewsMargin"
-                        app:boxStrokeColor="@color/color_primary"
-                        app:hintTextColor="@color/color_primary">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/profile_edit_text_birthdate"
-                            style="@style/modifiedEditText"
-                            android:textCursorDrawable="@drawable/text_input_cursor"
+                            android:hint="@string/add_meeting_date"
                             android:focusable="false"
-                            android:hint="@string/edit_birthdate"
                             android:inputType="date"
                             android:maxLines="1" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/profile_txt_input_description"
+                        android:id="@+id/txt_input_meeting_attendants_edit"
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         app:boxStrokeColor="@color/color_primary"
                         app:hintTextColor="@color/color_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/profile_edit_text_description"
+                            android:id="@+id/edit_text_meeting_attendants_edit"
                             style="@style/modifiedEditText"
                             android:textCursorDrawable="@drawable/text_input_cursor"
-                            android:hint="@string/description"
+                            android:hint="@string/add_meeting_attendants"
+                            android:inputType="numberSigned"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txt_input_meeting_address_edit"
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/loginViewsMargin"
+                        app:boxStrokeColor="@color/color_primary"
+                        app:hintTextColor="@color/color_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_meeting_address_edit"
+                            style="@style/modifiedEditText"
+                            android:textCursorDrawable="@drawable/text_input_cursor"
+                            android:hint="@string/add_meeting_address"
+                            android:inputType="text"
+                            android:maxLines="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txt_input_meeting_description_edit"
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/loginViewsMargin"
+                        app:boxStrokeColor="@color/color_primary"
+                        app:hintTextColor="@color/color_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_meeting_description_edit"
+                            style="@style/modifiedEditText"
+                            android:textCursorDrawable="@drawable/text_input_cursor"
+                            android:hint="@string/add_meeting_description"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-                        android:id="@+id/btn_edit_save"
+                        android:id="@+id/btn_confirm_edit_meeting"
                         style="@style/loginButton"
+                        android:backgroundTint="@color/color_primary"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
+                        android:layout_marginBottom="20dp"
                         android:text="@string/save"
                         app:initialCornerAngle="27dp"
                         app:spinning_bar_color="#FFF"

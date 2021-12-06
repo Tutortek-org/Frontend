@@ -6,7 +6,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigation_fragments.ProfileFragment">
+    tools:context=".navigation_fragments.meetings.MeetingDetailsFragment">
 
     <View
         android:id="@+id/view"
@@ -42,17 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:elevation="1dp"
-                    android:src="@drawable/ic_launcher_foreground"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,48 +68,37 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/txt_profile_name"
+                                android:id="@+id/txt_meeting_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="30dp"
                                 android:textColor="@color/color_text_primary"
-                                android:text="@string/name_surname"
+                                android:text="@string/meeting_name"
                                 android:textSize="25sp"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/txt_profile_role"
+                                android:id="@+id/txt_meeting_address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="10dp"
                                 android:textColor="@color/color_text_primary"
-                                android:text="@string/profile_title"
+                                android:text="@string/add_meeting_address"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/txt_profile_description"
+                                android:id="@+id/txt_meeting_description"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="20dp"
                                 android:textColor="@color/color_text_secondary"
-                                android:text="@string/profile_description"
+                                android:text="@string/add_meeting_description"
                                 android:textAlignment="center"
                                 android:textSize="15sp"
                                 android:textStyle="italic" />
-
-                            <TextView
-                                android:id="@+id/txt_profile_extra"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="10dp"
-                                android:textColor="@color/color_text_secondary"
-                                android:text="@string/profile_extra_info"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -141,12 +119,12 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/txt_profile_rating"
+                                android:id="@+id/txt_meeting_date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:textColor="@color/color_text_primary"
-                                android:text="@string/profile_rating"
+                                android:text="@string/default_date"
                                 android:textSize="30sp"
                                 android:textStyle="bold" />
 
@@ -155,7 +133,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:textColor="@color/color_text_secondary"
-                                android:text="@string/profile_rating_text"
+                                android:text="@string/add_meeting_date"
                                 android:textSize="20sp" />
 
                         </LinearLayout>
@@ -168,7 +146,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/txt_profile_course_count"
+                                android:id="@+id/txt_meeting_attendants"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -182,52 +160,61 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:textColor="@color/color_text_secondary"
-                                android:text="@string/profile_courses_text"
+                                android:text="@string/add_meeting_attendants"
+                                android:textAlignment="center"
                                 android:textSize="20sp" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:weightSum="2">
+
+                        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                            android:id="@+id/btn_edit_meeting"
+                            style="@style/loginButton"
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal"
+                            android:backgroundTint="@color/color_primary"
+                            android:text="@string/edit"
+                            android:textSize="15sp"
+                            app:initialCornerAngle="27dp"
+                            app:spinning_bar_color="#FFF"
+                            app:spinning_bar_padding="6dp"
+                            app:spinning_bar_width="4dp"/>
+
+                        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                            android:id="@+id/btn_delete_meeting"
+                            style="@style/loginButton"
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal"
+                            android:backgroundTint="@color/color_danger"
+                            android:text="@string/delete"
+                            android:textSize="15sp"
+                            app:initialCornerAngle="27dp"
+                            app:spinning_bar_color="#FFF"
+                            app:spinning_bar_padding="6dp"
+                            app:spinning_bar_width="4dp"/>
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
-                android:weightSum="2">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_edit_profile"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/color_primary"
-                    android:text="@string/edit"
-                    android:textSize="15sp"
-                    app:cornerRadius="20dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_delete_account"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/color_danger"
-                    android:text="@string/delete"
-                    android:textSize="15sp"
-                    app:cornerRadius="20dp" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

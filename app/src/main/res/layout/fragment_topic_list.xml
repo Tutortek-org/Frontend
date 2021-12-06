@@ -20,7 +20,8 @@
             android:id="@+id/recycler_topics"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layoutAnimation="@anim/recycler_view_animation"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layoutAnimation="@anim/topic_recycler_view_animation"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

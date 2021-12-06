@@ -72,12 +72,20 @@
     <string name="error_topic_post">Unexpected error while creating the topic</string>
     <string name="error_topic_delete">Unexpected error while deleting the topic</string>
     <string name="error_topic_edit">Unexpected error while editing the topic</string>
+    <string name="error_meeting_get">Unexpected error while getting meetings</string>
+    <string name="error_invalid_integer">Please enter a valid integer</string>
+    <string name="error_invalid_meeting_date">Please enter a date that is after today</string>
+    <string name="error_meeting_post">Unexpected error while creating the meeting</string>
+    <string name="error_invalid_birthdate">Please enter a date that is before today</string>
+    <string name="error_meeting_delete">Unexpected error while deleting the meeting</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
     <string name="account_deleted">Until next time!</string>
     <string name="password_change_success">Password changed successfully</string>
     <string name="topic_add_success">New topic added successfully</string>
+    <string name="no_meetings">No meetings are available for this topic</string>
+    <string name="meeting_add_succes">New meeting added successfully</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>
@@ -118,4 +126,23 @@
 
     <!-- Topic edit fragment -->
     <string name="edit_topic_header">Has something changed?</string>
+
+    <!-- Topic details fragment -->
+    <string name="get_meetings">Lookup meetings</string>
+    <string name="add_meeting">Add a meeting</string>
+
+    <!-- Meeting item -->
+    <string name="meeting_name">Meeting name</string>
+    <string name="meeting_date">Meeting date</string>
+
+    <!-- Add meeting fragment -->
+    <string name="add_meeting_header">One new meeting coming right up!</string>
+    <string name="add_meeting_date">Date</string>
+    <string name="add_meeting_attendants">Number of attendants</string>
+    <string name="add_meeting_address">Address</string>
+    <string name="add_meeting_description">Description</string>
+
+    <!-- Meeting details fragment -->
+    <string name="default_date">1970–01–01</string>
+    <string name="meeting_delete_question">Are you sure you want to delete meeting \"%1$s\"?</string>
 </resources>

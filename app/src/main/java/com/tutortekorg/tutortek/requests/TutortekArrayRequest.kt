@@ -7,7 +7,7 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonArrayRequest
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import org.json.JSONArray
 
 class TutortekArrayRequest(private val context: Context,

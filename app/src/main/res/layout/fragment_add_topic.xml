@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.RegisterActivity"
+    tools:context=".navigation_fragments.topics.AddTopicFragment"
     android:layout_gravity="center"
     android:background="@color/color_onboarding_indicator_inactive"
     android:gravity="center">
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:cardBackgroundColor="?colorOnPrimary"
+                card_view:cardUseCompatPadding="true"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout

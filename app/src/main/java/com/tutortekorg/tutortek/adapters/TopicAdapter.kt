@@ -14,7 +14,7 @@ class TopicAdapter(private val topics: List<Topic>)
     : RecyclerView.Adapter<TopicAdapter.TopicViewHolder>() {
 
     class TopicViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private var textTitle: TextView = view.findViewById(R.id.txt_topic_name)
+        private val textTitle: TextView = view.findViewById(R.id.txt_topic_name)
 
         fun setTopicData(topic: Topic) {
             textTitle.text = topic.name

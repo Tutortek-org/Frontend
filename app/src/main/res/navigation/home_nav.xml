@@ -62,7 +62,7 @@
         tools:layout="@layout/fragment_personal_topic_list" />
     <fragment
         android:id="@+id/addTopicFragment"
-        android:name="com.tutortekorg.tutortek.navigation_fragments.AddTopicFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.topics.AddTopicFragment"
         android:label="fragment_add_topic"
         tools:layout="@layout/fragment_add_topic" />
     <fragment
@@ -77,10 +77,47 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_topicDetailsFragment_to_meetingAddFragment"
+            app:destination="@id/meetingAddFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_topicDetailsFragment_to_meetingDetailsFragment"
+            app:destination="@id/meetingDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/topicEditFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.topics.TopicEditFragment"
         android:label="fragment_topic_edit"
         tools:layout="@layout/fragment_topic_edit" />
+    <fragment
+        android:id="@+id/meetingAddFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.MeetingAddFragment"
+        android:label="fragment_meeting_add"
+        tools:layout="@layout/fragment_meeting_add" />
+    <fragment
+        android:id="@+id/meetingDetailsFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.MeetingDetailsFragment"
+        android:label="fragment_meeting_details"
+        tools:layout="@layout/fragment_meeting_details" >
+        <action
+            android:id="@+id/action_meetingDetailsFragment_to_meetingEditFragment"
+            app:destination="@id/meetingEditFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/meetingEditFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.MeetingEditFragment"
+        android:label="fragment_meeting_edit"
+        tools:layout="@layout/fragment_meeting_edit" />
 </navigation>

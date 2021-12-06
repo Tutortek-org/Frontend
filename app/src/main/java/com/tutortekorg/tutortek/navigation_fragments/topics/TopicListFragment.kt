@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.adapters.TopicAdapter
-import com.tutortekorg.tutortek.authentication.JwtUtils
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentTopicListBinding
@@ -48,7 +47,6 @@ class TopicListFragment : Fragment() {
             {
                 val topics = parseTopicList(it)
                 adapter = TopicAdapter(topics)
-                binding.recyclerTopics.layoutManager = LinearLayoutManager(requireContext())
                 binding.recyclerTopics.scheduleLayoutAnimation()
                 binding.recyclerTopics.adapter = adapter
                 binding.refreshTopics.isRefreshing = false
