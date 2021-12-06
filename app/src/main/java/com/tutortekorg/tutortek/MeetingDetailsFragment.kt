@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Meeting
@@ -31,6 +34,20 @@ class MeetingDetailsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        findNavController().currentBackStackEntry
+            ?.savedStateHandle?.getLiveData<Meeting>("meeting")
+            ?.observe(viewLifecycleOwner) {
+                meeting = it
+                binding.txtMeetingAddress.text = meeting.address
+                binding.txtMeetingAttendants.text = meeting.maxAttendants.toString()
+                binding.txtMeetingDate.text = meeting.date
+                binding.txtMeetingDescription.text = meeting.description
+                binding.txtMeetingName.text = meeting.name
+            }
+    }
+
     private fun bindDataToUI() {
         meeting = arguments?.getSerializable("meeting") as Meeting
         topic = arguments?.getSerializable("topic") as Topic
@@ -50,6 +67,11 @@ class MeetingDetailsFragment : Fragment() {
                 meeting.name,
                 ::sendMeetingDeleteRequest
             )
+        }
+        binding.btnEditMeeting.setOnClickListener {
+            val bundle = bundleOf("meeting" to meeting, "topic" to topic)
+            it.findNavController()
+                .navigate(R.id.action_meetingDetailsFragment_to_meetingEditFragment, bundle)
         }
     }
 

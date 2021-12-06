@@ -5,11 +5,11 @@ import java.io.Serializable
 
 data class Meeting(
     val id: Long,
-    val name: String,
-    val date: String,
-    val maxAttendants: Int,
-    val address: String,
-    val description: String
+    var name: String,
+    var date: String,
+    var maxAttendants: Int,
+    var address: String,
+    var description: String
 ) : Serializable {
 
     constructor(body: JSONObject) : this(
