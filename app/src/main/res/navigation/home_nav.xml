@@ -106,5 +106,18 @@
         android:id="@+id/meetingDetailsFragment"
         android:name="com.tutortekorg.tutortek.MeetingDetailsFragment"
         android:label="fragment_meeting_details"
-        tools:layout="@layout/fragment_meeting_details" />
+        tools:layout="@layout/fragment_meeting_details" >
+        <action
+            android:id="@+id/action_meetingDetailsFragment_to_meetingEditFragment"
+            app:destination="@id/meetingEditFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/meetingEditFragment"
+        android:name="com.tutortekorg.tutortek.MeetingEditFragment"
+        android:label="fragment_meeting_edit"
+        tools:layout="@layout/fragment_meeting_edit" />
 </navigation>
