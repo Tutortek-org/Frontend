@@ -152,4 +152,7 @@
 
     <!-- Learning material item -->
     <string name="learning_material_name">Mokomosios medžiagos pavadinimas</string>
+
+    <!-- Learning material details -->
+    <string name="link">Nuoroda</string>
 </resources>

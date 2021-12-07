@@ -151,4 +151,7 @@
 
     <!-- Learning material item -->
     <string name="learning_material_name">Learning material name</string>
+
+    <!-- Learning material details -->
+    <string name="link">Link</string>
 </resources>
