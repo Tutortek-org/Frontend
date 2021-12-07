@@ -124,11 +124,11 @@ class TopicDetailsFragment : Fragment() {
     }
 
     private fun parseMeetingsList(array: JSONArray): List<Meeting> {
-        val topics = mutableListOf<Meeting>()
+        val meetings = mutableListOf<Meeting>()
         for(i in 0 until array.length()) {
-            topics.add(Meeting(array.getJSONObject(i)))
+            meetings.add(Meeting(array.getJSONObject(i)))
         }
-        return topics
+        return meetings
     }
 
     private fun revertButtonAnimations() {

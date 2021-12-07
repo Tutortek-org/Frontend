@@ -79,6 +79,7 @@
     <string name="error_meeting_post">Netikėta klaida kuriant susitikimą</string>
     <string name="error_invalid_birthdate">Įveskite datą, kuri yra prieš šiandieną</string>
     <string name="error_meeting_delete">UNetikėta klaida trinant susitikimą</string>
+    <string name="error_learning_material_get">Netikėta klaida bandant gauti mokomąją medžiagą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -86,7 +87,8 @@
     <string name="password_change_success">Slaptažodis pakeistas sėkmingai</string>
     <string name="topic_add_success">Nauja tema pridėta sėkmingai</string>
     <string name="no_meetings">Nėra suplanuota jokių susitikimų šiai temai</string>
-    <string name="meeting_add_succes">Naujas susitikimas pridėtas sėkmingai</string>
+    <string name="meeting_add_success">Naujas susitikimas pridėtas sėkmingai</string>
+    <string name="no_learning_materials">Nėra priskirta mokomosios medžiagos šiam susitikimui</string>
 
     <!-- Edit profile form -->
     <string name="save">Išsaugoti</string>

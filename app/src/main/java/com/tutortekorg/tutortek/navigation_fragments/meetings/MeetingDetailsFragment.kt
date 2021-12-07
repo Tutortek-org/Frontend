@@ -9,15 +9,22 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.adapters.LearningMaterialAdapter
 import com.tutortekorg.tutortek.constants.TutortekConstants
+import com.tutortekorg.tutortek.data.LearningMaterial
 import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentMeetingDetailsBinding
+import com.tutortekorg.tutortek.requests.TutortekArrayRequest
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.utils.SystemUtils
+import org.json.JSONArray
 
 class MeetingDetailsFragment : Fragment() {
     private lateinit var binding: FragmentMeetingDetailsBinding
@@ -75,6 +82,7 @@ class MeetingDetailsFragment : Fragment() {
             it.findNavController()
                 .navigate(R.id.action_meetingDetailsFragment_to_meetingEditFragment, bundle)
         }
+        binding.btnGetLearningMaterials.setOnClickListener { sendLearningMaterialsGetRequest() }
     }
 
     private fun sendMeetingDeleteRequest() {
@@ -92,13 +100,53 @@ class MeetingDetailsFragment : Fragment() {
         RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
+    private fun sendLearningMaterialsGetRequest() {
+        startButtonAnimations()
+        val url = "${TutortekConstants.BASE_URL}/topics/${topic.id}/meetings/${meeting.id}/materials"
+        val request = TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
+            {
+                if(it.length() == 0)
+                    Toast.makeText(requireContext(), R.string.no_learning_materials, Toast.LENGTH_SHORT).show()
+                else showLearningMaterialBottomSheetDialog(it)
+                revertButtonAnimations()
+            },
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it)) {
+                    revertButtonAnimations()
+                    Toast.makeText(requireContext(), R.string.error_learning_material_get, Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
+    }
+
+    private fun showLearningMaterialBottomSheetDialog(array: JSONArray) {
+        val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+        val view = View.inflate(requireContext(), R.layout.layout_bottom_sheet, null)
+        val learningMaterials = parseMeetingsList(array)
+        val recyclerView = view.findViewById(R.id.recycler_drawer) as RecyclerView
+        recyclerView.adapter = LearningMaterialAdapter(learningMaterials)
+        dialog.setContentView(view)
+        dialog.show()
+    }
+
+    private fun parseMeetingsList(array: JSONArray): List<LearningMaterial> {
+        val learningMaterials = mutableListOf<LearningMaterial>()
+        for(i in 0 until array.length()) {
+            learningMaterials.add(LearningMaterial(array.getJSONObject(i)))
+        }
+        return learningMaterials
+    }
+
     private fun startButtonAnimations() {
         binding.btnDeleteMeeting.startAnimation()
         binding.btnEditMeeting.startAnimation()
+        binding.btnGetLearningMaterials.startAnimation()
     }
 
     private fun revertButtonAnimations() {
         binding.btnDeleteMeeting.revertAnimation()
         binding.btnEditMeeting.revertAnimation()
+        binding.btnGetLearningMaterials.revertAnimation()
     }
 }

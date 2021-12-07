@@ -78,6 +78,7 @@
     <string name="error_meeting_post">Unexpected error while creating the meeting</string>
     <string name="error_invalid_birthdate">Please enter a date that is before today</string>
     <string name="error_meeting_delete">Unexpected error while deleting the meeting</string>
+    <string name="error_learning_material_get">Unexpected error while getting learning materials</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -85,7 +86,8 @@
     <string name="password_change_success">Password changed successfully</string>
     <string name="topic_add_success">New topic added successfully</string>
     <string name="no_meetings">No meetings are available for this topic</string>
-    <string name="meeting_add_succes">New meeting added successfully</string>
+    <string name="meeting_add_success">New meeting added successfully</string>
+    <string name="no_learning_materials">No learning materials are assigned to this meeting</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>
