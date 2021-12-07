@@ -64,7 +64,7 @@
         android:id="@+id/addTopicFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.topics.AddTopicFragment"
         android:label="fragment_add_topic"
-        tools:layout="@layout/fragment_add_topic" />
+        tools:layout="@layout/fragment_topic_add" />
     <fragment
         android:id="@+id/topicDetailsFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.topics.TopicDetailsFragment"
