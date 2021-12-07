@@ -145,4 +145,8 @@
     <!-- Meeting details fragment -->
     <string name="default_date">1970–01–01</string>
     <string name="meeting_delete_question">Are you sure you want to delete meeting \"%1$s\"?</string>
+    <string name="get_learning_materials">Lookup learning materials</string>
+
+    <!-- Learning material item -->
+    <string name="learning_material_name">Learning material name</string>
 </resources>
