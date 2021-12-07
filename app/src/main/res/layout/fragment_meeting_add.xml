@@ -126,7 +126,7 @@
                             style="@style/modifiedEditText"
                             android:textCursorDrawable="@drawable/text_input_cursor"
                             android:hint="@string/add_meeting_description"
-                            android:inputType="text" />
+                            android:inputType="textMultiLine" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
