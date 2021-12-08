@@ -12,19 +12,19 @@ import com.android.volley.Request
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
-import com.tutortekorg.tutortek.databinding.FragmentAddTopicBinding
+import com.tutortekorg.tutortek.databinding.FragmentTopicAddBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
 
 class AddTopicFragment : Fragment() {
-    private lateinit var binding: FragmentAddTopicBinding
+    private lateinit var binding: FragmentTopicAddBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAddTopicBinding.inflate(inflater, container, false)
+        binding = FragmentTopicAddBinding.inflate(inflater, container, false)
         binding.btnConfirmAddTopic.setOnClickListener { addTopic() }
         return binding.root
     }

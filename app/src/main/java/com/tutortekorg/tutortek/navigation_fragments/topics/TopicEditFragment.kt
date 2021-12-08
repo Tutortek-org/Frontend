@@ -16,6 +16,7 @@ import com.tutortekorg.tutortek.databinding.FragmentTopicEditBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONObject
+import java.lang.Exception
 
 class TopicEditFragment : Fragment() {
     private lateinit var binding: FragmentTopicEditBinding
@@ -72,8 +73,12 @@ class TopicEditFragment : Fragment() {
 
     private fun goBackToDetailsFragment() {
         topic.name = binding.editTextTopicNameEdit.text.toString()
-        val navController = findNavController()
-        navController.previousBackStackEntry?.savedStateHandle?.set("topic", topic)
-        navController.popBackStack()
+
+        try {
+            val navController = findNavController()
+            navController.previousBackStackEntry?.savedStateHandle?.set("topic", topic)
+            navController.popBackStack()
+        }
+        catch (e: Exception){}
     }
 }

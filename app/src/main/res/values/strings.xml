@@ -78,6 +78,11 @@
     <string name="error_meeting_post">Unexpected error while creating the meeting</string>
     <string name="error_invalid_birthdate">Please enter a date that is before today</string>
     <string name="error_meeting_delete">Unexpected error while deleting the meeting</string>
+    <string name="error_meeting_edit">Unexpected error while editing the meeting</string>
+    <string name="error_learning_material_get">Unexpected error while getting learning materials</string>
+    <string name="error_learning_material_post">Unexpected error while creating the learning material</string>
+    <string name="error_learning_material_delete">Unexpected error while deleting the learning material</string>
+    <string name="error_learning_material_edit">Unexpected error while editing the learning material</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -85,7 +90,9 @@
     <string name="password_change_success">Password changed successfully</string>
     <string name="topic_add_success">New topic added successfully</string>
     <string name="no_meetings">No meetings are available for this topic</string>
-    <string name="meeting_add_succes">New meeting added successfully</string>
+    <string name="meeting_add_success">New meeting added successfully</string>
+    <string name="no_learning_materials">No learning materials are assigned to this meeting</string>
+    <string name="learning_material_add_success">New learning material added successfully</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>
@@ -145,4 +152,16 @@
     <!-- Meeting details fragment -->
     <string name="default_date">1970–01–01</string>
     <string name="meeting_delete_question">Are you sure you want to delete meeting \"%1$s\"?</string>
+    <string name="get_learning_materials">Lookup learning materials</string>
+    <string name="add_learning_material">Add a learning material</string>
+
+    <!-- Learning material item -->
+    <string name="learning_material_name">Learning material name</string>
+
+    <!-- Learning material details fragment -->
+    <string name="link">Link</string>
+    <string name="learning_material_delete_question">Are you sure you want to delete learning material \"%1$s\"?</string>
+
+    <!-- Learning material add fragment -->
+    <string name="add_learning_material_header">It\'s great to prepare in advance!</string>
 </resources>

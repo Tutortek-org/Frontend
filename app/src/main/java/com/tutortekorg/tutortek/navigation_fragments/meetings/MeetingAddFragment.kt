@@ -105,7 +105,7 @@ class MeetingAddFragment : Fragment() {
         val body = formCreateMeetingBody()
         val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
             {
-                Toast.makeText(requireContext(), R.string.meeting_add_succes, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.meeting_add_success, Toast.LENGTH_SHORT).show()
                 activity?.onBackPressed()
             },
             {
