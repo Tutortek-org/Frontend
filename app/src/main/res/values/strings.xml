@@ -80,6 +80,7 @@
     <string name="error_meeting_delete">Unexpected error while deleting the meeting</string>
     <string name="error_learning_material_get">Unexpected error while getting learning materials</string>
     <string name="error_learning_material_post">Unexpected error while creating the learning material</string>
+    <string name="error_learning_material_delete">Unexpected error while deleting the learning material</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -157,6 +158,7 @@
 
     <!-- Learning material details fragment -->
     <string name="link">Link</string>
+    <string name="learning_material_delete_question">Are you sure you want to delete learning material \"%1$s\"?</string>
 
     <!-- Learning material add fragment -->
     <string name="add_learning_material_header">It\'s great to prepare in advance!</string>

@@ -130,7 +130,7 @@ class MeetingDetailsFragment : Fragment() {
         val view = View.inflate(requireContext(), R.layout.layout_bottom_sheet, null)
         val learningMaterials = parseMeetingsList(array)
         val recyclerView = view.findViewById(R.id.recycler_drawer) as RecyclerView
-        recyclerView.adapter = LearningMaterialAdapter(learningMaterials, findNavController(), dialog)
+        recyclerView.adapter = LearningMaterialAdapter(learningMaterials, findNavController(), dialog, topic, meeting)
         dialog.setContentView(view)
         dialog.show()
     }

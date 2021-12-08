@@ -78,9 +78,10 @@
     <string name="error_invalid_meeting_date">Įveskite datą, kuri yra po šiandienos</string>
     <string name="error_meeting_post">Netikėta klaida kuriant susitikimą</string>
     <string name="error_invalid_birthdate">Įveskite datą, kuri yra prieš šiandieną</string>
-    <string name="error_meeting_delete">UNetikėta klaida trinant susitikimą</string>
+    <string name="error_meeting_delete">Netikėta klaida trinant susitikimą</string>
     <string name="error_learning_material_get">Netikėta klaida bandant gauti mokomąją medžiagą</string>
     <string name="error_learning_material_post">Netikėta klaida kuriant mokomąją medžiagą</string>
+    <string name="error_learning_material_delete">Netikėta klaida trinant mokomąją medžiagą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -158,6 +159,7 @@
 
     <!-- Learning material details -->
     <string name="link">Nuoroda</string>
+    <string name="learning_material_delete_question">Ar tikrai norite ištrinti mokomąją medžiagą \"%1$s\"?</string>
 
     <!-- Learning material add fragment -->
     <string name="add_learning_material_header">Iš anksto pasiruošti yra gerai!</string>
