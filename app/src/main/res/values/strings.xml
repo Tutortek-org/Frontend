@@ -78,9 +78,11 @@
     <string name="error_meeting_post">Unexpected error while creating the meeting</string>
     <string name="error_invalid_birthdate">Please enter a date that is before today</string>
     <string name="error_meeting_delete">Unexpected error while deleting the meeting</string>
+    <string name="error_meeting_edit">Unexpected error while editing the meeting</string>
     <string name="error_learning_material_get">Unexpected error while getting learning materials</string>
     <string name="error_learning_material_post">Unexpected error while creating the learning material</string>
     <string name="error_learning_material_delete">Unexpected error while deleting the learning material</string>
+    <string name="error_learning_material_edit">Unexpected error while editing the learning material</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>

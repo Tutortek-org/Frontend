@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
@@ -112,7 +113,8 @@ class MeetingEditFragment : Fragment() {
             },
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
-
+                    Toast.makeText(requireContext(), R.string.error_meeting_edit, Toast.LENGTH_SHORT).show()
+                    binding.btnConfirmEditMeeting.revertAnimation()
                 }
             }
         )

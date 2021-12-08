@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.LearningMaterial
@@ -34,6 +37,18 @@ class LearningMaterialsDetailsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        findNavController().currentBackStackEntry
+            ?.savedStateHandle?.getLiveData<LearningMaterial>("learningMaterial")
+            ?.observe(viewLifecycleOwner) {
+                learningMaterial = it
+                binding.txtLearningMaterialDescription.text = learningMaterial.description
+                binding.txtLearningMaterialLink.text = learningMaterial.link
+                binding.txtLearningMaterialName.text = learningMaterial.name
+            }
+    }
+
     private fun bindDataToUI() {
         learningMaterial = arguments?.getSerializable("learningMaterial") as LearningMaterial
         topic = arguments?.getSerializable("topic") as Topic
@@ -52,6 +67,11 @@ class LearningMaterialsDetailsFragment : Fragment() {
                 learningMaterial.name,
                 ::sendLearningMaterialDeleteRequest
             )
+        }
+        binding.btnEditLearningMaterial.setOnClickListener {
+            val bundle = bundleOf("meeting" to meeting, "topic" to topic, "learningMaterial" to learningMaterial)
+            it.findNavController()
+                .navigate(R.id.action_learningMaterialsDetailsFragment_to_learningMaterialEditFragment, bundle)
         }
     }
 

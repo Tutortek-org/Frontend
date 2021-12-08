@@ -138,10 +138,23 @@
         android:id="@+id/learningMaterialsDetailsFragment"
         android:name="com.tutortekorg.tutortek.LearningMaterialsDetailsFragment"
         android:label="fragment_learning_materials_details"
-        tools:layout="@layout/fragment_learning_materials_details" />
+        tools:layout="@layout/fragment_learning_materials_details" >
+        <action
+            android:id="@+id/action_learningMaterialsDetailsFragment_to_learningMaterialEditFragment"
+            app:destination="@id/learningMaterialEditFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/learningMaterialAddFragment"
         android:name="com.tutortekorg.tutortek.LearningMaterialAddFragment"
         android:label="fragment_learning_material_add"
         tools:layout="@layout/fragment_learning_material_add" />
+    <fragment
+        android:id="@+id/learningMaterialEditFragment"
+        android:name="com.tutortekorg.tutortek.LearningMaterialEditFragment"
+        android:label="fragment_learning_material_edit"
+        tools:layout="@layout/fragment_learning_material_edit" />
 </navigation>
