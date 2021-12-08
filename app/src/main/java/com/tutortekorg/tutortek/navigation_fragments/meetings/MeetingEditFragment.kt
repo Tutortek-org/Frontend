@@ -145,8 +145,11 @@ class MeetingEditFragment : Fragment() {
         meeting.address = binding.editTextMeetingAddressEdit.text.toString()
         meeting.description = binding.editTextMeetingDescriptionEdit.text.toString()
 
-        val navController = findNavController()
-        navController.previousBackStackEntry?.savedStateHandle?.set("meeting", meeting)
-        navController.popBackStack()
+        try {
+            val navController = findNavController()
+            navController.previousBackStackEntry?.savedStateHandle?.set("meeting", meeting)
+            navController.popBackStack()
+        }
+        catch (e: Exception){}
     }
 }
