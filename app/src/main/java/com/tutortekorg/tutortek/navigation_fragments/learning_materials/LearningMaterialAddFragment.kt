@@ -1,4 +1,4 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.navigation_fragments.learning_materials
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.android.volley.Request
+import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.data.Topic
