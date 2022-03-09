@@ -3,11 +3,11 @@ package com.tutortekorg.tutortek.navigation_fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
@@ -37,8 +37,12 @@ class SettingsFragment : Fragment() {
     private fun changeTheme() {
         val preferences = requireContext().getSharedPreferences(TutortekConstants.SETTING_PREFERENCES, Context.MODE_PRIVATE)
         val editor = preferences.edit()
-        editor.putBoolean(TutortekConstants.DARK_MODE_FLAG, binding.darkTheme.isChecked)
+        val isDarkModeOn = binding.darkTheme.isChecked
+        editor.putBoolean(TutortekConstants.DARK_MODE_FLAG, isDarkModeOn)
         editor.apply()
+
+        if(isDarkModeOn) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     private fun logout() {
