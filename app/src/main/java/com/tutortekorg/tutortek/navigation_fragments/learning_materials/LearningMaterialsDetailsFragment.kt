@@ -18,6 +18,7 @@ import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentLearningMaterialsDetailsBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.utils.SystemUtils
 
 class LearningMaterialsDetailsFragment : Fragment() {
@@ -33,7 +34,7 @@ class LearningMaterialsDetailsFragment : Fragment() {
         binding = FragmentLearningMaterialsDetailsBinding.inflate(inflater, container, false)
 
         bindDataToUI()
-        bindEventsToButtons()
+        bindEvents()
 
         return binding.root
     }
@@ -60,7 +61,7 @@ class LearningMaterialsDetailsFragment : Fragment() {
         binding.txtLearningMaterialName.text = learningMaterial.name
     }
 
-    private fun bindEventsToButtons() {
+    private fun bindEvents() {
         binding.btnDeleteLearningMaterial.setOnClickListener {
             SystemUtils.showConfirmDeleteDialog(
                 requireContext(),
@@ -74,6 +75,26 @@ class LearningMaterialsDetailsFragment : Fragment() {
             it.findNavController()
                 .navigate(R.id.action_learningMaterialsDetailsFragment_to_learningMaterialEditFragment, bundle)
         }
+        binding.refreshMaterial.setOnRefreshListener { sendLearningMaterialGetRequest() }
+    }
+
+    private fun sendLearningMaterialGetRequest() {
+        val url = "${TutortekConstants.BASE_URL}/topics/${topic.id}/meetings/${meeting.id}/materials/${learningMaterial.id}"
+        val request = TutortekObjectRequest(requireContext(), Request.Method.GET, url, null,
+            {
+                learningMaterial = LearningMaterial(it)
+                binding.txtLearningMaterialDescription.text = learningMaterial.description
+                binding.txtLearningMaterialLink.text = learningMaterial.link
+                binding.txtLearningMaterialName.text = learningMaterial.name
+                binding.refreshMaterial.isRefreshing = false
+            },
+            {
+                binding.refreshMaterial.isRefreshing = false
+                if(!JwtUtils.wasResponseUnauthorized(it))
+                    Toast.makeText(requireContext(), R.string.error_learning_material_get, Toast.LENGTH_SHORT).show()
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
     private fun sendLearningMaterialDeleteRequest() {
