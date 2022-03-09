@@ -68,7 +68,8 @@
     <string name="wrong_password">You have entered a wrong password</string>
     <string name="error_account_delete">Unexpected error while deleting account</string>
     <string name="error_change_password">Unexpected error while changing password</string>
-    <string name="error_topic_get">Unexpected error while retrieving topics</string>
+    <string name="error_topics_get">Unexpected error while retrieving topics</string>
+    <string name="error_topic_get">Unexpected error while retrieving the topic</string>
     <string name="error_topic_post">Unexpected error while creating the topic</string>
     <string name="error_topic_delete">Unexpected error while deleting the topic</string>
     <string name="error_topic_edit">Unexpected error while editing the topic</string>

@@ -54,7 +54,7 @@ class TopicListFragment : Fragment() {
             {
                 binding.refreshTopics.isRefreshing = false
                 if(!JwtUtils.wasResponseUnauthorized(it))
-                    Toast.makeText(requireContext(), R.string.error_topic_get, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.error_topics_get, Toast.LENGTH_SHORT).show()
             }
         )
         RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
