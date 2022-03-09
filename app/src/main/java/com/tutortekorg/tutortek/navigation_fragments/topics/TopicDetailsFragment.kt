@@ -35,13 +35,13 @@ class TopicDetailsFragment : Fragment() {
     ): View {
         binding = FragmentTopicDetailsBinding.inflate(inflater, container, false)
 
-        bindEventsToButtons()
+        bindEvents()
         bindDataToUI()
 
         return binding.root
     }
 
-    private fun bindEventsToButtons() {
+    private fun bindEvents() {
         binding.btnDeleteTopic.setOnClickListener {
             SystemUtils.showConfirmDeleteDialog(
                 requireContext(),
@@ -61,6 +61,7 @@ class TopicDetailsFragment : Fragment() {
             it.findNavController()
                 .navigate(R.id.action_topicDetailsFragment_to_meetingAddFragment, bundle)
         }
+        binding.refreshTopic.setOnRefreshListener { sendTopicGetRequest() }
     }
 
     private fun bindDataToUI() {
@@ -78,10 +79,27 @@ class TopicDetailsFragment : Fragment() {
             }
     }
 
+    private fun sendTopicGetRequest() {
+        val url = "${TutortekConstants.BASE_URL}/topics/${topic.id}"
+        val request = TutortekObjectRequest(requireContext(), Request.Method.GET, url, null,
+            {
+                topic = Topic(it)
+                binding.txtTopicDetailsName.text = topic.name
+                binding.refreshTopic.isRefreshing = false
+            },
+            {
+                binding.refreshTopic.isRefreshing = false
+                if(!JwtUtils.wasResponseUnauthorized(it))
+                    Toast.makeText(requireContext(), R.string.error_topic_get, Toast.LENGTH_SHORT).show()
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
+    }
+
     private fun sendMeetingsRequest() {
         startButtonAnimations()
         val url = "${TutortekConstants.BASE_URL}/topics/${topic.id}/meetings"
-        val request =  TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
+        val request = TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
             {
                 if(it.length() == 0)
                     Toast.makeText(requireContext(), R.string.no_meetings, Toast.LENGTH_SHORT).show()
@@ -91,7 +109,7 @@ class TopicDetailsFragment : Fragment() {
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
                     revertButtonAnimations()
-                    Toast.makeText(requireContext(), R.string.error_meeting_get, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.error_meetings_get, Toast.LENGTH_SHORT).show()
                 }
             }
         )
