@@ -39,6 +39,7 @@
 
     <!-- Settings fragment -->
     <string name="logout">Logout</string>
+    <string name="dark_mode_switch">Dark theme</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Name Surname</string>

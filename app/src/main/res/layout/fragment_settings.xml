@@ -6,11 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".navigation_fragments.SettingsFragment">
 
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/dark_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/dark_mode_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/color_primary"
+        android:textColor="@color/white"
         android:text="@string/logout"
         android:textSize="15sp"
         app:cornerRadius="20dp"
