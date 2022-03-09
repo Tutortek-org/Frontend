@@ -40,6 +40,7 @@
 
     <!-- Settings fragment -->
     <string name="logout">Atsijungti</string>
+    <string name="dark_mode_switch">Tamsi tema</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Vardas Pavardė</string>
