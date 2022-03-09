@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
                 .setExitAnim(android.R.anim.fade_out)
                 .setPopEnterAnim(android.R.anim.fade_in)
                 .setPopExitAnim(android.R.anim.fade_out)
-            navHostFragment.navController.popBackStack()
+            navHostFragment.navController.popBackStack(R.id.homeFragment, false)
             navHostFragment.navController.navigate(it.itemId, null, navBuilder.build())
 
             return@setOnItemSelectedListener true
