@@ -109,7 +109,7 @@ class TopicDetailsFragment : Fragment() {
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
                     revertButtonAnimations()
-                    Toast.makeText(requireContext(), R.string.error_meeting_get, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.error_meetings_get, Toast.LENGTH_SHORT).show()
                 }
             }
         )

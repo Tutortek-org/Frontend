@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
+import com.tutortekorg.tutortek.DatePickerFragment
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
@@ -31,6 +32,7 @@ class MeetingEditFragment : Fragment() {
     ): View {
         binding = FragmentMeetingEditBinding.inflate(inflater, container, false)
         binding.btnConfirmEditMeeting.setOnClickListener { saveEditedMeeting() }
+        binding.editTextMeetingDateEdit.setOnClickListener { onDateClick() }
         return binding.root
     }
 
@@ -44,6 +46,11 @@ class MeetingEditFragment : Fragment() {
         binding.editTextMeetingDateEdit.setText(meeting.date)
         binding.editTextMeetingDescriptionEdit.setText(meeting.description)
         binding.editTextMeetingNameEdit.setText(meeting.name)
+    }
+
+    private fun onDateClick() {
+        val datePickerFragment = DatePickerFragment(binding.editTextMeetingDateEdit)
+        activity?.supportFragmentManager?.let { datePickerFragment.show(it, "datePicker") }
     }
 
     private fun saveEditedMeeting() {

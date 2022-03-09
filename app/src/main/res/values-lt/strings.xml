@@ -74,7 +74,8 @@
     <string name="error_topic_post">Netikėta klaida kuriant temą</string>
     <string name="error_topic_delete">Netikėta klaida trinant temą</string>
     <string name="error_topic_edit">Netikėta klaida redaguojant temą</string>
-    <string name="error_meeting_get">Netikėta klaida bandant gauti susitikimus</string>
+    <string name="error_meetings_get">Netikėta klaida bandant gauti susitikimus</string>
+    <string name="error_meeting_get">Netikėta klaida bandant gauti susitikimą</string>
     <string name="error_invalid_integer">Įveskite tinkantį sveiką skaičių</string>
     <string name="error_invalid_meeting_date">Įveskite datą, kuri yra po šiandienos</string>
     <string name="error_meeting_post">Netikėta klaida kuriant susitikimą</string>
