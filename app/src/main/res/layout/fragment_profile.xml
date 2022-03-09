@@ -84,7 +84,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="30dp"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?android:textColorPrimary"
                                 android:text="@string/name_surname"
                                 android:textSize="25sp"
                                 android:textStyle="bold" />
@@ -95,7 +95,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="10dp"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?android:textColorPrimary"
                                 android:text="@string/profile_title"
                                 android:textSize="17sp" />
 
@@ -145,7 +145,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?android:textColorPrimary"
                                 android:text="@string/profile_rating"
                                 android:textSize="30sp"
                                 android:textStyle="bold" />
@@ -172,7 +172,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?android:textColorPrimary"
                                 android:text="@string/profile_courses"
                                 android:textSize="30sp"
                                 android:textStyle="bold" />
@@ -210,6 +210,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/color_primary"
+                    android:textColor="@color/white"
                     android:text="@string/edit"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />
@@ -223,6 +224,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/color_danger"
+                    android:textColor="@color/white"
                     android:text="@string/delete"
                     android:textSize="15sp"
                     app:cornerRadius="20dp" />

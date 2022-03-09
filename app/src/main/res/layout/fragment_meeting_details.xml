@@ -82,7 +82,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="30dp"
-                                    android:textColor="@color/color_text_primary"
+                                    android:textColor="?android:textColorPrimary"
                                     android:text="@string/meeting_name"
                                     android:textSize="25sp"
                                     android:textStyle="bold" />
@@ -93,7 +93,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
                                     android:layout_marginTop="10dp"
-                                    android:textColor="@color/color_text_primary"
+                                    android:textColor="?android:textColorPrimary"
                                     android:text="@string/add_meeting_address"
                                     android:textSize="17sp" />
 
@@ -133,7 +133,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
-                                    android:textColor="@color/color_text_primary"
+                                    android:textColor="?android:textColorPrimary"
                                     android:text="@string/default_date"
                                     android:textSize="30sp"
                                     android:textStyle="bold" />
@@ -160,7 +160,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
-                                    android:textColor="@color/color_text_primary"
+                                    android:textColor="?android:textColorPrimary"
                                     android:text="@string/profile_courses"
                                     android:textSize="30sp"
                                     android:textStyle="bold" />
