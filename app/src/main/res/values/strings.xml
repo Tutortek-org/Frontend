@@ -40,6 +40,7 @@
     <!-- Settings fragment -->
     <string name="logout">Logout</string>
     <string name="dark_mode_switch">Dark theme</string>
+    <string name="report_bug">Report a bug</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Name Surname</string>
@@ -87,6 +88,7 @@
     <string name="error_learning_material_post">Unexpected error while creating the learning material</string>
     <string name="error_learning_material_delete">Unexpected error while deleting the learning material</string>
     <string name="error_learning_material_edit">Unexpected error while editing the learning material</string>
+    <string name="error_bug_report_send">Unexpected error while sending a bug report</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -168,4 +170,9 @@
 
     <!-- Learning material add fragment -->
     <string name="add_learning_material_header">It\'s great to prepare in advance!</string>
+
+    <!-- Bug report fragment -->
+    <string name="bug_report_header">Tell us what\'s wrong</string>
+    <string name="btn_send_report">Send</string>
+    <string name="bug_report_success">Bug reported successfully</string>
 </resources>

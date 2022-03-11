@@ -41,6 +41,7 @@
     <!-- Settings fragment -->
     <string name="logout">Atsijungti</string>
     <string name="dark_mode_switch">Tamsi tema</string>
+    <string name="report_bug">Pranešti apie klaidą</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Vardas Pavardė</string>
@@ -88,6 +89,7 @@
     <string name="error_learning_material_post">Netikėta klaida kuriant mokomąją medžiagą</string>
     <string name="error_learning_material_delete">Netikėta klaida trinant mokomąją medžiagą</string>
     <string name="error_learning_material_edit">Netikėta klaida redaguojant mokomąją medžiagą</string>
+    <string name="error_bug_report_send">Netikėta klaida siunčiant klaidos pranešimą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -169,4 +171,9 @@
 
     <!-- Learning material add fragment -->
     <string name="add_learning_material_header">Iš anksto pasiruošti yra gerai!</string>
+
+    <!-- Bug report fragment -->
+    <string name="bug_report_header">Papasakokite kas negerai</string>
+    <string name="btn_send_report">Išsiųsti</string>
+    <string name="bug_report_success">Apie klaidą pranešta sėkmingai</string>
 </resources>

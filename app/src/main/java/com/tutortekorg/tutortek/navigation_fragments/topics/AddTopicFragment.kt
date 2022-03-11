@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.utils.JwtUtils
@@ -44,9 +45,11 @@ class AddTopicFragment : Fragment() {
         val body = getJsonBody()
         val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
             {
-                Toast.makeText(requireContext(), R.string.topic_add_success, Toast.LENGTH_SHORT).show()
-                closeKeyboard()
-                activity?.onBackPressed()
+                try {
+                    Toast.makeText(requireContext(), R.string.topic_add_success, Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+                }
+                catch (e: Exception){}
             },
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
@@ -63,11 +66,5 @@ class AddTopicFragment : Fragment() {
         val name = binding.editTextTopicName.text.toString()
         body.put("name", name)
         return body
-    }
-
-    private fun closeKeyboard() {
-        val inputMethodManager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        val windowToken = activity?.currentFocus?.windowToken
-        inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }

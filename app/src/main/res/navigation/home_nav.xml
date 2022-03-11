@@ -34,7 +34,15 @@
         android:id="@+id/settingsFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_bugReportFragment"
+            app:destination="@id/bugReportFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/topicListFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.topics.TopicListFragment"
@@ -157,4 +165,9 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.learning_materials.LearningMaterialEditFragment"
         android:label="fragment_learning_material_edit"
         tools:layout="@layout/fragment_learning_material_edit" />
+    <fragment
+        android:id="@+id/bugReportFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.BugReportFragment"
+        android:label="fragment_bug_report"
+        tools:layout="@layout/fragment_bug_report" />
 </navigation>

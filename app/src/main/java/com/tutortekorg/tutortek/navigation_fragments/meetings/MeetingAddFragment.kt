@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.DatePickerFragment
 import com.tutortekorg.tutortek.R
@@ -105,8 +106,11 @@ class MeetingAddFragment : Fragment() {
         val body = formCreateMeetingBody()
         val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
             {
-                Toast.makeText(requireContext(), R.string.meeting_add_success, Toast.LENGTH_SHORT).show()
-                activity?.onBackPressed()
+                try {
+                    Toast.makeText(requireContext(), R.string.meeting_add_success, Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+                }
+                catch (e: Exception){}
             },
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
