@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tutortekorg.tutortek.ProfileEditActivity
+import androidx.navigation.findNavController
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.FragmentEditMenuBinding
 import com.tutortekorg.tutortek.profile_editing.ChangePasswordActivity
@@ -19,14 +19,11 @@ class EditMenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEditMenuBinding.inflate(inflater, container, false)
-        binding.btnChangeProfileData.setOnClickListener { onEditProfileClick() }
+        binding.btnChangeProfileData.setOnClickListener {
+            it.findNavController().navigate(R.id.action_editMenuFragment_to_profileEditFragment)
+        }
         binding.btnChangePassword.setOnClickListener { onChangePasswordClick() }
         return binding.root
-    }
-
-    private fun onEditProfileClick() {
-        val intent = Intent(requireContext(), ProfileEditActivity::class.java)
-        startActivity(intent)
     }
 
     private fun onChangePasswordClick() {

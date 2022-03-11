@@ -1,31 +1,37 @@
-package com.tutortekorg.tutortek
+package com.tutortekorg.tutortek.navigation_fragments.profile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
-import com.tutortekorg.tutortek.utils.JwtUtils
+import com.tutortekorg.tutortek.DatePickerFragment
+import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
-import com.tutortekorg.tutortek.databinding.ActivityProfileEditBinding
+import com.tutortekorg.tutortek.databinding.FragmentProfileEditBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.JwtUtils
 import org.json.JSONObject
 
-class ProfileEditActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityProfileEditBinding
+class ProfileEditFragment : Fragment() {
+    private lateinit var binding: FragmentProfileEditBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityProfileEditBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentProfileEditBinding.inflate(inflater, container, false)
         displayCurrentInformation()
-
         binding.btnEditSave.setOnClickListener { saveNewInformation() }
         binding.profileEditTextBirthdate.setOnClickListener { onBirthDateClick() }
         binding.profileEditTextBirthdate.keyListener = null
+        return binding.root
     }
 
     private fun displayCurrentInformation() {
@@ -38,7 +44,7 @@ class ProfileEditActivity : AppCompatActivity() {
 
     private fun onBirthDateClick() {
         val datePickerFragment = DatePickerFragment(binding.profileEditTextBirthdate)
-        datePickerFragment.show(supportFragmentManager, "datePicker")
+        activity?.supportFragmentManager?.let { datePickerFragment.show(it, "datePicker") }
     }
 
     private fun saveNewInformation() {
@@ -74,23 +80,26 @@ class ProfileEditActivity : AppCompatActivity() {
     }
 
     private fun sendEditProfileRequest() {
-        val profileId = JwtUtils.getProfileIdFromSavedToken(this)
+        val profileId = JwtUtils.getProfileIdFromSavedToken(requireContext())
         val url = "${TutortekConstants.BASE_URL}/profiles/$profileId"
         val body = formProfileUpdateRequestBody()
-        val request = TutortekObjectRequest(this, Request.Method.PUT, url, body,
+        val request = TutortekObjectRequest(requireContext(), Request.Method.PUT, url, body,
             {
-                updateSingletonData(body)
-                Toast.makeText(this, R.string.success_profile_edit, Toast.LENGTH_SHORT).show()
-                onBackPressed()
+                try {
+                    updateSingletonData(body)
+                    Toast.makeText(requireContext(), R.string.success_profile_edit, Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+                }
+                catch (e: Exception){}
             },
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
-                    Toast.makeText(this, R.string.error_profile_edit, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.error_profile_edit, Toast.LENGTH_SHORT).show()
                     binding.btnEditSave.revertAnimation()
                 }
             }
         )
-        RequestSingleton.getInstance(this).addToRequestQueue(request)
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
     private fun formProfileUpdateRequestBody(): JSONObject {
