@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_primary"
-    tools:context=".profile_editing.EditMenuActivity">
+    tools:context=".navigation_fragments.profile.EditMenuFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_change_profile_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="?colorOnPrimary"
         android:textSize="15sp"
         android:textColor="@color/color_primary"
         android:text="@string/btn_edit_profile_data"
@@ -29,7 +29,7 @@
         android:id="@+id/btn_change_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="?colorOnPrimary"
         android:textSize="15sp"
         android:textColor="@color/color_primary"
         android:text="@string/btn_change_password"
