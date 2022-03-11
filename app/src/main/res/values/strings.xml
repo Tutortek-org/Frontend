@@ -40,6 +40,7 @@
     <!-- Settings fragment -->
     <string name="logout">Logout</string>
     <string name="dark_mode_switch">Dark theme</string>
+    <string name="report_bug">Report a bug</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Name Surname</string>
@@ -168,4 +169,8 @@
 
     <!-- Learning material add fragment -->
     <string name="add_learning_material_header">It\'s great to prepare in advance!</string>
+
+    <!-- Bug report fragment -->
+    <string name="bug_report_header">Tell us what\'s wrong</string>
+    <string name="btn_send_report">Send</string>
 </resources>

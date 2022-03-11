@@ -41,6 +41,7 @@
     <!-- Settings fragment -->
     <string name="logout">Atsijungti</string>
     <string name="dark_mode_switch">Tamsi tema</string>
+    <string name="report_bug">Pranešti apie klaidą</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Vardas Pavardė</string>
@@ -169,4 +170,8 @@
 
     <!-- Learning material add fragment -->
     <string name="add_learning_material_header">Iš anksto pasiruošti yra gerai!</string>
+
+    <!-- Bug report fragment -->
+    <string name="bug_report_header">Papasakokite kas negerai</string>
+    <string name="btn_send_report">Išsiųsti</string>
 </resources>

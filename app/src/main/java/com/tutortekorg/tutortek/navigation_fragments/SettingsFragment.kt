@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.navigation.findNavController
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
@@ -24,6 +25,9 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         binding.btnLogout.setOnClickListener { logout() }
         binding.darkTheme.setOnClickListener { changeTheme() }
+        binding.btnReportBug.setOnClickListener {
+            it.findNavController().navigate(R.id.action_settingsFragment_to_bugReportFragment)
+        }
         return binding.root
     }
 
