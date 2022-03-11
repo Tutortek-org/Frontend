@@ -20,10 +20,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".profile_editing.AccountDeleteActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ProfileEditActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

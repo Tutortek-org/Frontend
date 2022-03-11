@@ -29,7 +29,15 @@
         android:id="@+id/profileFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_deleteAccountFragment"
+            app:destination="@id/deleteAccountFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.SettingsFragment"
@@ -170,4 +178,9 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.BugReportFragment"
         android:label="fragment_bug_report"
         tools:layout="@layout/fragment_bug_report" />
+    <fragment
+        android:id="@+id/deleteAccountFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.profile.DeleteAccountFragment"
+        android:label="fragment_delete_account"
+        tools:layout="@layout/fragment_delete_account" />
 </navigation>

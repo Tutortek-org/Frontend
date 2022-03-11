@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tutortekorg.tutortek.profile_editing.AccountDeleteActivity
+import androidx.navigation.findNavController
 import com.tutortekorg.tutortek.profile_editing.EditMenuActivity
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.R
@@ -22,7 +22,9 @@ class ProfileFragment : Fragment() {
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         binding.btnEditProfile.setOnClickListener { openEditForm() }
-        binding.btnDeleteAccount.setOnClickListener { openDeleteForm() }
+        binding.btnDeleteAccount.setOnClickListener {
+            it.findNavController().navigate(R.id.action_profileFragment_to_deleteAccountFragment)
+        }
         return binding.root
     }
 
@@ -34,11 +36,6 @@ class ProfileFragment : Fragment() {
 
     private fun openEditForm() {
         val intent = Intent(activity, EditMenuActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun openDeleteForm() {
-        val intent = Intent(activity, AccountDeleteActivity::class.java)
         startActivity(intent)
     }
 
