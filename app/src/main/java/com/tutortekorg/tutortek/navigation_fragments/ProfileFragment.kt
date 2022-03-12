@@ -1,13 +1,11 @@
 package com.tutortekorg.tutortek.navigation_fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tutortekorg.tutortek.profile_editing.AccountDeleteActivity
-import com.tutortekorg.tutortek.profile_editing.EditMenuActivity
+import androidx.navigation.findNavController
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.UserProfile
@@ -21,8 +19,12 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        binding.btnEditProfile.setOnClickListener { openEditForm() }
-        binding.btnDeleteAccount.setOnClickListener { openDeleteForm() }
+        binding.btnEditProfile.setOnClickListener {
+            it.findNavController().navigate(R.id.action_profileFragment_to_editMenuFragment)
+        }
+        binding.btnDeleteAccount.setOnClickListener {
+            it.findNavController().navigate(R.id.action_profileFragment_to_deleteAccountFragment)
+        }
         return binding.root
     }
 
@@ -30,16 +32,6 @@ class ProfileFragment : Fragment() {
         super.onStart()
         val userProfile = ProfileSingleton.getInstance().userProfile
         fillOutUI(userProfile)
-    }
-
-    private fun openEditForm() {
-        val intent = Intent(activity, EditMenuActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun openDeleteForm() {
-        val intent = Intent(activity, AccountDeleteActivity::class.java)
-        startActivity(intent)
     }
 
     private fun fillOutUI(userProfile: UserProfile?) {

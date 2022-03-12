@@ -33,6 +33,9 @@
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/activity_splashscreen.xml" value="0.3489583333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_add_topic.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_bug_report.xml" value="0.3494791666666667" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_change_password.xml" value="0.3494791666666667" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_delete_account.xml" value="0.3494791666666667" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_edit_menu.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_home.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_learning_material_add.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_learning_material_edit.xml" value="0.3333333333333333" />
@@ -42,6 +45,7 @@
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_meeting_edit.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_personal_topic_list.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_profile.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_profile_edit.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_settings.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_topic_add.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_topic_details.xml" value="0.3333333333333333" />

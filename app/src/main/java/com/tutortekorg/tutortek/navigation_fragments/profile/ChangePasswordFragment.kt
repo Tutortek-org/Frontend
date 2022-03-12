@@ -1,31 +1,34 @@
-package com.tutortekorg.tutortek.profile_editing
+package com.tutortekorg.tutortek.navigation_fragments.profile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.requests.TutortekObjectRequest
-import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
-import com.tutortekorg.tutortek.databinding.ActivityChangePasswordBinding
+import com.tutortekorg.tutortek.databinding.FragmentChangePasswordBinding
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.JwtUtils
 import org.json.JSONObject
+import java.lang.Exception
 
-class ChangePasswordActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityChangePasswordBinding
+class ChangePasswordFragment : Fragment() {
+    private lateinit var binding: FragmentChangePasswordBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityChangePasswordBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.btnSavePassword.setOnClickListener { changePassword() }
-        binding.editTextNewPassword.addTextChangedListener { binding.txtInputNewPassword.error = null }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     private fun changePassword() {
@@ -41,37 +44,41 @@ class ChangePasswordActivity : AppCompatActivity() {
     private fun sendLoginRequest(shouldSendChangeRequest: Boolean) {
         val url = "${TutortekConstants.BASE_URL}/login"
         val body = formLoginBody(shouldSendChangeRequest)
-        val request = JsonObjectRequest(Request.Method.POST, url, body,
+        val request = JsonObjectRequest(
+            Request.Method.POST, url, body,
             {
-                JwtUtils.saveJwtToken(this, it)
-                if(shouldSendChangeRequest) sendChangeRequest()
-                else onBackPressed()
+                try {
+                    JwtUtils.saveJwtToken(requireContext(), it)
+                    if(shouldSendChangeRequest) sendChangeRequest()
+                    else findNavController().popBackStack()
+                }
+                catch (e: Exception){}
             },
             {
                 if(!shouldSendChangeRequest) navigateToLoginScreen()
                 else {
-                    Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.wrong_password, Toast.LENGTH_SHORT).show()
                     binding.btnSavePassword.revertAnimation()
                 }
             }
         )
-        RequestSingleton.getInstance(this).addToRequestQueue(request)
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
     private fun sendChangeRequest() {
         val url = "${TutortekConstants.BASE_URL}/password"
         val body = formChangePasswordBody()
-        val request = TutortekObjectRequest(this, Request.Method.PUT, url, body,
+        val request = TutortekObjectRequest(requireContext(), Request.Method.PUT, url, body,
             {
-                Toast.makeText(this, R.string.password_change_success, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.password_change_success, Toast.LENGTH_SHORT).show()
                 sendLoginRequest(false)
             },
             {
-                Toast.makeText(this, R.string.error_change_password, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.error_change_password, Toast.LENGTH_SHORT).show()
                 binding.btnSavePassword.revertAnimation()
             }
         )
-        RequestSingleton.getInstance(this).addToRequestQueue(request)
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
     private fun formChangePasswordBody(): JSONObject {
@@ -82,7 +89,7 @@ class ChangePasswordActivity : AppCompatActivity() {
     }
 
     private fun formLoginBody(shouldSendChangeRequest: Boolean): JSONObject {
-        val email = JwtUtils.getEmailFromSavedToken(this)
+        val email = JwtUtils.getEmailFromSavedToken(requireContext())
         var password = binding.editTextCurrentPassword.text.toString()
         if(!shouldSendChangeRequest) password = binding.editTextNewPassword.text.toString()
         val body = JSONObject()
@@ -92,9 +99,9 @@ class ChangePasswordActivity : AppCompatActivity() {
     }
 
     private fun navigateToLoginScreen() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(requireContext(), LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
-        finish()
+        activity?.finish()
     }
 }

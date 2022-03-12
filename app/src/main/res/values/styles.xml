@@ -22,12 +22,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="customDatePickerStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="customDatePickerStyle">
         <item name="android:datePickerStyle">@style/customDatePicker</item>
         <item name="android:buttonBarPositiveButtonStyle">@style/DatePickerButtonStyle</item>
         <item name="android:buttonBarNegativeButtonStyle">@style/DatePickerButtonStyle</item>
+        <item name="android:windowIsFloating">true</item>
     </style>
-    <style name="customDatePicker" parent="@android:style/Widget.Material.Light.DatePicker">
+    <style name="customDatePicker" parent="@android:style/Widget.Material.DatePicker">
         <item name="android:datePickerMode">spinner</item>
         <item name="android:calendarViewShown">false</item>
         <item name="android:textColorPrimary">@color/color_primary</item>
