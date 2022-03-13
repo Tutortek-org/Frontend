@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
-import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -16,13 +15,13 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
+import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
 import com.tutortekorg.tutortek.databinding.FragmentProfilePhotoBinding
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class ProfilePhotoFragment : Fragment() {
     private lateinit var binding: FragmentProfilePhotoBinding
@@ -47,7 +46,6 @@ class ProfilePhotoFragment : Fragment() {
                 val bitmap = BitmapFactory.decodeFile(currentPhotoPath)
                 val rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
                 binding.profilePhoto.setImageBitmap(rotatedBitmap)
-                //binding.profilePhoto.setImageBitmap(it.data?.extras?.get(MediaStore.EXTRA_OUTPUT) as Bitmap)
             }
         }
     }
@@ -56,14 +54,12 @@ class ProfilePhotoFragment : Fragment() {
         val exif = ExifInterface(currentPhotoPath)
         val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1)
         val matrix = Matrix()
-        println("LOOOOOOOOOL $orientation")
         val degrees = when(orientation) {
             ExifInterface.ORIENTATION_ROTATE_90 -> 90F
             ExifInterface.ORIENTATION_ROTATE_180 -> 180F
             ExifInterface.ORIENTATION_ROTATE_270 -> 270F
             else -> 0F
         }
-        println("LMAOOOOOO $degrees")
         matrix.postRotate(degrees)
         return matrix
     }
