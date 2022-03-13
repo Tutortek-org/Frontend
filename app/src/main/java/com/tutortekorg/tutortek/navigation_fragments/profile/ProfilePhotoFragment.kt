@@ -14,11 +14,14 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.FragmentProfilePhotoBinding
 import com.tutortekorg.tutortek.requests.retrofit.FileUploadService
 import com.tutortekorg.tutortek.requests.retrofit.ServiceGenerator
@@ -27,6 +30,7 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,15 +38,17 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class ProfilePhotoFragment : Fragment() {
     private lateinit var binding: FragmentProfilePhotoBinding
     private lateinit var cameraActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var galleryActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var photoURI: Uri
+    private lateinit var callback: Callback<ResponseBody>
+    private lateinit var request: Call<ResponseBody>
     private var currentPhotoPath = ""
 
     override fun onCreateView(
@@ -75,6 +81,8 @@ class ProfilePhotoFragment : Fragment() {
     }
 
     private fun uploadPhoto() {
+        if(!this::photoURI.isInitialized) return
+        setButtonStates(false)
         val service = ServiceGenerator.createService(FileUploadService::class.java)
         val path = createCopyAndReturnRealPath(requireContext(), photoURI)
         val file = File(path!!)
@@ -84,20 +92,47 @@ class ProfilePhotoFragment : Fragment() {
         )
         val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
         val token = JwtUtils.getJwtToken(requireContext())
-        token?.let { service.upload(body, "Bearer $it") }?.enqueue(
-            object : Callback<ResponseBody> {
-                override fun onResponse(
-                    call: Call<ResponseBody>?,
-                    response: Response<ResponseBody>?
-                ) {
-                    println("KODAS: ${response?.code()}")
-                }
-
-                override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
-                    println(t?.message)
+        callback = object : Callback<ResponseBody> {
+            override fun onResponse(
+                call: Call<ResponseBody>?,
+                response: Response<ResponseBody>?
+            ) {
+                when {
+                    response?.isSuccessful!! -> {
+                        try {
+                            Toast.makeText(requireContext(), R.string.photo_upload_success, Toast.LENGTH_LONG).show()
+                            findNavController().popBackStack()
+                        } catch (e: Exception) {}
+                    }
+                    response.code() == 401 -> {
+                        JwtUtils.sendRefreshRequest<JSONObject>(activity!!, false, null)
+                        val refreshedToken = JwtUtils.getJwtToken(requireContext())
+                        request = service.upload(body, "Bearer $refreshedToken")
+                        request.enqueue(callback)
+                    }
+                    else -> {
+                        setButtonStates(true)
+                        Toast.makeText(requireContext(), R.string.error_photo_upload, Toast.LENGTH_LONG).show()
+                    }
                 }
             }
-        )
+
+            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                setButtonStates(true)
+                Toast.makeText(requireContext(), R.string.error_photo_upload, Toast.LENGTH_LONG).show()
+            }
+        }
+        request = service.upload(body, "Bearer $token")
+        request.enqueue(callback)
+    }
+
+    private fun setButtonStates(isActive: Boolean) {
+        if(isActive) binding.btnUpload.revertAnimation()
+        else binding.btnUpload.startAnimation()
+        binding.btnGallery.isEnabled = isActive
+        binding.btnGallery.isClickable = isActive
+        binding.btnTakePhoto.isEnabled = isActive
+        binding.btnTakePhoto.isClickable = isActive
     }
 
     private fun createCopyAndReturnRealPath(context: Context, uri: Uri): String? {

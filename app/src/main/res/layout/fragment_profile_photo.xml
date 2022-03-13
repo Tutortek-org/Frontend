@@ -105,7 +105,7 @@
             android:textSize="15sp"
             android:textColor="@color/color_primary"
             app:initialCornerAngle="27dp"
-            app:spinning_bar_color="#FFF"
+            app:spinning_bar_color="@color/color_primary"
             app:spinning_bar_padding="6dp"
             app:spinning_bar_width="4dp"/>
 

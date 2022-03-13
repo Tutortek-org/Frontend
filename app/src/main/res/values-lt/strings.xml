@@ -90,6 +90,7 @@
     <string name="error_learning_material_delete">Netikėta klaida trinant mokomąją medžiagą</string>
     <string name="error_learning_material_edit">Netikėta klaida redaguojant mokomąją medžiagą</string>
     <string name="error_bug_report_send">Netikėta klaida siunčiant klaidos pranešimą</string>
+    <string name="error_photo_upload">Netikėta klaida keliant nuotrauką</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -184,4 +185,5 @@
     <string name="btn_take_photo">Kamera</string>
     <string name="btn_gallery">Galerija</string>
     <string name="btn_upload">Įkelti</string>
+    <string name="photo_upload_success">Profilio nuotrauka pakeista sėkmingai!</string>
 </resources>

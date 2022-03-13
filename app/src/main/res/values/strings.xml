@@ -89,6 +89,7 @@
     <string name="error_learning_material_delete">Unexpected error while deleting the learning material</string>
     <string name="error_learning_material_edit">Unexpected error while editing the learning material</string>
     <string name="error_bug_report_send">Unexpected error while sending a bug report</string>
+    <string name="error_photo_upload">Unexpected error while uploading profile photo</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -183,4 +184,5 @@
     <string name="btn_take_photo">Camera</string>
     <string name="btn_gallery">Gallery</string>
     <string name="btn_upload">Upload</string>
+    <string name="photo_upload_success">Profile photo changed successfully!</string>
 </resources>
