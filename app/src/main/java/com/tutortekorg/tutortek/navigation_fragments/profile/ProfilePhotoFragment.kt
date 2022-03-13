@@ -25,9 +25,10 @@ import java.util.*
 
 class ProfilePhotoFragment : Fragment() {
     private lateinit var binding: FragmentProfilePhotoBinding
-    private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
-    private lateinit var currentPhotoPath: String
+    private lateinit var cameraActivityResultLauncher: ActivityResultLauncher<Intent>
+    private lateinit var galleryActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var photoURI: Uri
+    private var currentPhotoPath = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,17 +36,24 @@ class ProfilePhotoFragment : Fragment() {
     ): View {
         binding = FragmentProfilePhotoBinding.inflate(inflater, container, false)
         binding.btnTakePhoto.setOnClickListener { dispatchTakePictureIntent() }
+        binding.btnGallery.setOnClickListener { dispatchGalleryPictureIntent() }
         return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        cameraActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
                 val matrix = getOrientationMatrix()
                 val bitmap = BitmapFactory.decodeFile(currentPhotoPath)
                 val rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
                 binding.profilePhoto.setImageBitmap(rotatedBitmap)
+            }
+        }
+        galleryActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                photoURI = it.data?.data!!
+                binding.profilePhoto.setImageURI(photoURI)
             }
         }
     }
@@ -64,6 +72,13 @@ class ProfilePhotoFragment : Fragment() {
         return matrix
     }
 
+    private fun dispatchGalleryPictureIntent() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        galleryActivityResultLauncher.launch(intent)
+    }
+
     private fun dispatchTakePictureIntent() {
         val photoFile: File? = try {
             createImageFile()
@@ -75,7 +90,7 @@ class ProfilePhotoFragment : Fragment() {
         }
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-        activityResultLauncher.launch(intent)
+        cameraActivityResultLauncher.launch(intent)
     }
 
     private fun createImageFile(): File {
