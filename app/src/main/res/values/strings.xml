@@ -112,6 +112,7 @@
     <!-- Edit menu activity -->
     <string name="btn_edit_profile_data">Edit profile</string>
     <string name="btn_change_password">Change password</string>
+    <string name="btn_update_photo">Update profile picture</string>
 
     <!-- Change password activity -->
     <string name="current_password">Current password</string>
@@ -175,4 +176,11 @@
     <string name="bug_report_header">Tell us what\'s wrong</string>
     <string name="btn_send_report">Send</string>
     <string name="bug_report_success">Bug reported successfully</string>
+
+    <!-- Profile picture fragment -->
+    <string name="header_profile_picture">You look amazing!</string>
+    <string name="description_profile_picture">Your profile picture</string>
+    <string name="btn_take_photo">Camera</string>
+    <string name="btn_gallery">Gallery</string>
+    <string name="btn_upload">Upload</string>
 </resources>

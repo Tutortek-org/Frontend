@@ -23,6 +23,9 @@ class EditMenuFragment : Fragment() {
         binding.btnChangePassword.setOnClickListener {
             it.findNavController().navigate(R.id.action_editMenuFragment_to_changePasswordFragment)
         }
+        binding.btnProfilePhoto.setOnClickListener {
+            it.findNavController().navigate(R.id.action_editMenuFragment_to_profilePhotoFragment)
+        }
         return binding.root
     }
 }
