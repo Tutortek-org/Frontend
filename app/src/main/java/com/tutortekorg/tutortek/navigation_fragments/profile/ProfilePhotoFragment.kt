@@ -1,6 +1,8 @@
 package com.tutortekorg.tutortek.navigation_fragments.profile
 
 import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -18,10 +20,23 @@ import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
 import com.tutortekorg.tutortek.databinding.FragmentProfilePhotoBinding
+import com.tutortekorg.tutortek.requests.retrofit.FileUploadService
+import com.tutortekorg.tutortek.requests.retrofit.ServiceGenerator
+import com.tutortekorg.tutortek.utils.JwtUtils
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class ProfilePhotoFragment : Fragment() {
     private lateinit var binding: FragmentProfilePhotoBinding
@@ -37,6 +52,7 @@ class ProfilePhotoFragment : Fragment() {
         binding = FragmentProfilePhotoBinding.inflate(inflater, container, false)
         binding.btnTakePhoto.setOnClickListener { dispatchTakePictureIntent() }
         binding.btnGallery.setOnClickListener { dispatchGalleryPictureIntent() }
+        binding.btnUpload.setOnClickListener { uploadPhoto() }
         return binding.root
     }
 
@@ -56,6 +72,50 @@ class ProfilePhotoFragment : Fragment() {
                 binding.profilePhoto.setImageURI(photoURI)
             }
         }
+    }
+
+    private fun uploadPhoto() {
+        val service = ServiceGenerator.createService(FileUploadService::class.java)
+        val path = createCopyAndReturnRealPath(requireContext(), photoURI)
+        val file = File(path!!)
+        val requestFile = RequestBody.create(
+            MediaType.parse(requireContext().contentResolver.getType(photoURI)),
+            file
+        )
+        val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
+        val token = JwtUtils.getJwtToken(requireContext())
+        token?.let { service.upload(body, "Bearer $it") }?.enqueue(
+            object : Callback<ResponseBody> {
+                override fun onResponse(
+                    call: Call<ResponseBody>?,
+                    response: Response<ResponseBody>?
+                ) {
+                    println("KODAS: ${response?.code()}")
+                }
+
+                override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                    println(t?.message)
+                }
+            }
+        )
+    }
+
+    private fun createCopyAndReturnRealPath(context: Context, uri: Uri): String? {
+        val contentResolver: ContentResolver = context.contentResolver ?: return null
+        val filePath: String = (context.applicationInfo.dataDir.toString() + File.separator + System.currentTimeMillis())
+        val file = File(filePath)
+        try {
+            val inputStream = contentResolver.openInputStream(uri) ?: return null
+            val outputStream: OutputStream = FileOutputStream(file)
+            val buf = ByteArray(1024)
+            var len: Int
+            while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+            outputStream.close()
+            inputStream.close()
+        } catch (ignore: IOException) {
+            return null
+        }
+        return file.absolutePath
     }
 
     private fun getOrientationMatrix(): Matrix {

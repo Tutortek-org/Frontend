@@ -92,7 +92,7 @@
         </LinearLayout>
 
         <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-            android:id="@+id/btn_get_meetings"
+            android:id="@+id/btn_upload"
             style="@style/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
