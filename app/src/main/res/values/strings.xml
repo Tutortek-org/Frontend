@@ -90,6 +90,8 @@
     <string name="error_learning_material_edit">Unexpected error while editing the learning material</string>
     <string name="error_bug_report_send">Unexpected error while sending a bug report</string>
     <string name="error_photo_upload">Unexpected error while uploading profile photo</string>
+    <string name="error_photo_download">Unexpected error while downloading profile photo</string>
+    <string name="error_photo_file_create">Unexpected error while writing photo to file</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.squareup.picasso.Picasso
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.UserProfile
@@ -41,6 +42,11 @@ class ProfileFragment : Fragment() {
         binding.txtProfileCourseCount.text = userProfile?.topicCount.toString()
         binding.txtProfileDescription.text = userProfile?.description
         binding.txtProfileRole.text = userProfile?.roles?.let { getRoleNamesForUI(it) }
+        Picasso.get()
+            .load("file://${userProfile?.photoPath}")
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .fit()
+            .into(binding.imgProfilePicture)
     }
 
     private fun getRoleNamesForUI(roles: List<String>): String {

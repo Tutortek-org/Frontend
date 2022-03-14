@@ -21,10 +21,12 @@ import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.squareup.picasso.Picasso
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.FragmentProfilePhotoBinding
 import com.tutortekorg.tutortek.requests.retrofit.FileUploadService
 import com.tutortekorg.tutortek.requests.retrofit.ServiceGenerator
+import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -62,6 +64,16 @@ class ProfilePhotoFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        val userProfile = ProfileSingleton.getInstance().userProfile
+        Picasso.get()
+            .load("file://${userProfile?.photoPath}")
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .fit()
+            .into(binding.profilePhoto)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         cameraActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -87,7 +99,7 @@ class ProfilePhotoFragment : Fragment() {
         val path = createCopyAndReturnRealPath(requireContext(), photoURI)
         val file = File(path!!)
         val requestFile = RequestBody.create(
-            MediaType.parse(requireContext().contentResolver.getType(photoURI)),
+            MediaType.parse(requireContext().contentResolver.getType(photoURI)!!),
             file
         )
         val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
