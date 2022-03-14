@@ -41,8 +41,6 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val userProfile = ProfileSingleton.getInstance().userProfile
-        if(!userProfile?.photoPath.isNullOrEmpty()) return
 
         val service = ServiceGenerator.createService(FileDownloadService::class.java)
         val token = JwtUtils.getJwtToken(requireContext())

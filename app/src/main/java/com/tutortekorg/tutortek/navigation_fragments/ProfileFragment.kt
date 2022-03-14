@@ -42,8 +42,9 @@ class ProfileFragment : Fragment() {
         binding.txtProfileCourseCount.text = userProfile?.topicCount.toString()
         binding.txtProfileDescription.text = userProfile?.description
         binding.txtProfileRole.text = userProfile?.roles?.let { getRoleNamesForUI(it) }
-        Picasso.get()
-            .load("file://${userProfile?.photoPath}")
+        val picasso = Picasso.get()
+        picasso.invalidate("file://${userProfile?.photoPath}")
+        picasso.load("file://${userProfile?.photoPath}")
             .placeholder(R.drawable.ic_launcher_foreground)
             .fit()
             .into(binding.imgProfilePicture)
