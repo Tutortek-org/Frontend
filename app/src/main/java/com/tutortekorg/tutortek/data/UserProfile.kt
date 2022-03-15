@@ -10,7 +10,8 @@ data class UserProfile(
     val birthDate: String,
     val description: String,
     val topicCount: Int,
-    val roles: List<String>
+    val roles: List<String>,
+    var photoPath: String = ""
 ) : Serializable {
     constructor(body: JSONObject, roles: List<String>) : this(
         body.getString("firstName"),

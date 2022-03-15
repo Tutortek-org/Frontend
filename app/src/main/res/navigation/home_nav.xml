@@ -209,6 +209,13 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_editMenuFragment_to_profilePhotoFragment"
+            app:destination="@id/profilePhotoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/profileEditFragment"
@@ -220,4 +227,9 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/profilePhotoFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.profile.ProfilePhotoFragment"
+        android:label="fragment_profile_photo"
+        tools:layout="@layout/fragment_profile_photo" />
 </navigation>
