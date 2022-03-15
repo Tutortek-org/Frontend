@@ -112,6 +112,9 @@ class ProfilePhotoFragment : Fragment() {
                 when {
                     response?.isSuccessful!! -> {
                         try {
+                            val filePath = context?.getExternalFilesDir(null).toString() + File.separator + "pfp"
+                            val fileToCopyInto = File(filePath)
+                            file.copyTo(fileToCopyInto, true)
                             Toast.makeText(requireContext(), R.string.photo_upload_success, Toast.LENGTH_LONG).show()
                             findNavController().popBackStack()
                         } catch (e: Exception) {}
