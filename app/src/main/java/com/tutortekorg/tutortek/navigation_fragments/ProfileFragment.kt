@@ -26,6 +26,11 @@ class ProfileFragment : Fragment() {
         binding.btnDeleteAccount.setOnClickListener {
             it.findNavController().navigate(R.id.action_profileFragment_to_deleteAccountFragment)
         }
+        binding.refreshProfile.setOnRefreshListener {
+            val userProfile = ProfileSingleton.getInstance().userProfile
+            fillOutUI(userProfile)
+            binding.refreshProfile.isRefreshing = false
+        }
         return binding.root
     }
 

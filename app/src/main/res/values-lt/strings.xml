@@ -91,7 +91,6 @@
     <string name="error_learning_material_edit">Netikėta klaida redaguojant mokomąją medžiagą</string>
     <string name="error_bug_report_send">Netikėta klaida siunčiant klaidos pranešimą</string>
     <string name="error_photo_upload">Netikėta klaida keliant nuotrauką</string>
-    <string name="error_photo_download">Netikėta klaida atsisiunčiant nuotrauką</string>
     <string name="error_photo_file_create">Netikėta klaida rašant nuotrauką į failą</string>
 
     <!-- Information messages -->

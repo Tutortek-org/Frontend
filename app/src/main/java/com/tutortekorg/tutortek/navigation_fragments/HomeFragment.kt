@@ -47,11 +47,8 @@ class HomeFragment : Fragment() {
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                 if(response?.isSuccessful!!) savePhotoToDevice(response.body())
-                else Toast.makeText(requireContext(), R.string.error_photo_download, Toast.LENGTH_SHORT).show()
             }
-
-            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) =
-                Toast.makeText(requireContext(), R.string.error_photo_download, Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?){}
         })
     }
 
