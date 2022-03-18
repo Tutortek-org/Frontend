@@ -187,4 +187,8 @@
     <string name="btn_gallery">Galerija</string>
     <string name="btn_upload">Įkelti</string>
     <string name="photo_upload_success">Profilio nuotrauka pakeista sėkmingai!</string>
+
+    <!-- Notification parameters -->
+    <string name="notification_channel_name">Tutortek kanalas</string>
+    <string name="notification_channel_description">Tai yra įprastasis pranešimų kanalas</string>
 </resources>
