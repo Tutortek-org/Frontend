@@ -197,7 +197,7 @@
 
     <!-- Meeting signup fragment -->
     <string name="meeting_name_header">Pavadinimas: %1$s</string>
-    <string name="meeting_price_header">Kaina: %1$s</string>
+    <string name="meeting_price_header">Kaina: %1$s€</string>
     <string name="btn_pay">Mokėti</string>
     <string name="pay_header">Pasirinkite mokėjimo būdą</string>
 </resources>

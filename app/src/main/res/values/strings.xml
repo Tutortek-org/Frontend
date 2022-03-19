@@ -196,7 +196,7 @@
 
     <!-- Meeting signup fragment -->
     <string name="meeting_name_header">Name: %1$s</string>
-    <string name="meeting_price_header">Price: %1$s</string>
+    <string name="meeting_price_header">Price: %1$s€</string>
     <string name="btn_pay">Pay</string>
     <string name="pay_header">Please choose a payment method</string>
 </resources>
