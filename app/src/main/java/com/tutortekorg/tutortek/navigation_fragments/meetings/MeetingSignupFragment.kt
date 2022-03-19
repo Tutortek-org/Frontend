@@ -1,19 +1,17 @@
 package com.tutortekorg.tutortek.navigation_fragments.meetings
 
-import android.app.Activity
-import android.content.Intent
+import android.app.Activity.RESULT_OK
 import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResultLauncher
+import android.widget.Toast
+import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.ConfigurationCompat
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.wallet.*
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.Meeting
@@ -41,6 +39,11 @@ class MeetingSignupFragment : Fragment() {
     private val baseRequest = JSONObject().apply {
         put("apiVersion", 2)
         put("apiVersionMinor", 0)
+    }
+    private val resolvePaymentForResult = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+        when (result.resultCode) {
+            RESULT_OK -> Toast.makeText(requireContext(), R.string.payment_success, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onCreateView(
@@ -128,13 +131,14 @@ class MeetingSignupFragment : Fragment() {
         val paymentDataRequestJson = getPaymentDataRequest(meeting.price.toString()) ?: return
         val request = PaymentDataRequest.fromJson(paymentDataRequestJson.toString())
         val task = paymentsClient.loadPaymentData(request)
-        task.addOnCompleteListener {
-            if(it.isSuccessful) {
-                Log.i("PAYMENTAS", "paejo")
-            }
-            else {
-                Log.i("PAYMENTAS", it.result.toString())
-            }
+        task.addOnCompleteListener(requireActivity()) {
+            if(it.isSuccessful) Toast.makeText(requireContext(), R.string.payment_success, Toast.LENGTH_SHORT).show()
+            else when (val exception = it.exception) {
+                    is ResolvableApiException -> {
+                        resolvePaymentForResult.launch(
+                            IntentSenderRequest.Builder(exception.resolution).build())
+                    }
+                }
         }
         AutoResolveHelper.resolveTask(task, requireActivity(), LOAD_PAYMENT_DATA_REQUEST_CODE)
         binding.btnGooglePay.root.isClickable = true

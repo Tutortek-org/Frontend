@@ -200,4 +200,5 @@
     <string name="meeting_price_header">Kaina: %1$s€</string>
     <string name="btn_pay">Mokėti</string>
     <string name="pay_header">Pasirinkite mokėjimo būdą</string>
+    <string name="payment_success">Pervedimas įvykdytas sėkmingai!</string>
 </resources>
