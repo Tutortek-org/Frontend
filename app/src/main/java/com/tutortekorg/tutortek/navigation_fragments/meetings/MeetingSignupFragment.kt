@@ -21,7 +21,6 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class MeetingSignupFragment : Fragment() {
-    private val LOAD_PAYMENT_DATA_REQUEST_CODE = 991
     private lateinit var binding: FragmentMeetingSignupBinding
     private lateinit var meeting: Meeting
     private lateinit var paymentsClient: PaymentsClient
@@ -140,7 +139,6 @@ class MeetingSignupFragment : Fragment() {
                     }
                 }
         }
-        AutoResolveHelper.resolveTask(task, requireActivity(), LOAD_PAYMENT_DATA_REQUEST_CODE)
         binding.btnGooglePay.root.isClickable = true
     }
 
