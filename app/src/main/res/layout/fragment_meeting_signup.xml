@@ -59,22 +59,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
                         android:textColor="?android:textColorPrimary"
                         android:text="@string/meeting_price_header"
                         android:textSize="18sp" />
 
-                    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-                        android:id="@+id/btn_confirm_add_topic"
-                        style="@style/loginButton"
-                        android:backgroundTint="@color/color_primary"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/loginViewsMargin"
-                        android:layout_marginBottom="20dp"
-                        android:text="@string/btn_pay"
-                        app:initialCornerAngle="27dp"
-                        app:spinning_bar_color="#FFF"
-                        app:spinning_bar_padding="6dp"
-                        app:spinning_bar_width="4dp" />
+                    <include
+                        android:id="@+id/btn_google_pay"
+                        android:visibility="gone"
+                        layout="@layout/googlepay_button"/>
 
                 </LinearLayout>
 

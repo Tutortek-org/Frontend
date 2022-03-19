@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable-v21/googlepay_button_background.xml" value="0.3375" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable-v21/googlepay_button_no_shadow_background.xml" value="0.3375" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/background_bottom_sheet.xml" value="0.365625" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/background_button_blue.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/googlepay_button_background.xml" value="0.3375" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/googlepay_button_content.xml" value="0.3375" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/googlepay_button_no_shadow_background.xml" value="0.3375" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/googlepay_button_overlay.xml" value="0.3375" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/ic_add_img.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/ic_back_img.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/ic_books_background.xml" value="0.3651041666666667" />
@@ -18,6 +24,7 @@
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/onboarding_indicator.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/onboarding_indicator_active.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/onboarding_indicator_inactive.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/pay_with_googlepay_button_content.xml" value="0.3375" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/splashscreen.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/drawable/text_input_cursor.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout-v23/activity_intro.xml" value="0.3489583333333333" />
@@ -31,6 +38,14 @@
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/activity_profile_edit.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/activity_register.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/activity_splashscreen.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/book_with_googlepay_button.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/book_with_googlepay_button_no_shadow.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/buy_with_googlepay_button.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/buy_with_googlepay_button_no_shadow.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/checkout_with_googlepay_button.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/checkout_with_googlepay_button_no_shadow.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/donate_with_googlepay_button.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/donate_with_googlepay_button_no_shadow.xml" value="0.3489583333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_add_topic.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_bug_report.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_change_password.xml" value="0.3494791666666667" />
@@ -53,12 +68,18 @@
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_topic_details.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_topic_edit.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_topic_list.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/googlepay_button.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/googlepay_button_no_shadow.xml" value="0.3489583333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/item_container_learning_material.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/item_container_meeting.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/item_container_onboarding.xml" value="0.33" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/item_container_topic.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/layout_screen.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/order_with_googlepay_button.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/order_with_googlepay_button_no_shadow.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/pay_with_googlepay_button.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/pay_with_googlepay_button_no_shadow.xml" value="0.3489583333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/menu/bottom_menu.xml" value="0.3489583333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/mipmap-anydpi-v26/ic_books.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/xml/file_paths.xml" value="0.3494791666666667" />
