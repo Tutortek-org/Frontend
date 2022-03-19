@@ -89,6 +89,11 @@ class MeetingDetailsFragment : Fragment() {
                 .navigate(R.id.action_meetingDetailsFragment_to_learningMaterialAddFragment, bundle)
         }
         binding.refreshMeeting.setOnRefreshListener { sendMeetingGetRequest() }
+        binding.btnPaymentDetails.setOnClickListener {
+            val bundle = bundleOf("meeting" to meeting)
+            it.findNavController()
+                .navigate(R.id.action_meetingDetailsFragment_to_meetingSignupFragment, bundle)
+        }
     }
 
     private fun sendMeetingGetRequest() {
@@ -170,6 +175,7 @@ class MeetingDetailsFragment : Fragment() {
         binding.btnEditMeeting.startAnimation()
         binding.btnGetLearningMaterials.startAnimation()
         binding.btnAddLearningMaterial.startAnimation()
+        binding.btnPaymentDetails.startAnimation()
     }
 
     private fun revertButtonAnimations() {
@@ -177,5 +183,6 @@ class MeetingDetailsFragment : Fragment() {
         binding.btnEditMeeting.revertAnimation()
         binding.btnGetLearningMaterials.revertAnimation()
         binding.btnAddLearningMaterial.revertAnimation()
+        binding.btnPaymentDetails.revertAnimation()
     }
 }

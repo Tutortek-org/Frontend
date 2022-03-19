@@ -151,6 +151,13 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_meetingDetailsFragment_to_meetingSignupFragment"
+            app:destination="@id/meetingSignupFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/meetingEditFragment"
@@ -232,4 +239,9 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.profile.ProfilePhotoFragment"
         android:label="fragment_profile_photo"
         tools:layout="@layout/fragment_profile_photo" />
+    <fragment
+        android:id="@+id/meetingSignupFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.MeetingSignupFragment"
+        android:label="fragment_meeting_signup"
+        tools:layout="@layout/fragment_meeting_signup" />
 </navigation>

@@ -56,6 +56,7 @@ class MeetingAddFragment : Fragment() {
         binding.txtInputMeetingDate.error = null
         binding.txtInputMeetingDescription.error = null
         binding.txtInputMeetingName.error = null
+        binding.txtInputMeetingPrice.error = null
     }
 
     private fun validateForm(): Boolean {
@@ -87,7 +88,18 @@ class MeetingAddFragment : Fragment() {
             result = false
         }
 
+        if(binding.editTextMeetingPrice.text.isNullOrBlank()
+            || !isPriceValid(binding.editTextMeetingPrice.text.toString())) {
+            binding.txtInputMeetingPrice.error = getString(R.string.error_invalid_price)
+            result = false
+        }
+
         return result
+    }
+
+    private fun isPriceValid(price: String): Boolean {
+        val regex = "^\\d{0,8}(\\.\\d{1,4})?\$".toRegex()
+        return regex.matches(price)
     }
 
     private fun isAttendantCountValid(attendants: String): Boolean {
@@ -128,6 +140,7 @@ class MeetingAddFragment : Fragment() {
         val maxAttendants = binding.editTextMeetingAttendants.text.toString().toInt()
         val address = binding.editTextMeetingAddress.text.toString()
         val description = binding.editTextMeetingDescription.text.toString()
+        val price = binding.editTextMeetingPrice.text.toString().toDouble()
 
         val body = JSONObject()
         body.put("name", name)
@@ -135,6 +148,7 @@ class MeetingAddFragment : Fragment() {
         body.put("maxAttendants", maxAttendants)
         body.put("address", address)
         body.put("description", description)
+        body.put("price", price)
 
         return body
     }

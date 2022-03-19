@@ -9,7 +9,8 @@ data class Meeting(
     var date: String,
     var maxAttendants: Int,
     var address: String,
-    var description: String
+    var description: String,
+    var price: Double
 ) : Serializable {
 
     constructor(body: JSONObject) : this(
@@ -18,6 +19,7 @@ data class Meeting(
         body.getString("date"),
         body.getInt("maxAttendants"),
         body.getString("address"),
-        body.getString("description")
+        body.getString("description"),
+        body.getDouble("price")
     )
 }
