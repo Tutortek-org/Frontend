@@ -92,6 +92,8 @@
     <string name="error_bug_report_send">Netikėta klaida siunčiant klaidos pranešimą</string>
     <string name="error_photo_upload">Netikėta klaida keliant nuotrauką</string>
     <string name="error_photo_file_create">Netikėta klaida rašant nuotrauką į failą</string>
+    <string name="error_invalid_price">Kainą veskite formatu 0.00</string>
+    <string name="error_purchase">Netikėta klaida bandant atlikti pervedimą</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -158,12 +160,14 @@
     <string name="add_meeting_attendants">Dalyvių kiekis</string>
     <string name="add_meeting_address">Adresas</string>
     <string name="add_meeting_description">Aprašymas</string>
+    <string name="add_meeting_price">Kaina</string>
 
     <!-- Meeting details fragment -->
     <string name="default_date">1970–01–01</string>
     <string name="meeting_delete_question">Ar tikrai norite ištrinti susitikimą \"%1$s\"?</string>
     <string name="get_learning_materials">Peržiūrėti mokomąją medžiagą</string>
     <string name="add_learning_material">Pridėti mokomosios medžiagos</string>
+    <string name="btn_signup">Užsiregistruoti</string>
 
     <!-- Learning material item -->
     <string name="learning_material_name">Mokomosios medžiagos pavadinimas</string>
@@ -191,4 +195,11 @@
     <!-- Notification parameters -->
     <string name="notification_channel_name">Tutortek kanalas</string>
     <string name="notification_channel_description">Tai yra įprastasis pranešimų kanalas</string>
+
+    <!-- Meeting signup fragment -->
+    <string name="meeting_name_header">Pavadinimas: %1$s</string>
+    <string name="meeting_price_header">Kaina: %1$s€</string>
+    <string name="btn_pay">Mokėti</string>
+    <string name="pay_header">Pasirinkite mokėjimo būdą</string>
+    <string name="payment_success">Pervedimas įvykdytas sėkmingai!</string>
 </resources>

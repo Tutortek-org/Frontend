@@ -25,6 +25,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.*
+import java.lang.Exception
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -98,7 +99,10 @@ class HomeFragment : Fragment() {
                 ProfileSingleton.getInstance().userProfile?.photoPath = filePath
             }
             catch (e: IOException) {
-                Toast.makeText(requireContext(), R.string.error_photo_file_create, Toast.LENGTH_SHORT).show()
+                try {
+                    Toast.makeText(requireContext(), R.string.error_photo_file_create, Toast.LENGTH_SHORT).show()
+                }
+                catch (e: Exception){}
             }
             finally {
                 inputStream?.close()
@@ -106,7 +110,10 @@ class HomeFragment : Fragment() {
             }
         }
         catch (e: IOException) {
-            Toast.makeText(requireContext(), R.string.error_photo_file_create, Toast.LENGTH_SHORT).show()
+            try {
+                Toast.makeText(requireContext(), R.string.error_photo_file_create, Toast.LENGTH_SHORT).show()
+            }
+            catch (e: Exception){}
         }
     }
 }

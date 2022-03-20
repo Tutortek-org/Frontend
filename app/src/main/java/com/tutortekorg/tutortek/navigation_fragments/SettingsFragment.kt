@@ -50,6 +50,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun logout() {
+        binding.btnLogout.isClickable = false
         activity?.let { JwtUtils.invalidateJwtToken(it) }
         startActivity(Intent(activity, LoginActivity::class.java))
         activity?.overridePendingTransition(R.anim.slide_in_left, android.R.anim.slide_out_right)

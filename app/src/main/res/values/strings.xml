@@ -91,6 +91,8 @@
     <string name="error_bug_report_send">Unexpected error while sending a bug report</string>
     <string name="error_photo_upload">Unexpected error while uploading profile photo</string>
     <string name="error_photo_file_create">Unexpected error while writing photo to file</string>
+    <string name="error_invalid_price">Please enter the price in format 0.00</string>
+    <string name="error_purchase">Unexpected error during the transaction</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -157,12 +159,14 @@
     <string name="add_meeting_attendants">Number of attendants</string>
     <string name="add_meeting_address">Address</string>
     <string name="add_meeting_description">Description</string>
+    <string name="add_meeting_price">Price</string>
 
     <!-- Meeting details fragment -->
     <string name="default_date">1970–01–01</string>
     <string name="meeting_delete_question">Are you sure you want to delete meeting \"%1$s\"?</string>
     <string name="get_learning_materials">Lookup learning materials</string>
     <string name="add_learning_material">Add a learning material</string>
+    <string name="btn_signup">Signup</string>
 
     <!-- Learning material item -->
     <string name="learning_material_name">Learning material name</string>
@@ -190,4 +194,11 @@
     <!-- Notification parameters -->
     <string name="notification_channel_name">Tutortek channel</string>
     <string name="notification_channel_description">This is the default channel for notifications</string>
+
+    <!-- Meeting signup fragment -->
+    <string name="meeting_name_header">Name: %1$s</string>
+    <string name="meeting_price_header">Price: %1$s€</string>
+    <string name="btn_pay">Pay</string>
+    <string name="pay_header">Please choose a payment method</string>
+    <string name="payment_success">Payment successful!</string>
 </resources>
