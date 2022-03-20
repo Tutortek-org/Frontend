@@ -137,6 +137,7 @@ class MeetingSignupFragment : Fragment() {
                         resolvePaymentForResult.launch(
                             IntentSenderRequest.Builder(exception.resolution).build())
                     }
+                    else -> Toast.makeText(requireContext(), R.string.error_purchase, Toast.LENGTH_SHORT).show()
                 }
         }
         binding.btnGooglePay.root.isClickable = true
