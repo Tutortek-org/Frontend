@@ -64,6 +64,13 @@ object JwtUtils {
         return email?.asString()
     }
 
+    fun getUserIdFromSavedToken(context: Context): Long? {
+        val token = getJwtToken(context)
+        val jwt = token?.let { JWT(it) }
+        val email = jwt?.getClaim("uid")
+        return email?.asLong()
+    }
+
     fun getProfileIdFromSavedToken(context: Context): Long? {
         val token = getJwtToken(context)
         val jwt = token?.let { JWT(it) }
