@@ -11,11 +11,17 @@ import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.ConfigurationCompat
+import androidx.navigation.fragment.findNavController
+import com.android.volley.Request
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.wallet.*
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.databinding.FragmentMeetingSignupBinding
+import com.tutortekorg.tutortek.requests.TutortekObjectRequest
+import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.JwtUtils
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -41,7 +47,7 @@ class MeetingSignupFragment : Fragment() {
     }
     private val resolvePaymentForResult = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
         when (result.resultCode) {
-            RESULT_OK -> Toast.makeText(requireContext(), R.string.payment_success, Toast.LENGTH_SHORT).show()
+            RESULT_OK -> sendPaymentCreateRequest()
         }
     }
 
@@ -57,6 +63,29 @@ class MeetingSignupFragment : Fragment() {
         sendIsReadyToPayRequest()
         binding.btnGooglePay.root.setOnClickListener { requestPayment() }
         return binding.root
+    }
+
+    private fun sendPaymentCreateRequest() {
+        val url = "${TutortekConstants.BASE_URL}/payments"
+        val userId = JwtUtils.getUserIdFromSavedToken(requireContext())
+        val body = JSONObject().apply {
+            put("userId", userId)
+            put("meetingId", meeting.id)
+        }
+        val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
+            {
+                try {
+                    Toast.makeText(requireContext(), R.string.payment_success, Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+                }
+                catch (e: Exception) {}
+            },
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it))
+                    Toast.makeText(requireContext(), R.string.error_purchase, Toast.LENGTH_SHORT).show()
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
     private fun preparePaymentClient() {
