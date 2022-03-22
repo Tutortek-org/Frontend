@@ -67,9 +67,7 @@ class MeetingSignupFragment : Fragment() {
 
     private fun sendPaymentCreateRequest() {
         val url = "${TutortekConstants.BASE_URL}/payments"
-        val userId = JwtUtils.getUserIdFromSavedToken(requireContext())
         val body = JSONObject().apply {
-            put("userId", userId)
             put("meetingId", meeting.id)
         }
         val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
