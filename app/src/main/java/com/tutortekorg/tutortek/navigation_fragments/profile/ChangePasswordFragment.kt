@@ -83,8 +83,9 @@ class ChangePasswordFragment : Fragment() {
 
     private fun formChangePasswordBody(): JSONObject {
         val password = binding.editTextNewPassword.text.toString()
-        val body = JSONObject()
-        body.put("password", password)
+        val body = JSONObject().apply {
+            put("password", password)
+        }
         return body
     }
 
@@ -92,9 +93,10 @@ class ChangePasswordFragment : Fragment() {
         val email = JwtUtils.getEmailFromSavedToken(requireContext())
         var password = binding.editTextCurrentPassword.text.toString()
         if(!shouldSendChangeRequest) password = binding.editTextNewPassword.text.toString()
-        val body = JSONObject()
-        body.put("email", email)
-        body.put("password", password)
+        val body = JSONObject().apply {
+            put("email", email)
+            put("password", password)
+        }
         return body
     }
 

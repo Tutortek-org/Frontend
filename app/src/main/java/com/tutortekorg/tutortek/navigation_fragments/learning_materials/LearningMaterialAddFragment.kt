@@ -96,10 +96,11 @@ class LearningMaterialAddFragment : Fragment() {
         val link = binding.editTextLearningMaterialLink.text.toString()
         val description = binding.editTextLearningMaterialDescription.text.toString()
 
-        val body = JSONObject()
-        body.put("name", name)
-        body.put("link", link)
-        body.put("description", description)
+        val body = JSONObject().apply {
+            put("name", name)
+            put("link", link)
+            put("description", description)
+        }
 
         return body
     }

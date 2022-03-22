@@ -135,12 +135,13 @@ class MeetingEditFragment : Fragment() {
         val address = binding.editTextMeetingAddressEdit.text.toString()
         val description = binding.editTextMeetingDescriptionEdit.text.toString()
 
-        val body = JSONObject()
-        body.put("name", name)
-        body.put("date", date)
-        body.put("maxAttendants", maxAttendants)
-        body.put("address", address)
-        body.put("description", description)
+        val body = JSONObject().apply {
+            put("name", name)
+            put("date", date)
+            put("maxAttendants", maxAttendants)
+            put("address", address)
+            put("description", description)
+        }
 
         return body
     }

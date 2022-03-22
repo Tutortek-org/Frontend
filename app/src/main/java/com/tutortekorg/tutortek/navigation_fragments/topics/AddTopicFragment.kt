@@ -62,9 +62,10 @@ class AddTopicFragment : Fragment() {
     }
 
     private fun getJsonBody(): JSONObject {
-        val body = JSONObject()
         val name = binding.editTextTopicName.text.toString()
-        body.put("name", name)
+        val body = JSONObject().apply {
+            put("name", name)
+        }
         return body
     }
 }

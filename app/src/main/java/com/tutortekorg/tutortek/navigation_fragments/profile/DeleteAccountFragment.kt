@@ -78,9 +78,10 @@ class DeleteAccountFragment : Fragment() {
 
     private fun formLoginRequestBody(email: String): JSONObject {
         val password = binding.editTextPasswordDelete.text.toString()
-        val body = JSONObject()
-        body.put("email", email)
-        body.put("password", password)
+        val body = JSONObject().apply {
+            put("email", email)
+            put("password", password)
+        }
         return body
     }
 }
