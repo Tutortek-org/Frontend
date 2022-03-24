@@ -61,6 +61,9 @@ class TopicDetailsFragment : Fragment() {
             it.findNavController()
                 .navigate(R.id.action_topicDetailsFragment_to_meetingAddFragment, bundle)
         }
+        binding.btnSeeProfile.setOnClickListener {
+            it.findNavController().navigate(R.id.action_topicDetailsFragment_to_foreignProfileFragment)
+        }
         binding.refreshTopic.setOnRefreshListener { sendTopicGetRequest() }
     }
 
