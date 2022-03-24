@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.FragmentForeignProfileBinding
+import com.tutortekorg.tutortek.utils.SystemUtils
 
 class ForeignProfileFragment : Fragment() {
     private lateinit var binding: FragmentForeignProfileBinding
@@ -24,6 +25,7 @@ class ForeignProfileFragment : Fragment() {
 
     private fun bindDataToUI() {
         userProfile = arguments?.getSerializable("userProfile") as UserProfile
+        context?.let { SystemUtils.downloadProfilePhoto(it, userProfile) }
         val titles = getRoleNamesForUI(userProfile.roles)
         binding.txtForeignProfileRole.text = titles
         binding.txtForeignProfileCourseCount.text = userProfile.topicCount.toString()

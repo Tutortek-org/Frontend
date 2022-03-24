@@ -5,9 +5,9 @@ import android.content.DialogInterface
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.requests.retrofit.FileDownloadService
 import com.tutortekorg.tutortek.requests.retrofit.ServiceGenerator
-import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,21 +37,21 @@ object SystemUtils {
         alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color)
     }
 
-    fun downloadProfilePhoto(context: Context, id: Long) {
+    fun downloadProfilePhoto(context: Context, userProfile: UserProfile?) {
         val service = ServiceGenerator.createService(FileDownloadService::class.java)
         val token = JwtUtils.getJwtToken(context)
-        val call = service.downloadProfilePicture("Bearer $token", id)
-        call.enqueue(object : Callback<ResponseBody> {
+        val call = userProfile?.id?.let { service.downloadProfilePicture("Bearer $token", it) }
+        call?.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
-                if (response?.isSuccessful!!) savePhotoToDevice(context, response.body(), id)
+                if (response?.isSuccessful!!) savePhotoToDevice(context, response.body(), userProfile)
             }
             override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {}
         })
     }
 
-    private fun savePhotoToDevice(context: Context, body: ResponseBody, id: Long) {
+    private fun savePhotoToDevice(context: Context, body: ResponseBody, userProfile: UserProfile?) {
         try {
-            val filePath = context.getExternalFilesDir(null).toString() + File.separator + "pfp$id.png"
+            val filePath = context.getExternalFilesDir(null).toString() + File.separator + "pfp${userProfile?.id}.png"
             val file = File(filePath)
             var inputStream: InputStream? = null
             var outputStream: OutputStream? = null
@@ -67,7 +67,7 @@ object SystemUtils {
                 }
 
                 outputStream.flush()
-                ProfileSingleton.getInstance().userProfile?.photoPath = filePath
+                userProfile?.photoPath = filePath
             }
             catch (e: IOException) {
                 try {

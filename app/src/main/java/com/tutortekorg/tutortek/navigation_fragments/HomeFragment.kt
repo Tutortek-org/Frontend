@@ -12,6 +12,7 @@ import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.FragmentHomeBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
+import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.utils.SystemUtils
@@ -39,10 +40,8 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val profileId = JwtUtils.getProfileIdFromSavedToken(requireContext())
-        context?.let {
-            if (profileId != null) SystemUtils.downloadProfilePhoto(it, profileId)
-        }
+        val userProfile = ProfileSingleton.getInstance().userProfile
+        context?.let { SystemUtils.downloadProfilePhoto(it, userProfile) }
         registerDeviceToken()
     }
 
