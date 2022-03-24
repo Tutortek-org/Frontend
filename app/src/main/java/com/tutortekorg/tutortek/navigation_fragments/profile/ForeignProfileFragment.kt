@@ -25,7 +25,7 @@ class ForeignProfileFragment : Fragment() {
 
     private fun bindDataToUI() {
         userProfile = arguments?.getSerializable("userProfile") as UserProfile
-        context?.let { SystemUtils.downloadProfilePhoto(it, userProfile) }
+        context?.let { SystemUtils.downloadProfilePhoto(it, userProfile, binding.imgForeignProfilePicture) }
         val titles = getRoleNamesForUI(userProfile.roles)
         binding.txtForeignProfileRole.text = titles
         binding.txtForeignProfileCourseCount.text = userProfile.topicCount.toString()
