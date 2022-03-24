@@ -11,6 +11,7 @@ import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.FragmentProfileBinding
+import com.tutortekorg.tutortek.utils.SystemUtils
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -46,24 +47,12 @@ class ProfileFragment : Fragment() {
         binding.txtProfileRating.text = userProfile?.rating.toString()
         binding.txtProfileCourseCount.text = userProfile?.topicCount.toString()
         binding.txtProfileDescription.text = userProfile?.description
-        binding.txtProfileRole.text = userProfile?.roles?.let { getRoleNamesForUI(it) }
+        binding.txtProfileRole.text = userProfile?.roles?.let { SystemUtils.getRoleNamesForUI(it, this) }
         val picasso = Picasso.get()
         picasso.invalidate("file://${userProfile?.photoPath}")
         picasso.load("file://${userProfile?.photoPath}")
             .placeholder(R.drawable.ic_launcher_foreground)
             .fit()
             .into(binding.imgProfilePicture)
-    }
-
-    private fun getRoleNamesForUI(roles: List<String>): String {
-        var result = ""
-        for(role in roles) {
-            result += when(role) {
-                "TUTOR" -> "${getString(R.string.radio_text_tutor)}, "
-                "STUDENT" -> "${getString(R.string.radio_text_student)}, "
-                else -> "${getString(R.string.role_admin)}, "
-            }
-        }
-        return result.dropLast(2)
     }
 }
