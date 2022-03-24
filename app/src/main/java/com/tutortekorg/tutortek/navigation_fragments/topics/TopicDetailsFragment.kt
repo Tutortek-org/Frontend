@@ -19,11 +19,13 @@ import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.data.Topic
+import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.FragmentTopicDetailsBinding
 import com.tutortekorg.tutortek.requests.TutortekArrayRequest
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import org.json.JSONArray
+import org.json.JSONObject
 
 class TopicDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTopicDetailsBinding
@@ -39,6 +41,16 @@ class TopicDetailsFragment : Fragment() {
         bindDataToUI()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        findNavController().currentBackStackEntry
+            ?.savedStateHandle?.getLiveData<Topic>("topic")
+            ?.observe(viewLifecycleOwner) {
+                topic = it
+                binding.txtTopicDetailsName.text = topic.name
+            }
     }
 
     private fun bindEvents() {
@@ -61,25 +73,42 @@ class TopicDetailsFragment : Fragment() {
             it.findNavController()
                 .navigate(R.id.action_topicDetailsFragment_to_meetingAddFragment, bundle)
         }
-        binding.btnSeeProfile.setOnClickListener {
-            it.findNavController().navigate(R.id.action_topicDetailsFragment_to_foreignProfileFragment)
-        }
+        binding.btnSeeProfile.setOnClickListener { getTutorProfile() }
         binding.refreshTopic.setOnRefreshListener { sendTopicGetRequest() }
+    }
+
+    private fun getTutorProfile() {
+        startButtonAnimations()
+        val url = "${TutortekConstants.BASE_URL}/profiles/${topic.userId}"
+        val request = TutortekObjectRequest(requireContext(), Request.Method.GET, url, null,
+            {
+                val roles = parseRoles(it)
+                val userProfile = UserProfile(it, roles)
+                val bundle = bundleOf("userProfile" to userProfile)
+                findNavController().navigate(R.id.action_topicDetailsFragment_to_foreignProfileFragment, bundle)
+            },
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it)) {
+                    revertButtonAnimations()
+                    Toast.makeText(requireContext(), R.string.error_profile_retrieval, Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
+    }
+
+    private fun parseRoles(responseBody: JSONObject): MutableList<String> {
+        val roles = mutableListOf<String>()
+        val jsonRoles = responseBody.getJSONArray("roles")
+        for(i in 0 until jsonRoles.length()) {
+            roles.add(jsonRoles.getString(i))
+        }
+        return roles
     }
 
     private fun bindDataToUI() {
         topic = arguments?.getSerializable("topic") as Topic
         binding.txtTopicDetailsName.text = topic.name
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        findNavController().currentBackStackEntry
-            ?.savedStateHandle?.getLiveData<Topic>("topic")
-            ?.observe(viewLifecycleOwner) {
-                topic = it
-                binding.txtTopicDetailsName.text = topic.name
-            }
     }
 
     private fun sendTopicGetRequest() {
@@ -157,6 +186,7 @@ class TopicDetailsFragment : Fragment() {
         binding.btnEditTopic.revertAnimation()
         binding.btnGetMeetings.revertAnimation()
         binding.btnAddMeeting.revertAnimation()
+        binding.btnSeeProfile.revertAnimation()
     }
 
     private fun startButtonAnimations() {
@@ -164,5 +194,6 @@ class TopicDetailsFragment : Fragment() {
         binding.btnEditTopic.startAnimation()
         binding.btnGetMeetings.startAnimation()
         binding.btnAddMeeting.startAnimation()
+        binding.btnSeeProfile.startAnimation()
     }
 }

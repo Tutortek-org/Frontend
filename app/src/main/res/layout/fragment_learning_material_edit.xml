@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".navigation_fragments.learning_materials.LearningMaterialEditFragment"
     android:layout_gravity="center"
-    android:background="@color/color_onboarding_indicator_inactive"
+    android:background="@color/color_primary"
     android:gravity="center">
 
     <ScrollView
