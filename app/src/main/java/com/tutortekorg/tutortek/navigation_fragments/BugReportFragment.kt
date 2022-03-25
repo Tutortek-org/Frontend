@@ -76,9 +76,10 @@ class BugReportFragment : Fragment() {
     private fun formRequestBody(): JSONObject {
         val name = binding.editTextBugName.text.toString()
         val description = binding.editTextBugDescription.text.toString()
-        val body = JSONObject()
-        body.put("name", name)
-        body.put("description", description)
+        val body = JSONObject().apply {
+            put("name", name)
+            put("description", description)
+        }
         return body
     }
 }

@@ -149,6 +149,7 @@
     <!-- Topic details fragment -->
     <string name="get_meetings">Peržiūrėti susitikimus</string>
     <string name="add_meeting">Pridėti susitikimą</string>
+    <string name="view_profile">Peržiūrėti tutoriaus profilį</string>
 
     <!-- Meeting item -->
     <string name="meeting_name">Susitikimo pavadinimas</string>

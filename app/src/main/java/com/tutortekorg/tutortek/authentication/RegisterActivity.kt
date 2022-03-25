@@ -117,10 +117,11 @@ class RegisterActivity : AppCompatActivity() {
     private fun formUserCreateRequestBody(): JSONObject {
         val email = binding.editTextEmailRegister.text.toString()
         val password = binding.editTextPasswordRegister.text.toString()
-        val body = JSONObject()
-        body.put("email", email)
-        body.put("password", password)
-        body.put("role", role)
+        val body = JSONObject().apply {
+            put("email", email)
+            put("password", password)
+            put("role", role)
+        }
         return body
     }
 
@@ -157,13 +158,14 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun formProfileCreateRequestBody(): JSONObject {
-        val body = JSONObject()
         val firstName = binding.editTextName.text.toString()
         val lastName = binding.editTextSurname.text.toString()
         val birthDate = binding.editTextBirthdate.text.toString()
-        body.put("firstName", firstName)
-        body.put("lastName", lastName)
-        body.put("birthDate", birthDate)
+        val body = JSONObject().apply {
+            put("firstName", firstName)
+            put("lastName", lastName)
+            put("birthDate", birthDate)
+        }
         return body
     }
 

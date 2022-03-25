@@ -66,8 +66,9 @@ class TopicEditFragment : Fragment() {
 
     private fun formRequestBody(): JSONObject {
         val name = binding.editTextTopicNameEdit.text.toString()
-        val body = JSONObject()
-        body.put("name", name)
+        val body = JSONObject().apply {
+            put("name", name)
+        }
         return body
     }
 

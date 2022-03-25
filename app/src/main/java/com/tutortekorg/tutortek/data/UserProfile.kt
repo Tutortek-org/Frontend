@@ -4,6 +4,7 @@ import org.json.JSONObject
 import java.io.Serializable
 
 data class UserProfile(
+    val id: Long,
     val firstName: String,
     val lastName: String,
     val rating: Float,
@@ -14,6 +15,7 @@ data class UserProfile(
     var photoPath: String = ""
 ) : Serializable {
     constructor(body: JSONObject, roles: List<String>) : this(
+        body.getLong("id"),
         body.getString("firstName"),
         body.getString("lastName"),
         body.getDouble("rating").toFloat(),

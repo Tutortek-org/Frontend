@@ -67,9 +67,10 @@ class LoginActivity : AppCompatActivity() {
     private fun formRequestBody(): JSONObject {
         val email = binding.editTextEmail.text.toString()
         val password = binding.editTextPassword.text.toString()
-        val body = JSONObject()
-        body.put("email", email)
-        body.put("password", password)
+        val body = JSONObject().apply {
+            put("email", email)
+            put("password", password)
+        }
         return body
     }
 

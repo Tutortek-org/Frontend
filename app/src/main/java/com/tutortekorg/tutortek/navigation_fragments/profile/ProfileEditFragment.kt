@@ -108,12 +108,15 @@ class ProfileEditFragment : Fragment() {
         val birthDate = binding.profileEditTextBirthdate.text.toString()
         val description = binding.profileEditTextDescription.text.toString()
         val rating = ProfileSingleton.getInstance().userProfile?.rating
-        val body = JSONObject()
-        body.put("firstName", firstName)
-        body.put("lastName", lastName)
-        body.put("birthDate", birthDate)
-        body.put("rating", rating?.toDouble())
-        body.put("description", description)
+
+        val body = JSONObject().apply {
+            put("firstName", firstName)
+            put("lastName", lastName)
+            put("birthDate", birthDate)
+            put("rating", rating?.toDouble())
+            put("description", description)
+        }
+
         return body
     }
 
