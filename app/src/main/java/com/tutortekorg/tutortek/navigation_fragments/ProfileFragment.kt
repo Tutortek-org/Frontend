@@ -44,7 +44,7 @@ class ProfileFragment : Fragment() {
     private fun fillOutUI(userProfile: UserProfile?) {
         binding.txtProfileName.text = getString(R.string.profile_full_name, userProfile?.firstName, userProfile?.lastName)
         binding.txtProfileExtra.text = getString(R.string.profile_birth_date, userProfile?.birthDate)
-        binding.txtProfileRating.text = userProfile?.rating.toString()
+        binding.txtProfileRating.text = getString(R.string.rating_format, userProfile?.rating)
         binding.txtProfileCourseCount.text = userProfile?.topicCount.toString()
         binding.txtProfileDescription.text = userProfile?.description
         binding.txtProfileRole.text = userProfile?.roles?.let { SystemUtils.getRoleNamesForUI(it, this) }

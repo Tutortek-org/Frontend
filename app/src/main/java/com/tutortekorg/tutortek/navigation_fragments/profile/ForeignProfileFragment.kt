@@ -68,6 +68,9 @@ class ForeignProfileFragment : Fragment() {
             {
                 Toast.makeText(requireContext(), R.string.rating_success, Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
+                val roles = parseRoles(it)
+                userProfile = UserProfile(it, roles)
+                bindDataToUI()
             },
             {
                 if(!JwtUtils.wasResponseUnauthorized(it)) {
@@ -113,7 +116,7 @@ class ForeignProfileFragment : Fragment() {
         binding.txtForeignProfileCourseCount.text = userProfile.topicCount.toString()
         binding.txtForeignProfileDescription.text = userProfile.description
         binding.txtForeignProfileName.text = getString(R.string.profile_full_name, userProfile.firstName, userProfile.lastName)
-        binding.txtForeignProfileRating.text = userProfile.rating.toString()
+        binding.txtForeignProfileRating.text = getString(R.string.rating_format, userProfile.rating)
         binding.txtForeignProfileExtra.text = getString(R.string.profile_birth_date, userProfile.birthDate)
     }
 }
