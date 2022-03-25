@@ -1,11 +1,17 @@
 package com.tutortekorg.tutortek.navigation_fragments.profile
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.constants.TutortekConstants
@@ -27,9 +33,50 @@ class ForeignProfileFragment : Fragment() {
     ): View {
         binding = FragmentForeignProfileBinding.inflate(inflater, container, false)
         binding.refreshForeignProfile.setOnRefreshListener { refreshData() }
+        binding.btnRate.setOnClickListener { showRatingDialog() }
         userProfile = arguments?.getSerializable("userProfile") as UserProfile
         bindDataToUI()
         return binding.root
+    }
+
+    private fun showRatingDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_rate)
+        dialog.show()
+
+        val ratingBar = dialog.findViewById<RatingBar>(R.id.rating_bar)
+        val currentRatingView = dialog.findViewById<TextView>(R.id.selected_rating)
+        val submitButton = dialog.findViewById<CircularProgressButton>(R.id.btn_submit_rating)
+        var currentRating = 0.0F
+
+        ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
+            currentRating = rating
+            currentRatingView.text = getString(R.string.selected_rating, rating.toString())
+        }
+
+        submitButton.setOnClickListener { sendRatingPatchRequest(currentRating, submitButton, dialog) }
+    }
+
+    private fun sendRatingPatchRequest(rating: Float, button: CircularProgressButton, dialog: Dialog) {
+        button.startAnimation()
+        val url = "${TutortekConstants.BASE_URL}/profiles/${userProfile.id}"
+        val body = JSONObject().apply {
+            put("rating", rating)
+        }
+        val request = TutortekObjectRequest(requireContext(), Request.Method.PATCH, url, body,
+            {
+                Toast.makeText(requireContext(), R.string.rating_success, Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            },
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it)) {
+                    Toast.makeText(requireContext(), R.string.error_rating, Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
     private fun refreshData() {

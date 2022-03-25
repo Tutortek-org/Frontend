@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/selected_rating"
-                android:text="@string/selected_rating"
+                android:text="@string/selected_rating_placeholder"
                 android:textColor="?android:textColorPrimary"/>
 
             <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
