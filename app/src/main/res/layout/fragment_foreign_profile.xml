@@ -199,6 +199,17 @@
 
                         </LinearLayout>
 
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_rate"
+                            style="@style/loginButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_gravity="center_horizontal"
+                            app:backgroundTint="@color/color_primary"
+                            android:text="@string/btn_rate"
+                            android:textSize="15sp" />
+
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

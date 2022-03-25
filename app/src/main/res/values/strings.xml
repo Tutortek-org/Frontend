@@ -55,6 +55,7 @@
     <string name="delete">Delete</string>
     <string name="profile_full_name">%1$s %2$s</string>
     <string name="profile_birth_date">Birth date: %1$s</string>
+    <string name="rating_format">%1$.2f</string>
 
     <!-- Error slug -->
     <string name="incorrect_credentials">Incorrect email or password</string>
@@ -93,6 +94,7 @@
     <string name="error_photo_file_create">Unexpected error while writing photo to file</string>
     <string name="error_invalid_price">Please enter the price in format 0.00</string>
     <string name="error_purchase">Unexpected error during the transaction</string>
+    <string name="error_rating">Unexpected error while submitting the rating</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -202,4 +204,12 @@
     <string name="btn_pay">Pay</string>
     <string name="pay_header">Please choose a payment method</string>
     <string name="payment_success">Payment successful!</string>
+
+    <!-- Meeting signup fragment -->
+    <string name="btn_rate">Rate</string>
+    <string name="dialog_rate_header">Rate the Tutor</string>
+    <string name="selected_rating_placeholder">(0.0)</string>
+    <string name="selected_rating">(%1$s)</string>
+    <string name="btn_submit">Submit</string>
+    <string name="rating_success">Rating submitted successfully</string>
 </resources>
