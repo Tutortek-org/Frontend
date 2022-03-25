@@ -203,4 +203,10 @@
     <string name="btn_pay">Mokėti</string>
     <string name="pay_header">Pasirinkite mokėjimo būdą</string>
     <string name="payment_success">Pervedimas įvykdytas sėkmingai!</string>
+
+    <!-- Meeting signup fragment -->
+    <string name="btn_rate">Įvertinti</string>
+    <string name="dialog_rate_header">Įvertinkite Tutorių</string>
+    <string name="selected_rating">(0.0)</string>
+    <string name="btn_submit">Išsiųsti</string>
 </resources>
