@@ -16,6 +16,7 @@ import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentMeetingAddBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,6 +36,7 @@ class MeetingAddFragment : Fragment() {
         binding.editTextMeetingDate.setOnClickListener { onDateClick() }
         binding.btnConfirmAddMeeting.setOnClickListener { onAddClick() }
 
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

@@ -36,10 +36,9 @@ class MeetingDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMeetingDetailsBinding.inflate(inflater, container, false)
-
         bindEvents()
         bindDataToUI()
-
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 

@@ -17,6 +17,7 @@ import com.tutortekorg.tutortek.databinding.FragmentChangePasswordBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 import java.lang.Exception
 
@@ -28,6 +29,7 @@ class ChangePasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

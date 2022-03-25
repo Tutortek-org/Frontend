@@ -36,6 +36,7 @@ class ForeignProfileFragment : Fragment() {
         binding.btnRate.setOnClickListener { showRatingDialog() }
         userProfile = arguments?.getSerializable("userProfile") as UserProfile
         bindDataToUI()
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 

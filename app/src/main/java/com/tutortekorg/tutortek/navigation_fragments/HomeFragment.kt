@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
         binding.btnMyTopics.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_personalTopicListFragment)
         }
-
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 

@@ -17,6 +17,7 @@ import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentMeetingEditBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,6 +34,7 @@ class MeetingEditFragment : Fragment() {
         binding = FragmentMeetingEditBinding.inflate(inflater, container, false)
         binding.btnConfirmEditMeeting.setOnClickListener { saveEditedMeeting() }
         binding.editTextMeetingDateEdit.setOnClickListener { onDateClick() }
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

@@ -14,6 +14,7 @@ import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.FragmentTopicAddBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 
 class AddTopicFragment : Fragment() {
@@ -25,6 +26,7 @@ class AddTopicFragment : Fragment() {
     ): View {
         binding = FragmentTopicAddBinding.inflate(inflater, container, false)
         binding.btnConfirmAddTopic.setOnClickListener { addTopic() }
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

@@ -28,6 +28,7 @@ import com.tutortekorg.tutortek.requests.retrofit.FileUploadService
 import com.tutortekorg.tutortek.requests.retrofit.ServiceGenerator
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
+import com.tutortekorg.tutortek.utils.SystemUtils
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -61,6 +62,7 @@ class ProfilePhotoFragment : Fragment() {
         binding.btnTakePhoto.setOnClickListener { dispatchTakePictureIntent() }
         binding.btnGallery.setOnClickListener { dispatchGalleryPictureIntent() }
         binding.btnUpload.setOnClickListener { uploadPhoto() }
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 
