@@ -35,16 +35,35 @@ class TopicEditFragment : Fragment() {
         super.onStart()
         topic = arguments?.getSerializable("topic") as Topic
         binding.editTextTopicNameEdit.setText(topic.name)
+        binding.editTextTopicDescriptionEdit.setText(topic.description)
     }
 
     private fun saveEditedTopic() {
         binding.btnConfirmEditTopic.startAnimation()
-        binding.txtInputTopicNameEdit.error = null
-        if(!binding.editTextTopicNameEdit.text.isNullOrBlank()) sendTopicPutUpdate()
-        else {
+        clearErrors()
+        if(validateForm()) sendTopicPutUpdate()
+        else binding.btnConfirmEditTopic.revertAnimation()
+    }
+
+    private fun validateForm(): Boolean {
+        var isValid = true
+
+        if(binding.editTextTopicNameEdit.text.isNullOrBlank()) {
             binding.txtInputTopicNameEdit.error = getString(R.string.field_empty)
-            binding.btnConfirmEditTopic.revertAnimation()
+            isValid = false
         }
+
+        if(binding.editTextTopicDescriptionEdit.text.isNullOrBlank()) {
+            binding.txtInputTopicDescriptionEdit.error = getString(R.string.field_empty)
+            isValid = false
+        }
+
+        return isValid
+    }
+
+    private fun clearErrors() {
+        binding.txtInputTopicNameEdit.error = null
+        binding.txtInputTopicDescriptionEdit.error = null
     }
 
     private fun sendTopicPutUpdate() {
@@ -66,14 +85,17 @@ class TopicEditFragment : Fragment() {
 
     private fun formRequestBody(): JSONObject {
         val name = binding.editTextTopicNameEdit.text.toString()
+        val description = binding.editTextTopicDescriptionEdit.text.toString()
         val body = JSONObject().apply {
             put("name", name)
+            put("description", description)
         }
         return body
     }
 
     private fun goBackToDetailsFragment() {
         topic.name = binding.editTextTopicNameEdit.text.toString()
+        topic.description = binding.editTextTopicDescriptionEdit.text.toString()
 
         try {
             val navController = findNavController()

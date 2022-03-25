@@ -50,6 +50,7 @@ class TopicDetailsFragment : Fragment() {
             ?.observe(viewLifecycleOwner) {
                 topic = it
                 binding.txtTopicDetailsName.text = topic.name
+                binding.txtTopicDescription.text = topic.description
             }
     }
 
@@ -109,6 +110,7 @@ class TopicDetailsFragment : Fragment() {
     private fun bindDataToUI() {
         topic = arguments?.getSerializable("topic") as Topic
         binding.txtTopicDetailsName.text = topic.name
+        binding.txtTopicDescription.text = topic.description
     }
 
     private fun sendTopicGetRequest() {
@@ -117,6 +119,7 @@ class TopicDetailsFragment : Fragment() {
             {
                 topic = Topic(it)
                 binding.txtTopicDetailsName.text = topic.name
+                binding.txtTopicDescription.text = topic.description
                 binding.refreshTopic.isRefreshing = false
             },
             {

@@ -1,12 +1,10 @@
 package com.tutortekorg.tutortek.navigation_fragments.topics
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
@@ -32,12 +30,30 @@ class AddTopicFragment : Fragment() {
 
     private fun addTopic() {
         binding.btnConfirmAddTopic.startAnimation()
-        binding.txtInputTopicName.error = null
-        if(!binding.editTextTopicName.text.isNullOrBlank()) sendTopicPostRequest()
-        else {
+        clearErrors()
+        if(validateForm()) sendTopicPostRequest()
+        else binding.btnConfirmAddTopic.revertAnimation()
+    }
+
+    private fun validateForm(): Boolean {
+        var isValid = true
+
+        if(binding.editTextTopicName.text.isNullOrBlank()) {
             binding.txtInputTopicName.error = getString(R.string.field_empty)
-            binding.btnConfirmAddTopic.revertAnimation()
+            isValid = false
         }
+
+        if(binding.editTextTopicDescription.text.isNullOrBlank()) {
+            binding.txtInputTopicDescription.error = getString(R.string.field_empty)
+            isValid = false
+        }
+
+        return isValid
+    }
+
+    private fun clearErrors() {
+        binding.txtInputTopicName.error = null
+        binding.txtInputTopicDescription.error = null
     }
 
     private fun sendTopicPostRequest() {
@@ -63,8 +79,10 @@ class AddTopicFragment : Fragment() {
 
     private fun getJsonBody(): JSONObject {
         val name = binding.editTextTopicName.text.toString()
+        val description = binding.editTextTopicDescription.text.toString()
         val body = JSONObject().apply {
             put("name", name)
+            put("description", description)
         }
         return body
     }

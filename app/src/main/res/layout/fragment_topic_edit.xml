@@ -62,6 +62,22 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txt_input_topic_description_edit"
+                        style="@style/parent"
+                        android:layout_marginTop="@dimen/loginViewsMargin"
+                        app:boxStrokeColor="@color/color_primary"
+                        app:hintTextColor="@color/color_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_topic_description_edit"
+                            style="@style/modifiedEditText"
+                            android:textCursorDrawable="@drawable/text_input_cursor"
+                            android:hint="@string/description"
+                            android:inputType="textMultiLine"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/btn_confirm_edit_topic"
                         style="@style/loginButton"
