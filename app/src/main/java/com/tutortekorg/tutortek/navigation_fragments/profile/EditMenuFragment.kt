@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.databinding.FragmentEditMenuBinding
+import com.tutortekorg.tutortek.utils.SystemUtils
 
 class EditMenuFragment : Fragment() {
     private lateinit var binding: FragmentEditMenuBinding
@@ -26,6 +27,7 @@ class EditMenuFragment : Fragment() {
         binding.btnProfilePhoto.setOnClickListener {
             it.findNavController().navigate(R.id.action_editMenuFragment_to_profilePhotoFragment)
         }
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 }
