@@ -44,7 +44,8 @@ class TopicListFragment : Fragment() {
     }
 
     private fun bindDataToUI() {
-        val url = "${TutortekConstants.BASE_URL}/topics"
+        val endpoint = arguments?.getString("endpoint", "")
+        val url = "${TutortekConstants.BASE_URL}/topics$endpoint"
         val request = TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
             {
                 val topics = parseTopicList(it)

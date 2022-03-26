@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.android.volley.Request
 import com.google.firebase.messaging.FirebaseMessaging
@@ -28,10 +29,12 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         binding.btnAllTopics.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_topicListFragment)
+            val bundle = bundleOf("endpoint" to "")
+            it.findNavController().navigate(R.id.action_homeFragment_to_topicListFragment, bundle)
         }
         binding.btnMyTopics.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_personalTopicListFragment)
+            val bundle = bundleOf("endpoint" to "/personal")
+            it.findNavController().navigate(R.id.action_homeFragment_to_topicListFragment, bundle)
         }
         activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
@@ -39,7 +42,6 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
         val userProfile = ProfileSingleton.getInstance().userProfile
         context?.let { SystemUtils.downloadProfilePhoto(it, userProfile) }
         registerDeviceToken()
