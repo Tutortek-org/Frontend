@@ -36,7 +36,7 @@ class PersonalMeetingAdapter(private val meetings: List<Meeting>,
     override fun onBindViewHolder(holder: MeetingAdapter.MeetingViewHolder, position: Int) {
         holder.view.setOnClickListener {
             val bundle = bundleOf("meeting" to meetings[position], "topic" to topics[position])
-            navController.navigate(R.id.action_topicDetailsFragment_to_meetingDetailsFragment, bundle)
+            navController.navigate(R.id.action_personalMeetingListFragment_to_meetingDetailsFragment, bundle)
         }
         holder.setMeetingData(meetings[position])
     }
