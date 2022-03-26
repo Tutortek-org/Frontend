@@ -46,6 +46,7 @@
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_meeting_details.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_meeting_edit.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_meeting_signup.xml" value="0.2848731884057971" />
+        <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_personal_meeting_list.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_personal_topic_list.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_profile.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/vagab/Desktop/Frontend/app/src/main/res/layout/fragment_profile_edit.xml" value="0.3494791666666667" />
@@ -70,7 +71,7 @@
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

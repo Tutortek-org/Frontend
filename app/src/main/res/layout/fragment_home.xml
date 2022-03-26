@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".navigation_fragments.HomeFragment">
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_all_topics"
@@ -14,12 +14,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:backgroundTint="@color/color_primary"
-        android:textColor="@color/white"
         android:text="@string/full_topic_list"
+        android:textColor="@color/white"
         android:textSize="15sp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_my_topics"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -31,15 +32,35 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:backgroundTint="?colorOnPrimary"
-        app:strokeColor="@color/color_primary"
-        app:strokeWidth="2dp"
         android:text="@string/my_topic_list"
+        android:textColor="@color/color_primary"
+        android:textSize="15sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_my_meeetings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_all_topics"
+        app:strokeColor="@color/color_primary"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_my_meeetings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:backgroundTint="?colorOnPrimary"
+        android:text="@string/my_meeting_list"
         android:textColor="@color/color_primary"
         android:textSize="15sp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_all_topics" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_my_topics"
+        app:strokeColor="@color/color_primary"
+        app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

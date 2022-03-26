@@ -36,6 +36,9 @@ class HomeFragment : Fragment() {
             val bundle = bundleOf("endpoint" to "/personal")
             it.findNavController().navigate(R.id.action_homeFragment_to_topicListFragment, bundle)
         }
+        binding.btnMyMeeetings.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_personalMeetingListFragment)
+        }
         activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
