@@ -97,6 +97,7 @@
     <string name="error_invalid_price">Kainą veskite formatu 0.00</string>
     <string name="error_purchase">Netikėta klaida bandant atlikti pervedimą</string>
     <string name="error_rating">Netikėta klaida siunčiant įvertinimą</string>
+    <string name="error_user_report">Netikėta klaida siunčiant pranešimą apie naudotoją</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -221,4 +222,5 @@
 
     <!-- User report fragment -->
     <string name="report_header">Pastebėjote kažką blogo? Praneškite!</string>
+    <string name="user_report_success">Apie naudotoją pranešta sėkmingai</string>
 </resources>

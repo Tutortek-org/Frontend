@@ -96,6 +96,7 @@
     <string name="error_invalid_price">Please enter the price in format 0.00</string>
     <string name="error_purchase">Unexpected error during the transaction</string>
     <string name="error_rating">Unexpected error while submitting the rating</string>
+    <string name="error_user_report">Unexpected error while sending a user report</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -220,4 +221,5 @@
 
     <!-- User report fragment -->
     <string name="report_header">Noticed something bad? Tell us!</string>
+    <string name="user_report_success">User reported successfully</string>
 </resources>
