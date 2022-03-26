@@ -41,6 +41,7 @@
     <string name="logout">Logout</string>
     <string name="dark_mode_switch">Dark theme</string>
     <string name="report_bug">Report a bug</string>
+    <string name="notifications_switch">Allow notifications</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Name Surname</string>

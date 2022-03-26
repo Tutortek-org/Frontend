@@ -26,6 +26,7 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         binding.btnLogout.setOnClickListener { logout() }
         binding.darkTheme.setOnClickListener { changeTheme() }
+        binding.notifications.setOnClickListener { toggleNotifications() }
         binding.btnReportBug.setOnClickListener {
             it.findNavController().navigate(R.id.action_settingsFragment_to_bugReportFragment)
         }
@@ -36,8 +37,16 @@ class SettingsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val preferences = requireContext().getSharedPreferences(TutortekConstants.SETTING_PREFERENCES, Context.MODE_PRIVATE)
-        val isDarkModeOn = preferences.getBoolean(TutortekConstants.DARK_MODE_FLAG, false)
-        binding.darkTheme.isChecked = isDarkModeOn
+        binding.darkTheme.isChecked = preferences.getBoolean(TutortekConstants.DARK_MODE_FLAG, false)
+        binding.notifications.isChecked = preferences.getBoolean(TutortekConstants.NOTIFICATIONS_FLAG, true)
+    }
+
+    private fun toggleNotifications() {
+        val preferences = requireContext().getSharedPreferences(TutortekConstants.SETTING_PREFERENCES, Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        val areNotificationsAllowed = binding.notifications.isChecked
+        editor.putBoolean(TutortekConstants.NOTIFICATIONS_FLAG, areNotificationsAllowed)
+        editor.apply()
     }
 
     private fun changeTheme() {

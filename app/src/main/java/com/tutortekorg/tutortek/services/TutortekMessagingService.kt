@@ -26,6 +26,11 @@ class TutortekMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
+
+        val preferences = getSharedPreferences(TutortekConstants.SETTING_PREFERENCES, MODE_PRIVATE)
+        val areNotificationsAllowed = preferences.getBoolean(TutortekConstants.NOTIFICATIONS_FLAG, true)
+        if(!areNotificationsAllowed) return
+
         val json = JSONObject(message.data["default"]!!)
         val title = json.getString("title")
         val content = json.getString("content")
