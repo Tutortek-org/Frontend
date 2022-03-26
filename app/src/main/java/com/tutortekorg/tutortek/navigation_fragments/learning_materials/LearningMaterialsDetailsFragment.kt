@@ -32,10 +32,9 @@ class LearningMaterialsDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLearningMaterialsDetailsBinding.inflate(inflater, container, false)
-
         bindDataToUI()
         bindEvents()
-
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 

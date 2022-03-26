@@ -1,12 +1,10 @@
 package com.tutortekorg.tutortek.navigation_fragments.topics
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
@@ -15,7 +13,9 @@ import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.FragmentTopicAddBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
+import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 
 class AddTopicFragment : Fragment() {
@@ -27,17 +27,36 @@ class AddTopicFragment : Fragment() {
     ): View {
         binding = FragmentTopicAddBinding.inflate(inflater, container, false)
         binding.btnConfirmAddTopic.setOnClickListener { addTopic() }
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 
     private fun addTopic() {
         binding.btnConfirmAddTopic.startAnimation()
-        binding.txtInputTopicName.error = null
-        if(!binding.editTextTopicName.text.isNullOrBlank()) sendTopicPostRequest()
-        else {
+        clearErrors()
+        if(validateForm()) sendTopicPostRequest()
+        else binding.btnConfirmAddTopic.revertAnimation()
+    }
+
+    private fun validateForm(): Boolean {
+        var isValid = true
+
+        if(binding.editTextTopicName.text.isNullOrBlank()) {
             binding.txtInputTopicName.error = getString(R.string.field_empty)
-            binding.btnConfirmAddTopic.revertAnimation()
+            isValid = false
         }
+
+        if(binding.editTextTopicDescription.text.isNullOrBlank()) {
+            binding.txtInputTopicDescription.error = getString(R.string.field_empty)
+            isValid = false
+        }
+
+        return isValid
+    }
+
+    private fun clearErrors() {
+        binding.txtInputTopicName.error = null
+        binding.txtInputTopicDescription.error = null
     }
 
     private fun sendTopicPostRequest() {
@@ -46,6 +65,8 @@ class AddTopicFragment : Fragment() {
         val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
             {
                 try {
+                    val topicCount = ProfileSingleton.getInstance().userProfile?.topicCount
+                    if (topicCount != null) ProfileSingleton.getInstance().userProfile?.topicCount = topicCount + 1
                     Toast.makeText(requireContext(), R.string.topic_add_success, Toast.LENGTH_SHORT).show()
                     findNavController().popBackStack()
                 }
@@ -63,8 +84,10 @@ class AddTopicFragment : Fragment() {
 
     private fun getJsonBody(): JSONObject {
         val name = binding.editTextTopicName.text.toString()
+        val description = binding.editTextTopicDescription.text.toString()
         val body = JSONObject().apply {
             put("name", name)
+            put("description", description)
         }
         return body
     }

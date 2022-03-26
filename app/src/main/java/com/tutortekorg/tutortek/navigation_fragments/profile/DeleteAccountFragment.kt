@@ -16,6 +16,7 @@ import com.tutortekorg.tutortek.databinding.FragmentDeleteAccountBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 
 class DeleteAccountFragment : Fragment() {
@@ -27,6 +28,7 @@ class DeleteAccountFragment : Fragment() {
     ): View {
         binding = FragmentDeleteAccountBinding.inflate(inflater, container, false)
         binding.btnDeleteAccount.setOnClickListener { confirmDelete() }
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

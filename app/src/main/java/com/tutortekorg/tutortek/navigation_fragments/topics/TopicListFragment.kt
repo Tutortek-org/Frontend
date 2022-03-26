@@ -16,6 +16,7 @@ import com.tutortekorg.tutortek.data.Topic
 import com.tutortekorg.tutortek.databinding.FragmentTopicListBinding
 import com.tutortekorg.tutortek.requests.TutortekArrayRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONArray
 
 class TopicListFragment : Fragment() {
@@ -33,6 +34,7 @@ class TopicListFragment : Fragment() {
             it.findNavController().navigate(R.id.action_topicListFragment_to_addTopicFragment)
         }
 
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 
@@ -42,7 +44,8 @@ class TopicListFragment : Fragment() {
     }
 
     private fun bindDataToUI() {
-        val url = "${TutortekConstants.BASE_URL}/topics"
+        val endpoint = arguments?.getString("endpoint", "")
+        val url = "${TutortekConstants.BASE_URL}/topics$endpoint"
         val request = TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
             {
                 val topics = parseTopicList(it)

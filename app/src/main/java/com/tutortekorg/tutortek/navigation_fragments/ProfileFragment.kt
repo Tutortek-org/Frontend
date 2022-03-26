@@ -32,6 +32,7 @@ class ProfileFragment : Fragment() {
             fillOutUI(userProfile)
             binding.refreshProfile.isRefreshing = false
         }
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 

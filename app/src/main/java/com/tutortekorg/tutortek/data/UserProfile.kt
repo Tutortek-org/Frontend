@@ -10,7 +10,7 @@ data class UserProfile(
     val rating: Float,
     val birthDate: String,
     val description: String,
-    val topicCount: Int,
+    var topicCount: Int,
     val roles: List<String>,
     var photoPath: String = ""
 ) : Serializable {

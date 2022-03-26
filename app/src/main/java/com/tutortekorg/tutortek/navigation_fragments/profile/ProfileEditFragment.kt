@@ -17,6 +17,7 @@ import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 
 class ProfileEditFragment : Fragment() {
@@ -31,6 +32,7 @@ class ProfileEditFragment : Fragment() {
         binding.btnEditSave.setOnClickListener { saveNewInformation() }
         binding.profileEditTextBirthdate.setOnClickListener { onBirthDateClick() }
         binding.profileEditTextBirthdate.keyListener = null
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

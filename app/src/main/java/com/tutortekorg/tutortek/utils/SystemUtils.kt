@@ -1,9 +1,12 @@
 package com.tutortekorg.tutortek.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.tutortekorg.tutortek.R
@@ -39,6 +42,24 @@ object SystemUtils {
         alert.show()
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color)
         alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color)
+    }
+
+    fun setupConstraints(activity: Activity) {
+        val constraintLayout = activity.findViewById<ConstraintLayout>(R.id.constraints_home)
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(constraintLayout)
+        constraintSet.clear(R.id.fragmentContainerView, ConstraintSet.BOTTOM)
+        constraintSet.connect(R.id.fragmentContainerView, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM)
+        constraintSet.applyTo(constraintLayout)
+    }
+
+    fun resetConstraints(activity: Activity) {
+        val constraintLayout = activity.findViewById<ConstraintLayout>(R.id.constraints_home)
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(constraintLayout)
+        constraintSet.clear(R.id.fragmentContainerView, ConstraintSet.BOTTOM)
+        constraintSet.connect(R.id.fragmentContainerView, ConstraintSet.BOTTOM, R.id.navigation_card_view, ConstraintSet.TOP)
+        constraintSet.applyTo(constraintLayout)
     }
 
     fun downloadProfilePhoto(context: Context, userProfile: UserProfile?, imageView: CircleImageView? = null) {

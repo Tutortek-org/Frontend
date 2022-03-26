@@ -16,6 +16,7 @@ import com.tutortekorg.tutortek.databinding.FragmentLearningMaterialAddBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
 
 class LearningMaterialAddFragment : Fragment() {
@@ -32,7 +33,7 @@ class LearningMaterialAddFragment : Fragment() {
         meeting = arguments?.getSerializable("meeting") as Meeting
 
         binding.btnConfirmAddLearningMaterial.setOnClickListener { onAddClick() }
-
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

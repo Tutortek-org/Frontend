@@ -22,6 +22,7 @@ import com.tutortekorg.tutortek.databinding.FragmentMeetingSignupBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
+import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -62,6 +63,7 @@ class MeetingSignupFragment : Fragment() {
         preparePaymentClient()
         sendIsReadyToPayRequest()
         binding.btnGooglePay.root.setOnClickListener { requestPayment() }
+        activity?.let { SystemUtils.setupConstraints(it) }
         return binding.root
     }
 

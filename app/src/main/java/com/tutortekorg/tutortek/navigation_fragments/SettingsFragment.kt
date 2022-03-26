@@ -14,6 +14,7 @@ import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.FragmentSettingsBinding
+import com.tutortekorg.tutortek.utils.SystemUtils
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
@@ -28,6 +29,7 @@ class SettingsFragment : Fragment() {
         binding.btnReportBug.setOnClickListener {
             it.findNavController().navigate(R.id.action_settingsFragment_to_bugReportFragment)
         }
+        activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
     }
 
