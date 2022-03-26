@@ -250,7 +250,15 @@
         android:id="@+id/foreignProfileFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.profile.ForeignProfileFragment"
         android:label="fragment_foreign_profile"
-        tools:layout="@layout/fragment_foreign_profile" />
+        tools:layout="@layout/fragment_foreign_profile" >
+        <action
+            android:id="@+id/action_foreignProfileFragment_to_reportUserFragment"
+            app:destination="@id/reportUserFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/personalMeetingListFragment"
         android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.PersonalMeetingListFragment"
@@ -264,4 +272,9 @@
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
     </fragment>
+    <fragment
+        android:id="@+id/reportUserFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.profile.ReportUserFragment"
+        android:label="fragment_report_user"
+        tools:layout="@layout/fragment_report_user" />
 </navigation>
