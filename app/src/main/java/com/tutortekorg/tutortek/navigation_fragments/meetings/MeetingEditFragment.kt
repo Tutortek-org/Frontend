@@ -48,6 +48,7 @@ class MeetingEditFragment : Fragment() {
         binding.editTextMeetingDateEdit.setText(meeting.date)
         binding.editTextMeetingDescriptionEdit.setText(meeting.description)
         binding.editTextMeetingNameEdit.setText(meeting.name)
+        binding.editTextMeetingPriceEdit.setText(meeting.price.toString())
     }
 
     private fun onDateClick() {
@@ -68,6 +69,7 @@ class MeetingEditFragment : Fragment() {
         binding.txtInputMeetingDateEdit.error = null
         binding.txtInputMeetingDescriptionEdit.error = null
         binding.txtInputMeetingNameEdit.error = null
+        binding.txtInputMeetingPriceEdit.error = null
     }
 
     private fun validateForm(): Boolean {
@@ -99,12 +101,23 @@ class MeetingEditFragment : Fragment() {
             result = false
         }
 
+        if(binding.editTextMeetingPriceEdit.text.isNullOrBlank()
+            || !isPriceValid(binding.editTextMeetingPriceEdit.text.toString())) {
+            binding.txtInputMeetingPriceEdit.error = getString(R.string.error_invalid_price)
+            result = false
+        }
+
         return result
     }
 
     private fun isAttendantCountValid(attendants: String): Boolean {
         val regex = "[1-9]([0-9]?)+".toRegex()
         return regex.matches(attendants)
+    }
+
+    private fun isPriceValid(price: String): Boolean {
+        val regex = "^\\d{0,8}(\\.\\d{1,4})?\$".toRegex()
+        return regex.matches(price)
     }
 
     private fun isDateValid(date: String): Boolean {
@@ -136,6 +149,7 @@ class MeetingEditFragment : Fragment() {
         val maxAttendants = binding.editTextMeetingAttendantsEdit.text.toString().toInt()
         val address = binding.editTextMeetingAddressEdit.text.toString()
         val description = binding.editTextMeetingDescriptionEdit.text.toString()
+        val price = binding.editTextMeetingPriceEdit.text.toString().toDouble()
 
         val body = JSONObject().apply {
             put("name", name)
@@ -143,6 +157,7 @@ class MeetingEditFragment : Fragment() {
             put("maxAttendants", maxAttendants)
             put("address", address)
             put("description", description)
+            put("price", price)
         }
 
         return body
@@ -154,6 +169,7 @@ class MeetingEditFragment : Fragment() {
         meeting.maxAttendants = binding.editTextMeetingAttendantsEdit.text.toString().toInt()
         meeting.address = binding.editTextMeetingAddressEdit.text.toString()
         meeting.description = binding.editTextMeetingDescriptionEdit.text.toString()
+        meeting.price = binding.editTextMeetingPriceEdit.text.toString().toDouble()
 
         try {
             val navController = findNavController()
