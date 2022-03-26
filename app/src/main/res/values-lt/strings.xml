@@ -42,6 +42,7 @@
     <string name="logout">Atsijungti</string>
     <string name="dark_mode_switch">Tamsi tema</string>
     <string name="report_bug">Pranešti apie klaidą</string>
+    <string name="notifications_switch">Leisti pranešimus</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Vardas Pavardė</string>
