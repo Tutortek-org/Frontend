@@ -97,6 +97,7 @@
     <string name="error_invalid_price">Kainą veskite formatu 0.00</string>
     <string name="error_purchase">Netikėta klaida bandant atlikti pervedimą</string>
     <string name="error_rating">Netikėta klaida siunčiant įvertinimą</string>
+    <string name="error_user_report">Netikėta klaida siunčiant pranešimą apie naudotoją</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -209,10 +210,17 @@
     <string name="payment_success">Pervedimas įvykdytas sėkmingai!</string>
 
     <!-- Meeting signup fragment -->
-    <string name="btn_rate">Įvertinti</string>
     <string name="dialog_rate_header">Įvertinkite Tutorių</string>
     <string name="selected_rating_placeholder">(0.0)</string>
     <string name="selected_rating">(%1$s)</string>
     <string name="btn_submit">Išsiųsti</string>
     <string name="rating_success">Įvertinimas išsiųstas sėkmingai</string>
+
+    <!-- Foreign profile fragment -->
+    <string name="btn_rate">Įvertinti</string>
+    <string name="btn_report_user">Pranešti</string>
+
+    <!-- User report fragment -->
+    <string name="report_header">Pastebėjote kažką blogo? Praneškite!</string>
+    <string name="user_report_success">Apie naudotoją pranešta sėkmingai</string>
 </resources>

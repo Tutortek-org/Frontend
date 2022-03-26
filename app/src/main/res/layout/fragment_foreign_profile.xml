@@ -199,16 +199,45 @@
 
                         </LinearLayout>
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_rate"
-                            style="@style/loginButton"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_gravity="center_horizontal"
-                            app:backgroundTint="@color/color_primary"
-                            android:text="@string/btn_rate"
-                            android:textSize="15sp" />
+                            android:orientation="horizontal"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="40dp"
+                            android:weightSum="2">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_rate"
+                                android:layout_width="125dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                app:backgroundTint="@color/color_primary"
+                                app:icon="@drawable/ic_baseline_star_rate_24"
+                                app:iconGravity="textStart"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/btn_rate"
+                                android:textSize="15sp"
+                                app:cornerRadius="20dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_report"
+                                android:layout_width="125dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                app:backgroundTint="@color/report_color"
+                                app:icon="@drawable/ic_baseline_report_problem_24"
+                                app:iconGravity="textStart"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/btn_report_user"
+                                android:textSize="15sp"
+                                app:cornerRadius="20dp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

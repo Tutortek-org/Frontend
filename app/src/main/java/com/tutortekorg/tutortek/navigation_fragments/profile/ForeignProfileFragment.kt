@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
@@ -32,12 +34,20 @@ class ForeignProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentForeignProfileBinding.inflate(inflater, container, false)
-        binding.refreshForeignProfile.setOnRefreshListener { refreshData() }
-        binding.btnRate.setOnClickListener { showRatingDialog() }
         userProfile = arguments?.getSerializable("userProfile") as UserProfile
+        bindEventsToUI()
         bindDataToUI()
         activity?.let { SystemUtils.resetConstraints(it) }
         return binding.root
+    }
+
+    private fun bindEventsToUI() {
+        binding.refreshForeignProfile.setOnRefreshListener { refreshData() }
+        binding.btnRate.setOnClickListener { showRatingDialog() }
+        binding.btnReport.setOnClickListener {
+            val bundle = bundleOf("userId" to userProfile.belongsTo)
+            it.findNavController().navigate(R.id.action_foreignProfileFragment_to_reportUserFragment, bundle)
+        }
     }
 
     private fun showRatingDialog() {
