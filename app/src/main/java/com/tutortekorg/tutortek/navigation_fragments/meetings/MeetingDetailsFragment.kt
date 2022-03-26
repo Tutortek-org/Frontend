@@ -65,6 +65,7 @@ class MeetingDetailsFragment : Fragment() {
         binding.txtMeetingDate.text = meeting.date
         binding.txtMeetingDescription.text = meeting.description
         binding.txtMeetingName.text = meeting.name
+        binding.txtMeetingPrice.text = getString(R.string.meeting_price_header, meeting.price.toString())
     }
 
     private fun bindEvents() {
@@ -105,6 +106,7 @@ class MeetingDetailsFragment : Fragment() {
                 binding.txtMeetingDate.text = meeting.date
                 binding.txtMeetingDescription.text = meeting.description
                 binding.txtMeetingName.text = meeting.name
+                binding.txtMeetingPrice.text = getString(R.string.meeting_price_header, meeting.price.toString())
                 binding.refreshMeeting.isRefreshing = false
             },
             {

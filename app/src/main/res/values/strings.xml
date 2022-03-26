@@ -128,6 +128,7 @@
     <!-- Home fragment -->
     <string name="full_topic_list">Full topic list</string>
     <string name="my_topic_list">My topic list</string>
+    <string name="my_meeting_list">My meeting list</string>
 
     <!-- Topic list fragment -->
     <string name="btn_add_topic_description">Add topic</string>

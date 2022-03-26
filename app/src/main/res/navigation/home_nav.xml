@@ -17,6 +17,13 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_personalMeetingListFragment"
+            app:destination="@id/personalMeetingListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -244,4 +251,17 @@
         android:name="com.tutortekorg.tutortek.navigation_fragments.profile.ForeignProfileFragment"
         android:label="fragment_foreign_profile"
         tools:layout="@layout/fragment_foreign_profile" />
+    <fragment
+        android:id="@+id/personalMeetingListFragment"
+        android:name="com.tutortekorg.tutortek.navigation_fragments.meetings.PersonalMeetingListFragment"
+        android:label="fragment_personal_meeting_list"
+        tools:layout="@layout/fragment_personal_meeting_list" >
+        <action
+            android:id="@+id/action_personalMeetingListFragment_to_meetingDetailsFragment"
+            app:destination="@id/meetingDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

@@ -109,6 +109,17 @@
                                     android:textSize="15sp"
                                     android:textStyle="italic" />
 
+                                <TextView
+                                    android:id="@+id/txt_meeting_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/color_text_secondary"
+                                    android:text="@string/meeting_price_header"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
                             </LinearLayout>
 
                         </androidx.cardview.widget.CardView>
