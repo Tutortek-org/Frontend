@@ -12,6 +12,7 @@ data class UserProfile(
     val description: String,
     var topicCount: Int,
     val roles: List<String>,
+    val belongsTo: Long,
     var photoPath: String = ""
 ) : Serializable {
     constructor(body: JSONObject, roles: List<String>) : this(
@@ -22,6 +23,7 @@ data class UserProfile(
         body.getString("birthDate"),
         body.getString("description"),
         body.getInt("topicCount"),
-        roles
+        roles,
+        body.getLong("belongsTo")
     )
 }
