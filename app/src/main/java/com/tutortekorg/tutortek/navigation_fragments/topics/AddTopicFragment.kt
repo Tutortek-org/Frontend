@@ -13,6 +13,7 @@ import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.FragmentTopicAddBinding
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
+import com.tutortekorg.tutortek.singletons.ProfileSingleton
 import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONObject
@@ -64,6 +65,8 @@ class AddTopicFragment : Fragment() {
         val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body,
             {
                 try {
+                    val topicCount = ProfileSingleton.getInstance().userProfile?.topicCount
+                    if (topicCount != null) ProfileSingleton.getInstance().userProfile?.topicCount = topicCount + 1
                     Toast.makeText(requireContext(), R.string.topic_add_success, Toast.LENGTH_SHORT).show()
                     findNavController().popBackStack()
                 }
