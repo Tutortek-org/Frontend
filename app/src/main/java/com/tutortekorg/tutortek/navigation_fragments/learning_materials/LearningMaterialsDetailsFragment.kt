@@ -32,9 +32,9 @@ class LearningMaterialsDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLearningMaterialsDetailsBinding.inflate(inflater, container, false)
-        handleButtonVisibility()
         bindDataToUI()
         bindEvents()
+        handleButtonVisibility()
         activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
@@ -52,12 +52,26 @@ class LearningMaterialsDetailsFragment : Fragment() {
     }
 
     private fun handleButtonVisibility() {
-        JwtUtils.isUserStudent(requireContext())?.let {
-            if(it) {
-                binding.btnDeleteLearningMaterial.visibility = View.GONE
-                binding.btnEditLearningMaterial.visibility = View.GONE
-            }
+        handleAccordingToRoles()
+        handleAccordingToResourceID()
+    }
+
+    private fun handleAccordingToResourceID() {
+        val profileId = JwtUtils.getProfileIdFromSavedToken(requireContext())
+        profileId?.let {
+            if(it != topic.profileId) hideButtons()
         }
+    }
+
+    private fun handleAccordingToRoles() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if (it) hideButtons()
+        }
+    }
+
+    private fun hideButtons() {
+        binding.btnDeleteLearningMaterial.visibility = View.GONE
+        binding.btnEditLearningMaterial.visibility = View.GONE
     }
 
     private fun bindDataToUI() {
