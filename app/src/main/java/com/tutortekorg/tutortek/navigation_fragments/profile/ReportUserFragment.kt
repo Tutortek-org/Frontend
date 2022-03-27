@@ -27,7 +27,7 @@ class ReportUserFragment : Fragment() {
     ): View {
         binding = FragmentReportUserBinding.inflate(inflater, container, false)
         binding.btnConfirmUserReport.setOnClickListener { submitReport() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

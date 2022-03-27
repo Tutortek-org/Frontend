@@ -77,6 +77,12 @@ object JwtUtils {
         ProfileSingleton.getInstance().userProfile = profile
     }
 
+    fun isUserStudent(context: Context): Boolean? {
+        val token = getJwtToken(context)
+        val roles = token?.let { getRoles(it) }
+        return roles?.contains(TutortekConstants.ROLE_STUDENT)
+    }
+
     private fun getRoles(token: String): List<String> {
         val jwt = JWT(token)
         val roles = jwt.getClaim("roles")

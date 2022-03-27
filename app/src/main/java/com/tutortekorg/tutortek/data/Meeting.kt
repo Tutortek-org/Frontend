@@ -10,7 +10,8 @@ data class Meeting(
     var maxAttendants: Int,
     var address: String,
     var description: String,
-    var price: Double
+    var price: Double,
+    var profileId: Long
 ) : Serializable {
 
     constructor(body: JSONObject) : this(
@@ -20,6 +21,7 @@ data class Meeting(
         body.getInt("maxAttendants"),
         body.getString("address"),
         body.getString("description"),
-        body.getDouble("price")
+        body.getDouble("price"),
+        body.getLong("profileId")
     )
 }

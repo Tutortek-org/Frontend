@@ -34,7 +34,7 @@ class MeetingEditFragment : Fragment() {
         binding = FragmentMeetingEditBinding.inflate(inflater, container, false)
         binding.btnConfirmEditMeeting.setOnClickListener { saveEditedMeeting() }
         binding.editTextMeetingDateEdit.setOnClickListener { onDateClick() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

@@ -29,7 +29,7 @@ class TopicEditFragment : Fragment() {
     ): View {
         binding = FragmentTopicEditBinding.inflate(inflater, container, false)
         binding.btnConfirmEditTopic.setOnClickListener { saveEditedTopic() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

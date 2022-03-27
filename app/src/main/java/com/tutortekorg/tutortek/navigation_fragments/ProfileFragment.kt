@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
             fillOutUI(userProfile)
             binding.refreshProfile.isRefreshing = false
         }
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 

@@ -28,19 +28,26 @@ class TopicListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTopicListBinding.inflate(inflater, container, false)
+        handleButtonVisibility()
 
         binding.refreshTopics.setOnRefreshListener { bindDataToUI() }
         binding.btnAddTopic.setOnClickListener {
             it.findNavController().navigate(R.id.action_topicListFragment_to_addTopicFragment)
         }
 
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
         bindDataToUI()
+    }
+
+    private fun handleButtonVisibility() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if(it) binding.btnAddTopic.visibility = View.GONE
+        }
     }
 
     private fun bindDataToUI() {

@@ -38,7 +38,8 @@ class TopicDetailsFragment : Fragment() {
         binding = FragmentTopicDetailsBinding.inflate(inflater, container, false)
         bindEvents()
         bindDataToUI()
-        activity?.let { SystemUtils.resetConstraints(it) }
+        handleButtonVisibility()
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 
@@ -51,6 +52,30 @@ class TopicDetailsFragment : Fragment() {
                 binding.txtTopicDetailsName.text = topic.name
                 binding.txtTopicDescription.text = topic.description
             }
+    }
+
+    private fun handleButtonVisibility() {
+        handleAccordingToRoles()
+        handleAccordingToResourceID()
+    }
+
+    private fun handleAccordingToResourceID() {
+        val profileId = JwtUtils.getProfileIdFromSavedToken(requireContext())
+        profileId?.let {
+            if(it != topic.profileId) hideButtons()
+        }
+    }
+
+    private fun handleAccordingToRoles() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if (it) hideButtons()
+        }
+    }
+
+    private fun hideButtons() {
+        binding.btnAddMeeting.visibility = View.GONE
+        binding.btnEditTopic.visibility = View.GONE
+        binding.btnDeleteTopic.visibility = View.GONE
     }
 
     private fun bindEvents() {
@@ -79,7 +104,7 @@ class TopicDetailsFragment : Fragment() {
 
     private fun getTutorProfile() {
         startButtonAnimations()
-        val url = "${TutortekConstants.BASE_URL}/profiles/${topic.userId}"
+        val url = "${TutortekConstants.BASE_URL}/profiles/${topic.profileId}"
         val request = TutortekObjectRequest(requireContext(), Request.Method.GET, url, null,
             {
                 val roles = parseRoles(it)

@@ -27,7 +27,7 @@ class EditMenuFragment : Fragment() {
         binding.btnProfilePhoto.setOnClickListener {
             it.findNavController().navigate(R.id.action_editMenuFragment_to_profilePhotoFragment)
         }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 }

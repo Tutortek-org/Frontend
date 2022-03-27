@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
+        handleButtonVisibility()
         binding.btnAllTopics.setOnClickListener {
             val bundle = bundleOf("endpoint" to "")
             it.findNavController().navigate(R.id.action_homeFragment_to_topicListFragment, bundle)
@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         binding.btnMyMeeetings.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_personalMeetingListFragment)
         }
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 
@@ -50,12 +50,19 @@ class HomeFragment : Fragment() {
         registerDeviceToken()
     }
 
+    private fun handleButtonVisibility() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if(it) binding.btnMyTopics.visibility = View.GONE
+        }
+    }
+
     private fun registerDeviceToken() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener {
             if (it.isSuccessful) {
                 val url = "${TutortekConstants.BASE_URL}/notifications"
-                val body = JSONObject()
-                body.put("deviceToken", it.result)
+                val body = JSONObject().apply {
+                    put("deviceToken", it.result)
+                }
                 val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body, {}, {})
                 RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
             }

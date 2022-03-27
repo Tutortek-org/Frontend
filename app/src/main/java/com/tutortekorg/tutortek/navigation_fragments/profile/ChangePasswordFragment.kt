@@ -29,7 +29,7 @@ class ChangePasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

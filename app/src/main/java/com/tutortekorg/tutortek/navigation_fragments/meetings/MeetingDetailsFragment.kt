@@ -38,7 +38,8 @@ class MeetingDetailsFragment : Fragment() {
         binding = FragmentMeetingDetailsBinding.inflate(inflater, container, false)
         bindEvents()
         bindDataToUI()
-        activity?.let { SystemUtils.resetConstraints(it) }
+        handleButtonVisibility()
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 
@@ -54,6 +55,37 @@ class MeetingDetailsFragment : Fragment() {
                 binding.txtMeetingDescription.text = meeting.description
                 binding.txtMeetingName.text = meeting.name
             }
+    }
+
+    private fun handleButtonVisibility() {
+        handleAccordingToRoles()
+        handleAccordingToArguments()
+        handleAccordingToResourceID()
+    }
+
+    private fun handleAccordingToResourceID() {
+        val profileId = JwtUtils.getProfileIdFromSavedToken(requireContext())
+        profileId?.let {
+            if(it != topic.profileId) hideButtons()
+        }
+    }
+
+    private fun handleAccordingToArguments() {
+        val showRegisterButton = arguments?.getBoolean("showRegisterButton", false)
+        if (showRegisterButton != null && !showRegisterButton)
+            binding.btnPaymentDetails.visibility = View.GONE
+    }
+
+    private fun handleAccordingToRoles() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if (it) hideButtons()
+        }
+    }
+
+    private fun hideButtons() {
+        binding.btnAddLearningMaterial.visibility = View.GONE
+        binding.btnDeleteMeeting.visibility = View.GONE
+        binding.btnEditMeeting.visibility = View.GONE
     }
 
     private fun bindDataToUI() {

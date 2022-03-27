@@ -36,7 +36,7 @@ class MeetingAddFragment : Fragment() {
         binding.editTextMeetingDate.setOnClickListener { onDateClick() }
         binding.btnConfirmAddMeeting.setOnClickListener { onAddClick() }
 
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

@@ -27,7 +27,7 @@ class AddTopicFragment : Fragment() {
     ): View {
         binding = FragmentTopicAddBinding.inflate(inflater, container, false)
         binding.btnConfirmAddTopic.setOnClickListener { addTopic() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 
