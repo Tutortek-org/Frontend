@@ -36,6 +36,7 @@ class MeetingDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMeetingDetailsBinding.inflate(inflater, container, false)
+        handleButtonVisibility()
         bindEvents()
         bindDataToUI()
         activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
@@ -54,6 +55,16 @@ class MeetingDetailsFragment : Fragment() {
                 binding.txtMeetingDescription.text = meeting.description
                 binding.txtMeetingName.text = meeting.name
             }
+    }
+
+    private fun handleButtonVisibility() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if(it) {
+                binding.btnAddLearningMaterial.visibility = View.GONE
+                binding.btnDeleteMeeting.visibility = View.GONE
+                binding.btnEditMeeting.visibility = View.GONE
+            }
+        }
     }
 
     private fun bindDataToUI() {
