@@ -32,6 +32,7 @@ class LearningMaterialsDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLearningMaterialsDetailsBinding.inflate(inflater, container, false)
+        handleButtonVisibility()
         bindDataToUI()
         bindEvents()
         activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
@@ -48,6 +49,15 @@ class LearningMaterialsDetailsFragment : Fragment() {
                 binding.txtLearningMaterialLink.text = learningMaterial.link
                 binding.txtLearningMaterialName.text = learningMaterial.name
             }
+    }
+
+    private fun handleButtonVisibility() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if(it) {
+                binding.btnDeleteLearningMaterial.visibility = View.GONE
+                binding.btnEditLearningMaterial.visibility = View.GONE
+            }
+        }
     }
 
     private fun bindDataToUI() {
