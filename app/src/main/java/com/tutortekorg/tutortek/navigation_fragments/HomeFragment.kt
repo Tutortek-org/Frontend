@@ -60,8 +60,9 @@ class HomeFragment : Fragment() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener {
             if (it.isSuccessful) {
                 val url = "${TutortekConstants.BASE_URL}/notifications"
-                val body = JSONObject()
-                body.put("deviceToken", it.result)
+                val body = JSONObject().apply {
+                    put("deviceToken", it.result)
+                }
                 val request = TutortekObjectRequest(requireContext(), Request.Method.POST, url, body, {}, {})
                 RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
             }
