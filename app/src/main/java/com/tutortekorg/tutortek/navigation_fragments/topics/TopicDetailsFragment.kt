@@ -90,7 +90,7 @@ class TopicDetailsFragment : Fragment() {
 
     private fun getTutorProfile() {
         startButtonAnimations()
-        val url = "${TutortekConstants.BASE_URL}/profiles/${topic.userId}"
+        val url = "${TutortekConstants.BASE_URL}/profiles/${topic.profileId}"
         val request = TutortekObjectRequest(requireContext(), Request.Method.GET, url, null,
             {
                 val roles = parseRoles(it)

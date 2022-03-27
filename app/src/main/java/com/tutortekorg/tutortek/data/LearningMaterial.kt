@@ -7,13 +7,15 @@ data class LearningMaterial(
     val id: Long,
     var name: String,
     var description: String,
-    var link: String
+    var link: String,
+    var profileId: Long
 ) : Serializable {
 
     constructor(body: JSONObject) : this(
         body.getLong("id"),
         body.getString("name"),
         body.getString("description"),
-        body.getString("link")
+        body.getString("link"),
+        body.getLong("profileId")
     )
 }

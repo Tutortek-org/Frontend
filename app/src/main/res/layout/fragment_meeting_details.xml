@@ -95,7 +95,8 @@
                                     android:layout_marginTop="10dp"
                                     android:textColor="?android:textColorPrimary"
                                     android:text="@string/add_meeting_address"
-                                    android:textSize="17sp" />
+                                    android:textSize="17sp"
+                                    android:textIsSelectable="true"/>
 
                                 <TextView
                                     android:id="@+id/txt_meeting_description"
