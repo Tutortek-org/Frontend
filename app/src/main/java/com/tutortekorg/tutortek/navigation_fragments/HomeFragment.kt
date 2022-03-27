@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
+        handleButtonVisibility()
         binding.btnAllTopics.setOnClickListener {
             val bundle = bundleOf("endpoint" to "")
             it.findNavController().navigate(R.id.action_homeFragment_to_topicListFragment, bundle)
@@ -48,6 +48,12 @@ class HomeFragment : Fragment() {
         val userProfile = ProfileSingleton.getInstance().userProfile
         context?.let { SystemUtils.downloadProfilePhoto(it, userProfile) }
         registerDeviceToken()
+    }
+
+    private fun handleButtonVisibility() {
+        JwtUtils.isUserStudent(requireContext())?.let {
+            if(it) binding.btnMyTopics.visibility = View.GONE
+        }
     }
 
     private fun registerDeviceToken() {

@@ -8,4 +8,6 @@ object TutortekConstants {
     const val NOTIFICATIONS_FLAG = "areNotificationsAllowed"
     const val SETTING_PREFERENCES = "settingPrefs"
     const val NOTIFICATION_CHANNEL_ID = "tutortek_channel"
+    const val ROLE_TUTOR = "TUTOR"
+    const val ROLE_STUDENT = "STUDENT"
 }

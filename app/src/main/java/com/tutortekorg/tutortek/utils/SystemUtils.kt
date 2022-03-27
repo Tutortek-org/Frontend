@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.tutortekorg.tutortek.R
+import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.requests.retrofit.FileDownloadService
 import com.tutortekorg.tutortek.requests.retrofit.ServiceGenerator
@@ -73,8 +74,8 @@ object SystemUtils {
         var result = ""
         for(role in roles) {
             result += when(role) {
-                "TUTOR" -> "${fragment.getString(R.string.radio_text_tutor)}, "
-                "STUDENT" -> "${fragment.getString(R.string.radio_text_student)}, "
+                TutortekConstants.ROLE_TUTOR -> "${fragment.getString(R.string.radio_text_tutor)}, "
+                TutortekConstants.ROLE_STUDENT -> "${fragment.getString(R.string.radio_text_student)}, "
                 else -> "${fragment.getString(R.string.role_admin)}, "
             }
         }
