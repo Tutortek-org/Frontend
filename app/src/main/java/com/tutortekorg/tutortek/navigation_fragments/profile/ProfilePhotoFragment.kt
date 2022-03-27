@@ -62,7 +62,7 @@ class ProfilePhotoFragment : Fragment() {
         binding.btnTakePhoto.setOnClickListener { dispatchTakePictureIntent() }
         binding.btnGallery.setOnClickListener { dispatchGalleryPictureIntent() }
         binding.btnUpload.setOnClickListener { uploadPhoto() }
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

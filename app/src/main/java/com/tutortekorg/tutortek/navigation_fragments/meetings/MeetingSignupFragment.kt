@@ -63,7 +63,7 @@ class MeetingSignupFragment : Fragment() {
         preparePaymentClient()
         sendIsReadyToPayRequest()
         binding.btnGooglePay.root.setOnClickListener { requestPayment() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

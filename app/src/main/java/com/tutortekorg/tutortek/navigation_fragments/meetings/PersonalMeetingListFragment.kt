@@ -29,7 +29,7 @@ class PersonalMeetingListFragment : Fragment() {
     ): View {
         binding = FragmentPersonalMeetingListBinding.inflate(inflater, container, false)
         binding.refreshMeetings.setOnRefreshListener { bindDataToUI() }
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 

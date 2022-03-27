@@ -33,7 +33,7 @@ class LearningMaterialAddFragment : Fragment() {
         meeting = arguments?.getSerializable("meeting") as Meeting
 
         binding.btnConfirmAddLearningMaterial.setOnClickListener { onAddClick() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

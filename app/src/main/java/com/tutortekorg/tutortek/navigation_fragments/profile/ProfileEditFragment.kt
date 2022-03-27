@@ -32,7 +32,7 @@ class ProfileEditFragment : Fragment() {
         binding.btnEditSave.setOnClickListener { saveNewInformation() }
         binding.profileEditTextBirthdate.setOnClickListener { onBirthDateClick() }
         binding.profileEditTextBirthdate.keyListener = null
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

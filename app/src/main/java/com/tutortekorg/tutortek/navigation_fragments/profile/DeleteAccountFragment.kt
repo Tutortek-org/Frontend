@@ -28,7 +28,7 @@ class DeleteAccountFragment : Fragment() {
     ): View {
         binding = FragmentDeleteAccountBinding.inflate(inflater, container, false)
         binding.btnDeleteAccount.setOnClickListener { confirmDelete() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

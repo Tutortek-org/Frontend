@@ -26,7 +26,7 @@ class BugReportFragment : Fragment() {
     ): View {
         binding = FragmentBugReportBinding.inflate(inflater, container, false)
         binding.btnSendReport.setOnClickListener { sendReport() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

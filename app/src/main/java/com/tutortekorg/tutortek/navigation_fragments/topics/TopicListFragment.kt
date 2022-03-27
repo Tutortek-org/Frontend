@@ -34,7 +34,7 @@ class TopicListFragment : Fragment() {
             it.findNavController().navigate(R.id.action_topicListFragment_to_addTopicFragment)
         }
 
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 

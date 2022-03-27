@@ -3,10 +3,11 @@ package com.tutortekorg.tutortek.utils
 import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
+import android.util.TypedValue
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.tutortekorg.tutortek.R
@@ -44,22 +45,16 @@ object SystemUtils {
         alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color)
     }
 
-    fun setupConstraints(activity: Activity) {
-        val constraintLayout = activity.findViewById<ConstraintLayout>(R.id.constraints_home)
-        val constraintSet = ConstraintSet()
-        constraintSet.clone(constraintLayout)
-        constraintSet.clear(R.id.fragmentContainerView, ConstraintSet.BOTTOM)
-        constraintSet.connect(R.id.fragmentContainerView, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM)
-        constraintSet.applyTo(constraintLayout)
+    fun changeBackgroundColorToThemeDependant(activity: Activity) {
+        val background = activity.findViewById<ConstraintLayout>(R.id.constraints_home)
+        val typedValue = TypedValue()
+        activity.theme.resolveAttribute(R.attr.colorOnPrimary, typedValue, true)
+        background?.setBackgroundColor(ContextCompat.getColor(activity, typedValue.resourceId))
     }
 
-    fun resetConstraints(activity: Activity) {
-        val constraintLayout = activity.findViewById<ConstraintLayout>(R.id.constraints_home)
-        val constraintSet = ConstraintSet()
-        constraintSet.clone(constraintLayout)
-        constraintSet.clear(R.id.fragmentContainerView, ConstraintSet.BOTTOM)
-        constraintSet.connect(R.id.fragmentContainerView, ConstraintSet.BOTTOM, R.id.navigation_card_view, ConstraintSet.TOP)
-        constraintSet.applyTo(constraintLayout)
+    fun changeBackgroundColorToPrimary(activity: Activity) {
+        val background = activity.findViewById<ConstraintLayout>(R.id.constraints_home)
+        background?.setBackgroundColor(ContextCompat.getColor(activity, R.color.color_primary))
     }
 
     fun downloadProfilePhoto(context: Context, userProfile: UserProfile?, imageView: CircleImageView? = null) {

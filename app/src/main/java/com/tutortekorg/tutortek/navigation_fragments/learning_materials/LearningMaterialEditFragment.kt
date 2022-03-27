@@ -32,7 +32,7 @@ class LearningMaterialEditFragment : Fragment() {
     ): View {
         binding = FragmentLearningMaterialEditBinding.inflate(inflater, container, false)
         binding.btnConfirmEditLearningMaterial.setOnClickListener { saveEditedLearningMaterial() }
-        activity?.let { SystemUtils.setupConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
         return binding.root
     }
 

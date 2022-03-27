@@ -30,7 +30,7 @@ class SettingsFragment : Fragment() {
         binding.btnReportBug.setOnClickListener {
             it.findNavController().navigate(R.id.action_settingsFragment_to_bugReportFragment)
         }
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 

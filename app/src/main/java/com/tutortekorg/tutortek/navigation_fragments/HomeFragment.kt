@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         binding.btnMyMeeetings.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_personalMeetingListFragment)
         }
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 

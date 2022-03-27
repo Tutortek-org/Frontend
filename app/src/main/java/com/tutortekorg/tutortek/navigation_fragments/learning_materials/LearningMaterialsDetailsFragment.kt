@@ -34,7 +34,7 @@ class LearningMaterialsDetailsFragment : Fragment() {
         binding = FragmentLearningMaterialsDetailsBinding.inflate(inflater, container, false)
         bindDataToUI()
         bindEvents()
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 

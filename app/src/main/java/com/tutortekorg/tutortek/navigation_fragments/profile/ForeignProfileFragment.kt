@@ -37,7 +37,7 @@ class ForeignProfileFragment : Fragment() {
         userProfile = arguments?.getSerializable("userProfile") as UserProfile
         bindEventsToUI()
         bindDataToUI()
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 

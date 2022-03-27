@@ -38,7 +38,7 @@ class MeetingDetailsFragment : Fragment() {
         binding = FragmentMeetingDetailsBinding.inflate(inflater, container, false)
         bindEvents()
         bindDataToUI()
-        activity?.let { SystemUtils.resetConstraints(it) }
+        activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
 
