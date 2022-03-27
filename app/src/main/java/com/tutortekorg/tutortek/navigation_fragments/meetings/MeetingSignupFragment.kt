@@ -76,7 +76,7 @@ class MeetingSignupFragment : Fragment() {
             {
                 try {
                     Toast.makeText(requireContext(), R.string.payment_success, Toast.LENGTH_SHORT).show()
-                    findNavController().popBackStack()
+                    findNavController().popBackStack(R.id.topicDetailsFragment, false)
                 }
                 catch (e: Exception) {}
             },

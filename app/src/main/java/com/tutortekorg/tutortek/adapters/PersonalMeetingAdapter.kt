@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.data.Topic
@@ -15,9 +14,9 @@ import com.tutortekorg.tutortek.data.Topic
 class PersonalMeetingAdapter(private val meetings: List<Meeting>,
                              private val navController: NavController,
                              private val topics: List<Topic>
-) : RecyclerView.Adapter<MeetingAdapter.MeetingViewHolder>() {
+) : RecyclerView.Adapter<PersonalMeetingAdapter.PersonalMeetingViewHolder>() {
 
-    class MeetingViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class PersonalMeetingViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private val textTitle: TextView = view.findViewById(R.id.txt_meeting_name)
         private val textDate: TextView = view.findViewById(R.id.txt_meeting_date)
 
@@ -27,15 +26,15 @@ class PersonalMeetingAdapter(private val meetings: List<Meeting>,
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MeetingAdapter.MeetingViewHolder =
-        MeetingAdapter.MeetingViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonalMeetingViewHolder =
+        PersonalMeetingViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_container_meeting, parent, false)
         )
 
-    override fun onBindViewHolder(holder: MeetingAdapter.MeetingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PersonalMeetingViewHolder, position: Int) {
         holder.view.setOnClickListener {
-            val bundle = bundleOf("meeting" to meetings[position], "topic" to topics[position])
+            val bundle = bundleOf("meeting" to meetings[position], "topic" to topics[position], "showRegisterButton" to false)
             navController.navigate(R.id.action_personalMeetingListFragment_to_meetingDetailsFragment, bundle)
         }
         holder.setMeetingData(meetings[position])

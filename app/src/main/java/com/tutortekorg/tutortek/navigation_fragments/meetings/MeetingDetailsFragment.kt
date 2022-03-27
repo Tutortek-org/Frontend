@@ -65,6 +65,9 @@ class MeetingDetailsFragment : Fragment() {
                 binding.btnEditMeeting.visibility = View.GONE
             }
         }
+        val showRegisterButton = arguments?.getBoolean("showRegisterButton", false)
+        if(showRegisterButton != null && !showRegisterButton)
+            binding.btnPaymentDetails.visibility = View.GONE
     }
 
     private fun bindDataToUI() {
