@@ -30,6 +30,9 @@ class SettingsFragment : Fragment() {
         binding.btnReportBug.setOnClickListener {
             it.findNavController().navigate(R.id.action_settingsFragment_to_bugReportFragment)
         }
+        binding.btnAppInfo.setOnClickListener {
+            it.findNavController().navigate(R.id.action_settingsFragment_to_appInfoFragment)
+        }
         activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
     }
