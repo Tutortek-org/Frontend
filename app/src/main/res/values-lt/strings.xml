@@ -43,6 +43,7 @@
     <string name="dark_mode_switch">Tamsi tema</string>
     <string name="report_bug">Pranešti apie klaidą</string>
     <string name="notifications_switch">Leisti pranešimus</string>
+    <string name="btn_app_info">Programėlės informacija</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Vardas Pavardė</string>
@@ -223,4 +224,8 @@
     <!-- User report fragment -->
     <string name="report_header">Pastebėjote kažką blogo? Praneškite!</string>
     <string name="user_report_success">Apie naudotoją pranešta sėkmingai</string>
+
+    <!-- App info fragment -->
+    <string name="contact_us">Susisiekite adresu ka.balciunas@ktu.edu</string>
+    <string name="app_version">Versija: 1.0.0</string>
 </resources>

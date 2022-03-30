@@ -42,6 +42,7 @@
     <string name="dark_mode_switch">Dark theme</string>
     <string name="report_bug">Report a bug</string>
     <string name="notifications_switch">Allow notifications</string>
+    <string name="btn_app_info">App info</string>
 
     <!-- Profile fragment -->
     <string name="name_surname">Name Surname</string>
@@ -222,4 +223,8 @@
     <!-- User report fragment -->
     <string name="report_header">Noticed something bad? Tell us!</string>
     <string name="user_report_success">User reported successfully</string>
+
+    <!-- App info fragment -->
+    <string name="contact_us">Contact us at ka.balciunas@ktu.edu</string>
+    <string name="app_version">Version: 1.0.0</string>
 </resources>
