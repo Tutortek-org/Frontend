@@ -14,10 +14,12 @@ import com.android.volley.Request
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.tutortekorg.tutortek.R
 import com.tutortekorg.tutortek.adapters.LearningMaterialAdapter
+import com.tutortekorg.tutortek.adapters.UserProfilesAdapter
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.data.LearningMaterial
 import com.tutortekorg.tutortek.data.Meeting
 import com.tutortekorg.tutortek.data.Topic
+import com.tutortekorg.tutortek.data.UserProfile
 import com.tutortekorg.tutortek.databinding.FragmentMeetingDetailsBinding
 import com.tutortekorg.tutortek.requests.TutortekArrayRequest
 import com.tutortekorg.tutortek.requests.TutortekObjectRequest
@@ -25,6 +27,7 @@ import com.tutortekorg.tutortek.singletons.RequestSingleton
 import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.utils.SystemUtils
 import org.json.JSONArray
+import org.json.JSONObject
 
 class MeetingDetailsFragment : Fragment() {
     private lateinit var binding: FragmentMeetingDetailsBinding
@@ -86,6 +89,7 @@ class MeetingDetailsFragment : Fragment() {
         binding.btnAddLearningMaterial.visibility = View.GONE
         binding.btnDeleteMeeting.visibility = View.GONE
         binding.btnEditMeeting.visibility = View.GONE
+        binding.btnGetRegisteredUsers.visibility = View.GONE
     }
 
     private fun bindDataToUI() {
@@ -115,6 +119,7 @@ class MeetingDetailsFragment : Fragment() {
                 .navigate(R.id.action_meetingDetailsFragment_to_meetingEditFragment, bundle)
         }
         binding.btnGetLearningMaterials.setOnClickListener { sendLearningMaterialsGetRequest() }
+        binding.btnGetRegisteredUsers.setOnClickListener { sendAttendantsGetRequest() }
         binding.btnAddLearningMaterial.setOnClickListener {
             val bundle = bundleOf("meeting" to meeting, "topic" to topic)
             it.findNavController()
@@ -126,6 +131,26 @@ class MeetingDetailsFragment : Fragment() {
             it.findNavController()
                 .navigate(R.id.action_meetingDetailsFragment_to_meetingSignupFragment, bundle)
         }
+    }
+
+    private fun sendAttendantsGetRequest() {
+        startButtonAnimations()
+        val url = "${TutortekConstants.BASE_URL}/meetings/${meeting.id}/registered"
+        val request = TutortekArrayRequest(requireContext(), Request.Method.GET, url, null,
+            {
+                if(it.length() == 0)
+                    Toast.makeText(requireContext(), R.string.no_attendants, Toast.LENGTH_SHORT).show()
+                else showAttendantsBottomSheetDialog(it)
+                revertButtonAnimations()
+            },
+            {
+                if(!JwtUtils.wasResponseUnauthorized(it)) {
+                    revertButtonAnimations()
+                    Toast.makeText(requireContext(), R.string.error_attendants_get, Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 
     private fun sendMeetingGetRequest() {
@@ -195,6 +220,16 @@ class MeetingDetailsFragment : Fragment() {
         dialog.show()
     }
 
+    private fun showAttendantsBottomSheetDialog(array: JSONArray) {
+        val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+        val view = View.inflate(requireContext(), R.layout.layout_bottom_sheet, null)
+        val userProfiles = parseUserProfilesList(array)
+        val recyclerView = view.findViewById(R.id.recycler_drawer) as RecyclerView
+        recyclerView.adapter = UserProfilesAdapter(userProfiles, requireContext(), findNavController(), dialog)
+        dialog.setContentView(view)
+        dialog.show()
+    }
+
     private fun parseMeetingsList(array: JSONArray): List<LearningMaterial> {
         val learningMaterials = mutableListOf<LearningMaterial>()
         for(i in 0 until array.length()) {
@@ -203,12 +238,32 @@ class MeetingDetailsFragment : Fragment() {
         return learningMaterials
     }
 
+    private fun parseUserProfilesList(array: JSONArray): List<UserProfile> {
+        val userProfiles = mutableListOf<UserProfile>()
+        for(i in 0 until array.length()) {
+            val jsonObject = array.getJSONObject(i)
+            val roles = parseRoles(jsonObject)
+            userProfiles.add(UserProfile(jsonObject, roles))
+        }
+        return userProfiles
+    }
+
+    private fun parseRoles(userJson: JSONObject): MutableList<String> {
+        val rolesJson = userJson.getJSONArray("roles")
+        val roles = mutableListOf<String>()
+        for(i in 0 until rolesJson.length()) {
+            roles.add(rolesJson.getString(i))
+        }
+        return roles
+    }
+
     private fun startButtonAnimations() {
         binding.btnDeleteMeeting.startAnimation()
         binding.btnEditMeeting.startAnimation()
         binding.btnGetLearningMaterials.startAnimation()
         binding.btnAddLearningMaterial.startAnimation()
         binding.btnPaymentDetails.startAnimation()
+        binding.btnGetRegisteredUsers.startAnimation()
     }
 
     private fun revertButtonAnimations() {
@@ -217,5 +272,6 @@ class MeetingDetailsFragment : Fragment() {
         binding.btnGetLearningMaterials.revertAnimation()
         binding.btnAddLearningMaterial.revertAnimation()
         binding.btnPaymentDetails.revertAnimation()
+        binding.btnGetRegisteredUsers.revertAnimation()
     }
 }

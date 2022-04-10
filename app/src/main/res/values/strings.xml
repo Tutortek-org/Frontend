@@ -98,6 +98,7 @@
     <string name="error_purchase">Unexpected error during the transaction</string>
     <string name="error_rating">Unexpected error while submitting the rating</string>
     <string name="error_user_report">Unexpected error while sending a user report</string>
+    <string name="error_attendants_get">Unexpected error while getting attendants</string>
 
     <!-- Information messages -->
     <string name="register_success">Account created successfully</string>
@@ -108,6 +109,7 @@
     <string name="meeting_add_success">New meeting added successfully</string>
     <string name="no_learning_materials">No learning materials are assigned to this meeting</string>
     <string name="learning_material_add_success">New learning material added successfully</string>
+    <string name="no_attendants">No attendants are currently signed up</string>
 
     <!-- Edit profile form -->
     <string name="save">Save</string>
@@ -174,6 +176,7 @@
     <string name="get_learning_materials">Lookup learning materials</string>
     <string name="add_learning_material">Add a learning material</string>
     <string name="btn_signup">Signup</string>
+    <string name="btn_registered_users">Lookup attendants</string>
 
     <!-- Learning material item -->
     <string name="learning_material_name">Learning material name</string>
@@ -227,4 +230,7 @@
     <!-- App info fragment -->
     <string name="contact_us">Contact us at ka.balciunas@ktu.edu</string>
     <string name="app_version">Version: 1.0.0</string>
+
+    <!-- Attendant item -->
+    <string name="attendant_name">Attendant name</string>
 </resources>
