@@ -99,6 +99,7 @@
     <string name="error_purchase">Netikėta klaida bandant atlikti pervedimą</string>
     <string name="error_rating">Netikėta klaida siunčiant įvertinimą</string>
     <string name="error_user_report">Netikėta klaida siunčiant pranešimą apie naudotoją</string>
+    <string name="error_attendants_get">Netikėta klaida bandant gauti dalyvius</string>
 
     <!-- Information messages -->
     <string name="register_success">Paskyra sukurta sėkmingai</string>
@@ -109,6 +110,7 @@
     <string name="meeting_add_success">Naujas susitikimas pridėtas sėkmingai</string>
     <string name="no_learning_materials">Nėra priskirta mokomosios medžiagos šiam susitikimui</string>
     <string name="learning_material_add_success">Nauja mokomoji medžiaga pridėta sėkmingai</string>
+    <string name="no_attendants">Nėra registruotų dalyvių</string>
 
     <!-- Edit profile form -->
     <string name="save">Išsaugoti</string>
@@ -175,6 +177,7 @@
     <string name="get_learning_materials">Peržiūrėti mokomąją medžiagą</string>
     <string name="add_learning_material">Pridėti mokomosios medžiagos</string>
     <string name="btn_signup">Užsiregistruoti</string>
+    <string name="btn_registered_users">Peržiūrėti dalyvius</string>
 
     <!-- Learning material item -->
     <string name="learning_material_name">Mokomosios medžiagos pavadinimas</string>
@@ -228,4 +231,7 @@
     <!-- App info fragment -->
     <string name="contact_us">Susisiekite adresu ka.balciunas@ktu.edu</string>
     <string name="app_version">Versija: 1.0.0</string>
+
+    <!-- Attendant item -->
+    <string name="attendant_name">Dalyvio vardas</string>
 </resources>
