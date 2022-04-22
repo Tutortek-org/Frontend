@@ -156,7 +156,7 @@
     <!-- Topic details fragment -->
     <string name="get_meetings">Peržiūrėti susitikimus</string>
     <string name="add_meeting">Pridėti susitikimą</string>
-    <string name="view_profile">Peržiūrėti tutoriaus profilį</string>
+    <string name="view_profile">Peržiūrėti korepetitoriaus profilį</string>
 
     <!-- Meeting item -->
     <string name="meeting_name">Susitikimo pavadinimas</string>
@@ -213,7 +213,7 @@
     <string name="payment_success">Pervedimas įvykdytas sėkmingai!</string>
 
     <!-- Meeting signup fragment -->
-    <string name="dialog_rate_header">Įvertinkite Tutorių</string>
+    <string name="dialog_rate_header">Įvertinkite Korepetitorių</string>
     <string name="selected_rating_placeholder">(0.0)</string>
     <string name="selected_rating">(%1$s)</string>
     <string name="btn_submit">Išsiųsti</string>
