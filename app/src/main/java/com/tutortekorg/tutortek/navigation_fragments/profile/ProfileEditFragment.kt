@@ -88,7 +88,7 @@ class ProfileEditFragment : Fragment() {
         val request = TutortekObjectRequest(requireContext(), Request.Method.PUT, url, body,
             {
                 try {
-                    updateSingletonData(body)
+                    updateSingletonData(it)
                     Toast.makeText(requireContext(), R.string.success_profile_edit, Toast.LENGTH_SHORT).show()
                     findNavController().popBackStack()
                 }
