@@ -18,7 +18,6 @@
     <string name="login_email_hint">El. Paštas</string>
     <string name="login_password_hint">Slaptažodis</string>
     <string name="already_have_account">Jau turite paskyrą?</string>
-    <string name="forgot_password">Pamiršote slaptažodį?</string>
     <string name="login">Prisijungti</string>
     <string name="new_user">Registruokitės Dabar</string>
 
