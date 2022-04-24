@@ -37,8 +37,17 @@ class ForeignProfileFragment : Fragment() {
         userProfile = arguments?.getSerializable("userProfile") as UserProfile
         bindEventsToUI()
         bindDataToUI()
+        handleButtonVisibility()
         activity?.let { SystemUtils.changeBackgroundColorToThemeDependant(it) }
         return binding.root
+    }
+
+    private fun handleButtonVisibility() {
+        val profileId = JwtUtils.getProfileIdFromSavedToken(requireContext())
+        if(userProfile.id == profileId) {
+            binding.btnReport.visibility = View.GONE
+            binding.btnRate.visibility = View.GONE
+        }
     }
 
     private fun bindEventsToUI() {
