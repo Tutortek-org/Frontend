@@ -22,6 +22,9 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(intent.extras?.getBoolean("invalidateToken") == true)
+            JwtUtils.invalidateJwtToken(this)
+
         binding.btnLogin.setOnClickListener { onLoginClick() }
         binding.imgNewAccount.setOnClickListener { onRegisterClick() }
         binding.txtRegister.setOnClickListener { onRegisterClick() }

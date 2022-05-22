@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import com.android.volley.Request
 import com.tutortekorg.tutortek.R
-import com.tutortekorg.tutortek.utils.JwtUtils
 import com.tutortekorg.tutortek.authentication.LoginActivity
 import com.tutortekorg.tutortek.constants.TutortekConstants
 import com.tutortekorg.tutortek.databinding.FragmentSettingsBinding
@@ -69,23 +68,16 @@ class SettingsFragment : Fragment() {
     private fun logout() {
         binding.btnLogout.isClickable = false
         sendClearArnRequest()
-        startActivity(Intent(activity, LoginActivity::class.java))
+        val intent = Intent(activity, LoginActivity::class.java)
+        intent.putExtra("invalidateToken", true)
+        startActivity(intent)
         activity?.overridePendingTransition(R.anim.slide_in_left, android.R.anim.slide_out_right)
         activity?.finish()
     }
 
     private fun sendClearArnRequest() {
         val url = "${TutortekConstants.BASE_URL}/notifications/cleararn"
-        val request = activity?.let {
-            TutortekObjectRequest(it, Request.Method.PATCH, url, null,
-                {
-                    activity?.let { it2 -> JwtUtils.invalidateJwtToken(it2) }
-                },
-                {
-                    activity?.let { it2 -> JwtUtils.invalidateJwtToken(it2) }
-                }
-            )
-        }
-        request?.let { RequestSingleton.getInstance(requireContext()).addToRequestQueue(it) }
+        val request = TutortekObjectRequest(requireContext(), Request.Method.PATCH, url, null, {}, {} )
+        RequestSingleton.getInstance(requireContext()).addToRequestQueue(request)
     }
 }
