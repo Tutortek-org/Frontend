@@ -156,6 +156,8 @@
     <string name="get_meetings">Lookup meetings</string>
     <string name="add_meeting">Add a meeting</string>
     <string name="view_profile">View tutor\'s profile</string>
+    <string name="is_approved">Approved</string>
+    <string name="is_not_approved">Not approved</string>
 
     <!-- Meeting item -->
     <string name="meeting_name">Meeting name</string>

@@ -135,6 +135,9 @@ class TopicDetailsFragment : Fragment() {
         topic = arguments?.getSerializable("topic") as Topic
         binding.txtTopicDetailsName.text = topic.name
         binding.txtTopicDescription.text = topic.description
+
+        if(topic.isApproved) binding.txtTopicApproved.text = getString(R.string.is_approved)
+        else binding.txtTopicApproved.text = getString(R.string.is_not_approved)
     }
 
     private fun sendTopicGetRequest() {
