@@ -157,6 +157,8 @@
     <string name="get_meetings">Peržiūrėti susitikimus</string>
     <string name="add_meeting">Pridėti susitikimą</string>
     <string name="view_profile">Peržiūrėti korepetitoriaus profilį</string>
+    <string name="is_approved">Patvirtinta</string>
+    <string name="is_not_approved">Nepatvirtinta</string>
 
     <!-- Meeting item -->
     <string name="meeting_name">Susitikimo pavadinimas</string>

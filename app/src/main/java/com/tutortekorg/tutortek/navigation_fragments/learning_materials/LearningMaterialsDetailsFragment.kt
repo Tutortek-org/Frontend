@@ -82,6 +82,9 @@ class LearningMaterialsDetailsFragment : Fragment() {
         binding.txtLearningMaterialDescription.text = learningMaterial.description
         binding.txtLearningMaterialLink.text = learningMaterial.link
         binding.txtLearningMaterialName.text = learningMaterial.name
+
+        if(learningMaterial.isApproved) binding.txtLearningMaterialApproved.text = getString(R.string.is_approved)
+        else binding.txtLearningMaterialApproved.text = getString(R.string.is_not_approved)
     }
 
     private fun bindEvents() {

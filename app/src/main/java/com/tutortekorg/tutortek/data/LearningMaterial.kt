@@ -8,7 +8,8 @@ data class LearningMaterial(
     var name: String,
     var description: String,
     var link: String,
-    var profileId: Long
+    var profileId: Long,
+    var isApproved: Boolean
 ) : Serializable {
 
     constructor(body: JSONObject) : this(
@@ -16,6 +17,7 @@ data class LearningMaterial(
         body.getString("name"),
         body.getString("description"),
         body.getString("link"),
-        body.getLong("profileId")
+        body.getLong("profileId"),
+        body.getBoolean("isApproved")
     )
 }
