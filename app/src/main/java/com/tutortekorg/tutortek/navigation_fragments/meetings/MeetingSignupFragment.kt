@@ -147,7 +147,7 @@ class MeetingSignupFragment : Fragment() {
                 }
 
                 put("shippingAddressParameters", shippingAddressParameters)
-                put("shippingAddressRequired", true)
+                put("shippingAddressRequired", false)
             }
         } catch (e: JSONException) {
             return null
@@ -176,10 +176,7 @@ class MeetingSignupFragment : Fragment() {
             val parameters = JSONObject().apply {
                 put("allowedAuthMethods", allowedCardAuthMethods)
                 put("allowedCardNetworks", allowedCardNetworks)
-                put("billingAddressRequired", true)
-                put("billingAddressParameters", JSONObject().apply {
-                    put("format", "FULL")
-                })
+                put("billingAddressRequired", false)
             }
 
             put("type", "CARD")
