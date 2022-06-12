@@ -30,6 +30,7 @@ class ChangePasswordFragment : Fragment() {
     ): View {
         binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
         activity?.let { SystemUtils.changeBackgroundColorToPrimary(it) }
+        binding.btnSavePassword.setOnClickListener { changePassword() }
         return binding.root
     }
 
